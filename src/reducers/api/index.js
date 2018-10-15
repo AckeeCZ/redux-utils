@@ -1,2 +1,2 @@
-export * as basic from './basic';
-export * as pagination from './pagination';
+export { default as basic } from './basic';
+export { default as pagination } from './pagination';
