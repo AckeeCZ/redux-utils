@@ -1,47 +1,43 @@
-import * as Config from '../config';
 import * as Consts from '../../../constants';
 import makeBasicApiReducer from '../basic';
+import * as Config from './config';
 
 const getParams = (customParams = {}) => {
     const options = {
         ...Config.options,
-        ...customParams.options
+        ...customParams.options,
     };
 
     if (options.logging && !customParams.actionTypes) {
         const { PAGINATION } = Consts.types;
         // eslint-disable-next-line
-        console.warn(
-            Consts.warnings.undefinedActionTypes(PAGINATION, customParams)
-        );
+        console.warn(Consts.warnings.undefinedActionTypes(PAGINATION, customParams));
     }
 
     return {
         initialState: Object.freeze({
             ...Config.initialState,
-            ...customParams.initialState
+            ...customParams.initialState,
         }),
         actionTypes: {
             ...Config.actionTypes,
-            ...customParams.actionTypes
+            ...customParams.actionTypes,
         },
         selectors: {
             ...Config.selectors,
-            ...customParams.selectors
+            ...customParams.selectors,
         },
-        options
+        options,
     };
 };
 
 export default function makePaginationApiReducer(customParams) {
-    const { actionTypes: types, initialState, selectors, options } = getParams(
-        customParams
-    );
+    const { actionTypes: types, initialState, selectors, options } = getParams(customParams);
 
     const basicApiReducer = makeBasicApiReducer({
         actionTypes: types,
         initialState,
-        options
+        options,
     });
 
     function paginationApiReducer(state = initialState, action) {
@@ -52,7 +48,7 @@ export default function makePaginationApiReducer(customParams) {
             case types.RESET:
                 return {
                     ...state,
-                    ...basicApiReducer(state, action)
+                    ...basicApiReducer(state, action),
                 };
 
             case types.SUCCESS: {
@@ -65,7 +61,7 @@ export default function makePaginationApiReducer(customParams) {
                     ...basicApiReducer(state, action),
                     page: hasMoreItems ? state.page + 1 : state.page,
                     hasMoreItems,
-                    totalCount
+                    totalCount,
                 };
             }
 

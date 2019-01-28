@@ -1,23 +1,70 @@
 {
-    "name": "ackee-redux-utils",
+    "name": "@ackee/redux-utils",
     "version": "0.0.1",
-    "description": "Redux utilities including...",
-    "main": "index.js",
+    "description": "Common Redux utilities - reducer factories, async action type.",
+    "main": "lib/index.js",
     "module": "es/index.js",
-    "directories": {
-        "test": "test"
-    },
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "prettier": "prettier --config ./prettier.config.js --write './src/**/*.{js,jsx}'",
+        "build:lib": "rm -rf ./lib && cross-env BABEL_ENV=lib babel src --out-dir lib",
+        "build:es": "rm -rf ./es && cross-env BABEL_ENV=es babel src --out-dir es",
+        "build": "yarn build:es & yarn build:lib",
+        "prepare": "yarn build",
+        "start": "yarn install && yarn lint && yarn build && onchange 'src/**/*.{js,jsx}' -- yarn build",
+        "lint": "eslint 'src/**/*.{js,jsx}'"
     },
-    "author": "Jiří Čermák",
+    "author": "Jiří Čermák <jiri.cermak@ackee.cz>",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/AckeeCZ/redux-utils"
+    },
     "devDependencies": {
-        "babel-eslint": "^10.0.1",
-        "eslint": "^5.7.0",
-        "eslint-config-ackee": "^0.9.0",
-        "eslint-config-prettier": "^3.1.0",
-        "eslint-plugin-jest": "^21.25.0",
-        "jest": "^23.6.0"
+        "@babel/cli": "7.x",
+        "@babel/core": "7.x",
+        "@babel/plugin-proposal-class-properties": "7.x",
+        "@babel/plugin-proposal-export-namespace-from": "7.x",
+        "@babel/plugin-proposal-object-rest-spread": "7.x",
+        "@babel/preset-env": "7.x",
+        "@babel/preset-react": "7.x",
+        "babel-eslint": "10.x",
+        "cross-env": "5.x",
+        "eslint": "5.x",
+        "eslint-config-ackee": "0.x",
+        "eslint-plugin-jest": "22.x",
+        "eslint-config-prettier": "4.x",
+        "husky": "1.x",
+        "jest": "24.x",
+        "lint-staged": "8.x",
+        "onchange": "5.x",
+        "prettier": "1.x",
+        "prettier-config-ackee": "0.x"
+    },
+    "browserslist": [
+        "last 2 version",
+        "> 1%",
+        "maintained node versions",
+        "not dead",
+        "IE > 11"
+    ],
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "jest": {
+        "testPathIgnorePatterns": [
+            "/node_modules",
+            "/lib"
+        ]
+    },
+    "lint-staged": {
+        "*.{js,jsx,json,scss,less,css,md}": [
+            "prettier --config ./prettier.config.js --write && yarn lint",
+            "git add"
+        ]
+    },
+    "publishConfig": {
+        "access": "public"
     }
 }
