@@ -4,7 +4,7 @@ import * as Consts from '../../../constants';
 const getParams = (customParams = {}) => {
     const options = {
         ...Config.options.logging,
-        ...customParams.options
+        ...customParams.options,
     };
 
     if (options.logging && !customParams.actionTypes) {
@@ -16,13 +16,13 @@ const getParams = (customParams = {}) => {
     return {
         initialState: Object.freeze({
             ...Config.initialState,
-            ...customParams.initialState
+            ...customParams.initialState,
         }),
         actionTypes: {
             ...Config.actionTypes,
-            ...customParams.actionTypes
+            ...customParams.actionTypes,
         },
-        options
+        options,
     };
 };
 
@@ -37,21 +37,21 @@ export default function makeBasicApiReducer(customParams) {
                     error: initialState.error,
                     isFetching: true,
                     didInvalidate: false,
-                    success: false
+                    success: false,
                 };
 
             case types.INVALIDATE:
                 return {
                     ...state,
                     isFetching: false,
-                    didInvalidate: true
+                    didInvalidate: true,
                 };
 
             case types.SUCCESS:
                 return {
                     ...state,
                     isFetching: false,
-                    success: true
+                    success: true,
                 };
 
             case types.FAILURE: {
@@ -60,7 +60,7 @@ export default function makeBasicApiReducer(customParams) {
                 return {
                     ...state,
                     isFetching: false,
-                    error
+                    error,
                 };
             }
 

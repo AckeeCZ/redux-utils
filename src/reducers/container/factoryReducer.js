@@ -1,11 +1,7 @@
 import * as Config from './config';
 import * as Consts from '../../constants';
 
-function getInitialState({
-    childReducer,
-    initialState: customInitialState,
-    options
-}) {
+function getInitialState({ childReducer, initialState: customInitialState, options }) {
     const placeholder = childReducer(undefined, {});
     const initialState = { ...customInitialState };
 
@@ -23,13 +19,13 @@ const getParams = (customParams = {}) => {
 
     const options = {
         ...Config.options,
-        ...customParams.options
+        ...customParams.options,
     };
 
     const initialState = getInitialState({
         childReducer: customParams.childReducer,
         initialState: customParams.initialState,
-        options
+        options,
     });
 
     return {
@@ -37,23 +33,17 @@ const getParams = (customParams = {}) => {
         options,
         selectors: {
             ...Config.selectors,
-            ...customParams.selectors
+            ...customParams.selectors,
         },
         initialState: {
             ...Config.initialState,
-            ...initialState
-        }
+            ...initialState,
+        },
     };
 };
 
 export default function makeContainerReducer(customParams) {
-    const {
-        options,
-        actionTypes,
-        initialState,
-        selectors,
-        childReducer
-    } = getParams(customParams);
+    const { options, actionTypes, initialState, selectors, childReducer } = getParams(customParams);
 
     const types = new Set(actionTypes);
 
@@ -75,16 +65,11 @@ export default function makeContainerReducer(customParams) {
             }
 
             default: {
-                const itemInitialState =
-                    initialState[itemId] || initialState.placeholder;
+                const itemInitialState = initialState[itemId] || initialState.placeholder;
 
                 return {
                     ...state,
-                    [itemId]: childReducer(
-                        state[itemId],
-                        action,
-                        itemInitialState
-                    )
+                    [itemId]: childReducer(state[itemId], action, itemInitialState),
                 };
             }
         }

@@ -2,7 +2,7 @@ import { parseResetActionType } from '../utilities';
 
 const invalidItemIdError = itemId => ({
     code: 'reset_reducers/invalid_item_id',
-    message: `'resetItems' object has invalid itemId parameter: ${itemId}. It must be non-empty string.`
+    message: `'resetItems' object has invalid itemId parameter: ${itemId}. It must be non-empty string.`,
 });
 
 const addItemIdToActionTypes = (dest = {}, itemId = '', actionTypes = []) => {
@@ -43,20 +43,12 @@ const createRevertedMap = (resetItems = {}) => {
     return revertedMap;
 };
 
-const resetItemsToInitialState = (
-    itemIds = new Set(),
-    childReducer,
-    itemInitialState
-) => {
+const resetItemsToInitialState = (itemIds = new Set(), childReducer, itemInitialState) => {
     const newState = {};
     const mockAction = {};
 
     for (const itemId of itemIds.values()) {
-        newState[itemId] = childReducer(
-            undefined,
-            mockAction,
-            itemInitialState
-        );
+        newState[itemId] = childReducer(undefined, mockAction, itemInitialState);
     }
 
     return newState;
@@ -72,12 +64,7 @@ const resetItemsToInitialState = (
  *
  * @return {Function}
  */
-const makeResetContainerReducer = ({
-    childReducer,
-    containerReducer,
-    itemInitialState,
-    resetItems
-}) => {
+const makeResetContainerReducer = ({ childReducer, containerReducer, itemInitialState, resetItems }) => {
     // create map where key is an action type
     // and value is an array of child reducers keys
     // (resetItems is object where key is reducer key
@@ -88,15 +75,11 @@ const makeResetContainerReducer = ({
         const itemIds = actionTypes.get(action.type);
 
         if (itemIds) {
-            const newState = resetItemsToInitialState(
-                itemIds,
-                childReducer,
-                itemInitialState
-            );
+            const newState = resetItemsToInitialState(itemIds, childReducer, itemInitialState);
 
             return {
                 ...state,
-                ...newState
+                ...newState,
             };
         }
 

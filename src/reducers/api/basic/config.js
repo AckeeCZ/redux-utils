@@ -5,21 +5,21 @@ export const actionTypes = {
     INVALIDATE: UNUSED_ACTION_TYPE,
     SUCCESS: UNUSED_ACTION_TYPE,
     FAILURE: UNUSED_ACTION_TYPE,
-    RESET: UNUSED_ACTION_TYPE
+    RESET: UNUSED_ACTION_TYPE,
 };
 
 export const initialState = {
     isFetching: false,
     error: {
         code: null,
-        message: ''
+        message: '',
     },
     success: false,
-    didInvalidate: false
+    didInvalidate: false,
 };
 
 export const options = {
-    logging: true
+    logging: true,
 };
 
 export const selectors = {};
