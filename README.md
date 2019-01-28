@@ -12,8 +12,8 @@ Common Redux utilities including:
 ## Table of contents
 
 -   [Installing](#installing)
--   [Usage](#usage)
 -   [API References](#api)
+    -   [createType](#api-createType)
 
 ---
 
@@ -33,6 +33,53 @@ $ npm i -S @ackee/redux-utils
 
 ---
 
-## <a name="usage"></a>Usage
-
 ## <a name="api"></a>API
+
+### <a name="api-createType"></a>`createType(prefix, suffixes, modulePrefix)`
+
+Utility to help creating Redux action types for API request actions.
+
+#### Arguments
+
+1. `prefix` (string): Action type base
+2. `suffixes` (Array.<string> [optional]) Array of suffixes to use to make types. Default is `['_COMPLETED', '_SUCCEEDED', '_FAILED']`
+3. `modulePrefix` (string [optional]) Name of module actions belong to. If none provided, no prefix is added to action types names.
+
+#### Returns
+
+Object containing redux actions types prepared for HTTP request-response cycle.
+
+##### Examples
+
+```js
+import { createType } from '@ackee/redux-utils';
+
+createType('REQUEST_FEED');
+/*
+ * [
+ *    'REQUEST_FEED',
+ *    'REQUEST_FEED_SUCCEEDED',
+ *    'REQUEST_FEED_FAILED',
+ *    'REQUEST_FEED_COMPLETED',
+ * ]
+ */
+
+createType('REQUEST_FEED', ['YEAH', 'DAMN']);
+/*
+ * [
+ *    'REQUEST_FEED',
+ *    'REQUEST_FEED_YEAH',
+ *    'REQUEST_FEED_DAMN',
+ * ]
+ */
+
+createType('REQUEST_FEED', undefined, 'Dogs');
+/*
+ * [
+ *    'Dogs/REQUEST_FEED',
+ *    'Dogs/REQUEST_FEED_SUCCEEDED',
+ *    'Dogs/REQUEST_FEED_FAILED',
+ *    'Dogs/REQUEST_FEED_COMPLETED',
+ * ]
+ */
+```

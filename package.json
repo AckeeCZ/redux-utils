@@ -1,7 +1,7 @@
 {
     "name": "@ackee/redux-utils",
     "version": "0.0.1",
-    "description": "Common Redux utilities - reducer factories, async action type.",
+    "description": "Common Redux utilities - factory reducers, async action type creator.",
     "main": "lib/index.js",
     "module": "es/index.js",
     "scripts": {
