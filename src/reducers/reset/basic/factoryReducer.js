@@ -1,4 +1,4 @@
-import parseResetActionType from '../utilities';
+import { parseResetActionType } from '../utilities';
 
 /**
  * reset reducer to initial state when 'actionType' is dispatched
