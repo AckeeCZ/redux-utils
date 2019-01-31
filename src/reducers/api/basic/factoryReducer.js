@@ -55,7 +55,7 @@ export default function makeBasicApiReducer(customParams) {
                 };
 
             case types.FAILURE: {
-                const { error = initialState.error } = action.payload;
+                const { error = initialState.error } = action;
 
                 return {
                     ...state,

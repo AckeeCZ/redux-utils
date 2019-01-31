@@ -1,4 +1,4 @@
-export const actionTypes = {};
+export const actionTypes = [];
 
 export const initialState = {};
 

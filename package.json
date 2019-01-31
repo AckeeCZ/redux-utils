@@ -22,11 +22,9 @@
     "devDependencies": {
         "@babel/cli": "7.x",
         "@babel/core": "7.x",
-        "@babel/plugin-proposal-class-properties": "7.x",
         "@babel/plugin-proposal-export-namespace-from": "7.x",
         "@babel/plugin-proposal-object-rest-spread": "7.x",
         "@babel/preset-env": "7.x",
-        "@babel/preset-react": "7.x",
         "babel-eslint": "10.x",
         "cross-env": "5.x",
         "eslint": "5.x",
@@ -49,7 +47,8 @@
     ],
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged"
+            "pre-commit": "lint-staged",
+            "pre-push": "yarn lint"
         }
     },
     "jest": {

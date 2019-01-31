@@ -19,7 +19,7 @@ export const initialState = {
 };
 
 export const options = {
-    logging: true,
+    logging: process.env.NODE_ENV === 'development',
 };
 
 export const selectors = {};

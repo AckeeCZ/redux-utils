@@ -12,11 +12,7 @@ module.exports = function(api) {
     };
 
     return {
-        plugins: [
-            '@babel/plugin-proposal-object-rest-spread',
-            '@babel/plugin-proposal-class-properties',
-            '@babel/plugin-proposal-export-namespace-from',
-        ],
+        plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/plugin-proposal-export-namespace-from'],
         presets: presets[api.env()],
         ignore: ['**/__tests__/'],
     };
