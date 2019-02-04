@@ -1,4 +1,3 @@
-export * as types from './types';
 export * as warnings from './warnings';
 export * as errors from './errors';
 
