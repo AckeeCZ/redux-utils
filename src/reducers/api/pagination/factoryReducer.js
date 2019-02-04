@@ -1,5 +1,8 @@
+import { logger } from '../../../config';
 import * as Consts from '../../../constants';
+
 import makeBasicApiReducer from '../basic';
+
 import * as Config from './config';
 
 const getParams = (customParams = {}) => {
@@ -9,9 +12,7 @@ const getParams = (customParams = {}) => {
     };
 
     if (options.logging && !customParams.actionTypes) {
-        const { PAGINATION } = Consts.types;
-        // eslint-disable-next-line
-        console.warn(Consts.warnings.undefinedActionTypes(PAGINATION, customParams));
+        logger.warn(Consts.warnings.undefinedActionTypes(Consts.types.PAGINATION, customParams));
     }
 
     return {
@@ -54,13 +55,13 @@ export default function makePaginationApiReducer(customParams) {
             case types.SUCCESS: {
                 const totalCount = selectors.totalCount(action);
                 const currentCount = selectors.currentCount(action);
-                const hasMoreItems = currentCount >= state.pageSize;
+                const hasMore = currentCount >= state.amount;
 
                 return {
                     ...state,
                     ...basicApiReducer(state, action),
-                    page: hasMoreItems ? state.page + 1 : state.page,
-                    hasMoreItems,
+                    page: hasMore ? state.page + 1 : state.page,
+                    hasMore,
                     totalCount,
                 };
             }

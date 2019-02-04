@@ -1,13 +1,15 @@
-export const actionTypes = {};
+import { isEnvDevelopment } from '../../constants';
+
+export const actionTypes = [];
 
 export const initialState = {};
 
 export const options = {
-    ignoreWarnings: false,
+    ignoreWarnings: !isEnvDevelopment,
     placeholder: true,
-    logging: true,
+    logging: isEnvDevelopment,
 };
 
 export const selectors = {
-    itemId: action => action.payload.itemId,
+    itemId: action => action.meta.itemId,
 };

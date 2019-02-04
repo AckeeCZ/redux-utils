@@ -1,5 +1,7 @@
-import * as Config from './config';
+import { logger } from '../../../config';
 import * as Consts from '../../../constants';
+
+import * as Config from './config';
 
 const getParams = (customParams = {}) => {
     const options = {
@@ -8,9 +10,7 @@ const getParams = (customParams = {}) => {
     };
 
     if (options.logging && !customParams.actionTypes) {
-        const { BASIC } = Consts.types;
-        // eslint-disable-next-line
-        console.warn(Consts.warnings.undefinedActionTypes(BASIC, customParams));
+        logger.warn(Consts.warnings.undefinedActionTypes(Consts.types.BASIC, customParams));
     }
 
     return {
@@ -55,7 +55,7 @@ export default function makeBasicApiReducer(customParams) {
                 };
 
             case types.FAILURE: {
-                const { error = initialState.error } = action.payload;
+                const { error = initialState.error } = action;
 
                 return {
                     ...state,

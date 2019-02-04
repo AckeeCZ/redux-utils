@@ -13,7 +13,19 @@ Common Redux utilities including:
 
 -   [Installing](#installing)
 -   [API References](#api)
-    -   [createType](#api-createType)
+    -   [Action Type helpers](#api-action-type-helpers)
+        -   [`asyncType`](#api-asyncType)
+        -   [`moduleAsyncType`](#api-moduleAsyncType)
+        -   [`createType`](#api-createType)
+    -   [Factory Reducers](#api-factory-reducers)
+        -   [`api.basic`](src/reducers/api/basic/README.md)
+        -   [`api.pagination`](src/reducers/api/pagination/README.md)
+        -   [`container`](src/reducers/container/README.md)
+        -   [`reset.basic`](src/reducers/reset/basic/README.md)
+        -   [`reset.container`](src/reducers/reset/container/README.md)
+    -   [Selectors for API reducers](src/selectors/api/README.md)
+        -   [`api`](src/selectors/api/README.md#api-selector)
+        -   [`apiPagination`](src/selectors/api/README.md#api-pagination-selector)
 
 ---
 
@@ -35,17 +47,19 @@ $ npm i -S @ackee/redux-utils
 
 ## <a name="api"></a>API
 
-### <a name="api-createType"></a>`createType(prefix, suffixes, modulePrefix)`
+### <a name="api-action-type-helpers"></a>Action Type helpers
+
+#### <a name="api-createType"></a>`createType(prefix, suffixes, modulePrefix)`
 
 Utility to help creating Redux action types for API request actions.
 
-#### Arguments
+##### Arguments
 
 1. `prefix` (string): Action type base
 2. `suffixes` (Array.<string> [optional]) Array of suffixes to use to make types. Default is `['_COMPLETED', '_SUCCEEDED', '_FAILED']`
 3. `modulePrefix` (string [optional]) Name of module actions belong to. If none provided, no prefix is added to action types names.
 
-#### Returns
+##### Returns
 
 Object containing redux actions types prepared for HTTP request-response cycle.
 
@@ -83,3 +97,5 @@ createType('REQUEST_FEED', undefined, 'Dogs');
  * ]
  */
 ```
+
+---

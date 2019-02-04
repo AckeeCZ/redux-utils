@@ -13,7 +13,7 @@
     });
  */
 
-const DEFAULT_TYPES = ['REQUEST', 'SUCCESS', 'FAILURE'];
+const DEFAULT_TYPES = ['REQUEST', 'SUCCESS', 'FAILURE', 'INVALIDATE'];
 
 export function asyncType(params = {}) {
     const { types, typePrefix, modulePrefix } = {
