@@ -1,5 +1,7 @@
-import * as Config from './config';
+import { logger } from '../../config';
 import * as Consts from '../../constants';
+
+import * as Config from './config';
 
 function getInitialState({ childReducer, initialState: customInitialState, options }) {
     const placeholder = childReducer(undefined, {});
@@ -57,8 +59,7 @@ export default function makeContainerReducer(customParams) {
         switch (itemId) {
             case undefined: {
                 if (options.logging && !options.ignoreWarnings) {
-                    // eslint-disable-next-line
-                    console.warn(Consts.warnings.undefinedItemId(action));
+                    logger.warn(Consts.warnings.undefinedItemId(action));
                 }
 
                 return state;

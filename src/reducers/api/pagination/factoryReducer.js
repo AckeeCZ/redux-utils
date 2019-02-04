@@ -1,5 +1,8 @@
+import { logger } from '../../../config';
 import * as Consts from '../../../constants';
+
 import makeBasicApiReducer from '../basic';
+
 import * as Config from './config';
 
 const getParams = (customParams = {}) => {
@@ -9,9 +12,7 @@ const getParams = (customParams = {}) => {
     };
 
     if (options.logging && !customParams.actionTypes) {
-        const { PAGINATION } = Consts.types;
-        // eslint-disable-next-line
-        console.warn(Consts.warnings.undefinedActionTypes(PAGINATION, customParams));
+        logger.warn(Consts.warnings.undefinedActionTypes(Consts.types.PAGINATION, customParams));
     }
 
     return {
