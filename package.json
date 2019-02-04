@@ -19,6 +19,9 @@
         "type": "git",
         "url": "https://github.com/AckeeCZ/redux-utils"
     },
+    "peerDependencies": {
+        "reselect": "4.x"
+    },
     "devDependencies": {
         "@babel/cli": "7.x",
         "@babel/core": "7.x",
@@ -29,8 +32,8 @@
         "cross-env": "5.x",
         "eslint": "5.x",
         "eslint-config-ackee": "0.x",
-        "eslint-plugin-jest": "22.x",
         "eslint-config-prettier": "4.x",
+        "eslint-plugin-jest": "22.x",
         "husky": "1.x",
         "jest": "24.x",
         "lint-staged": "8.x",

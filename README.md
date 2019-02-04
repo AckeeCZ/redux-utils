@@ -12,8 +12,6 @@ Common Redux utilities including:
 ## Table of contents
 
 -   [Installing](#installing)
--   Usage
-    -   Pagination
 -   [API References](#api)
     -   [Action Type helpers](#api-action-type-helpers)
         -   [`asyncType`](#api-asyncType)
@@ -25,6 +23,9 @@ Common Redux utilities including:
         -   [`container`](src/reducers/container/README.md)
         -   [`reset.basic`](src/reducers/reset/basic/README.md)
         -   [`reset.container`](src/reducers/reset/container/README.md)
+    -   [Selectors for API reducers](src/selectors/api/README.md)
+        -   [`apiSelector`](src/selectors/api/README.md#api-selector)
+        -   [`apiPaginationSelector`](src/selectors/api/README.md#api-pagination-selector)
 
 ---
 
