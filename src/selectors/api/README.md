@@ -4,12 +4,12 @@ Selectors for the [basic API reducer](/src/reducers/api/basic/README.md) and for
 
 ## Table of contents
 
--   [`apiSelector`](#api-selector)
--   [`apiPaginationSelector`](#api-pagination-selector)
+-   [`api`](#api-selector)
+-   [`apiPagination`](#api-pagination-selector)
 
 ---
 
-### <a name="api-selector"></a>`apiSelector(state, entityKey, typeId?, itemId?)`
+### <a name="api-selector"></a>`api(state, entityKey, typeId?, itemId?)`
 
 #### Parameters:
 
@@ -21,16 +21,16 @@ Selectors for the [basic API reducer](/src/reducers/api/basic/README.md) and for
 #### Valid use-cases:
 
 ```js
-apiSelector(state, 'users');
+ReduxUtils.selectors.api(state, 'users');
 
-apiSelector(state, 'users', 'create');
+ReduxUtils.selectors.api(state, 'users', 'create');
 
-apiSelector(state, 'users', 'fetch', 1);
+ReduxUtils.selectors.api(state, 'users', 'fetch', 1);
 ```
 
-### <a name="api-pagination-selector"></a>`apiPaginationSelector(state, entityKey, typeId, itemId?)`
+### <a name="api-pagination-selector"></a>`apiPagination(state, entityKey, typeId, itemId?)`
 
-Identical to the `apiSelector` selector above, but it additionally returns `offset` property: `offset = (page - 1) * amount`.
+Identical to the `api` selector above, but it additionally returns `offset` property: `offset = (page - 1) * amount`.
 
 #### Parameters:
 
@@ -42,9 +42,9 @@ Identical to the `apiSelector` selector above, but it additionally returns `offs
 #### Valid use-cases:
 
 ```js
-apiPaginationSelector(state, 'user', 'create');
+ReduxUtils.selectors.apiPagination(state, 'user', 'create');
 
-apiPaginationSelector(state, 'users', 'fetch', 1);
+ReduxUtils.selectors.apiPagination(state, 'users', 'fetch', 1);
 ```
 
 ---

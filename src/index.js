@@ -1,3 +1,3 @@
 export * as reducers from './reducers';
 export * from './utilities';
-export * from './selectors';
+export * as selectors from './selectors';

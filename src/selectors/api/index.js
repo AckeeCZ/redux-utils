@@ -7,7 +7,7 @@ import { createSelector } from 'reselect';
  * @param {String} [typeId] - API type ID (e.g. 'fetch', 'delete')
  * @param {String} [itemId] - entity item ID (e.g. 'userId', 'postId')
  */
-export const apiSelector = (state, entityKey, typeId, itemId) => {
+export const api = (state, entityKey, typeId, itemId) => {
     const entity = state.api[entityKey];
 
     if (entity === undefined) {
@@ -35,8 +35,8 @@ export const apiSelector = (state, entityKey, typeId, itemId) => {
     return entityTypes[itemId] || entityTypes.placeholder;
 };
 
-export const apiPaginationSelector = createSelector(
-    apiSelector,
+export const apiPagination = createSelector(
+    api,
     group => {
         const { page, amount, ...rest } = group;
 

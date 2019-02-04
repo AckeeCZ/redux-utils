@@ -24,8 +24,8 @@ Common Redux utilities including:
         -   [`reset.basic`](src/reducers/reset/basic/README.md)
         -   [`reset.container`](src/reducers/reset/container/README.md)
     -   [Selectors for API reducers](src/selectors/api/README.md)
-        -   [`apiSelector`](src/selectors/api/README.md#api-selector)
-        -   [`apiPaginationSelector`](src/selectors/api/README.md#api-pagination-selector)
+        -   [`api`](src/selectors/api/README.md#api-selector)
+        -   [`apiPagination`](src/selectors/api/README.md#api-pagination-selector)
 
 ---
 
