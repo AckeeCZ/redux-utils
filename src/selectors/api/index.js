@@ -1,17 +1,5 @@
 import { createSelector } from 'reselect';
 
-const state = {
-    api: {
-        [entityKey]: {
-            [typeKey]: {},
-            [typeKey]: {
-                [itemId]: {},
-                placeholder: {},
-            },
-        },
-    },
-};
-
 /**
  *
  * @param {Object} state - Redux state.

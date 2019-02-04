@@ -39,7 +39,8 @@
         "lint-staged": "8.x",
         "onchange": "5.x",
         "prettier": "1.x",
-        "prettier-config-ackee": "0.x"
+        "prettier-config-ackee": "0.x",
+        "reselect": "4.x"
     },
     "browserslist": [
         "last 2 version",
