@@ -54,7 +54,7 @@ export default function makePaginationApiReducer(customParams) {
             case types.SUCCESS: {
                 const totalCount = selectors.totalCount(action);
                 const currentCount = selectors.currentCount(action);
-                const hasMore = currentCount >= state.pageSize;
+                const hasMore = currentCount >= state.amount;
 
                 return {
                     ...state,

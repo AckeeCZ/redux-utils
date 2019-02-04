@@ -108,8 +108,7 @@ This reducer can handle both of them.
     },
     selectors: {
         totalCount: action => action.meta.totalCount,
-        // TODO:
-        itemIds: action => action.payload.ids,
+        currentCount: action => action.payload.ids.length,
     },
     options: {
         logging: process.env.NODE_ENV === 'development'

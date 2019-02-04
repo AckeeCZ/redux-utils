@@ -1,3 +1,4 @@
+import { isEnvDevelopment } from '../../../constants';
 import * as BasicAPIReducer from '../basic';
 
 export const { actionTypes } = BasicAPIReducer.config;
@@ -21,7 +22,7 @@ export const initialState = {
 };
 
 export const options = {
-    logging: true,
+    logging: isEnvDevelopment,
 };
 
 export const selectors = {

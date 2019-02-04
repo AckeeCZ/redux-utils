@@ -43,6 +43,24 @@ Additionally to this simplification, the container reducer factory may create a 
     -   `placeholder: Boolean`
     -   `logging: Boolean`
 
+### Default config
+
+```js
+{
+    childReducer: undefined,
+    actionTypes: [],
+    initialState: {},
+    selectors: {
+        itemId: action => action.meta.itemId,
+    },
+    options: {
+        ignoreWarnings: process.env.NODE_ENV !== 'development,
+        placeholder: true,
+        logging: process.env.NODE_ENV === 'development,
+    }
+}
+```
+
 #### Example
 
 This reducer factory solves issue, for example, when you need to store a fetch user state separately by user ID.

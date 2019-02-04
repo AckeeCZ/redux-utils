@@ -1,4 +1,4 @@
-import { UNUSED_ACTION_TYPE } from '../../../constants';
+import { UNUSED_ACTION_TYPE, isEnvDevelopment } from '../../../constants';
 
 export const actionTypes = {
     REQUEST: UNUSED_ACTION_TYPE,
@@ -19,7 +19,7 @@ export const initialState = {
 };
 
 export const options = {
-    logging: process.env.NODE_ENV === 'development',
+    logging: isEnvDevelopment,
 };
 
 export const selectors = {};
