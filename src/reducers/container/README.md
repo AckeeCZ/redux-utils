@@ -54,9 +54,9 @@ Additionally to this simplification, the container reducer factory may create a 
         itemId: action => action.meta.itemId,
     },
     options: {
-        ignoreWarnings: process.env.NODE_ENV !== 'development,
+        ignoreWarnings: process.env.NODE_ENV !== 'development',
         placeholder: true,
-        logging: process.env.NODE_ENV === 'development,
+        logging: process.env.NODE_ENV === 'development',
     }
 }
 ```
