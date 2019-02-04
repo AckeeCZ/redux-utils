@@ -1,5 +1,11 @@
 import { createSelector } from 'reselect';
 
+const stringifyKeys = obj => {
+    const keys = Object.keys(obj).map(x => `'${x}'`);
+
+    return `[${keys.join(', ')}]`;
+};
+
 /**
  *
  * @param {Object} state - Redux state.
@@ -11,8 +17,8 @@ export const api = (state, entityKey, typeId, itemId) => {
     const entity = state.api[entityKey];
 
     if (entity === undefined) {
-        const validKeys = `[${Object.keys(state.api)}]`;
-        throw new Error(`No entity with the '${entityKey}' key wasn't found.\nValid entity keys: ${validKeys}.`);
+        const validKeys = stringifyKeys(state.api);
+        throw new Error(`No entity with the '${entityKey}' key was found.\nValid entity keys: ${validKeys}.`);
     }
 
     if (typeId === undefined) {
@@ -22,9 +28,9 @@ export const api = (state, entityKey, typeId, itemId) => {
     const entityTypes = entity[typeId];
 
     if (entityTypes === undefined) {
-        const validEntityTypes = `[${Object.keys(entity)}]`;
+        const validEntityTypes = stringifyKeys(entity);
         throw new Error(
-            `No entity type with the '${typeId}' type wasn't found.\nValid entity types: ${validEntityTypes}.`,
+            `No entity type with the '${typeId}' type was found within '${entityKey}' entity.\nValid entity types: ${validEntityTypes}.`,
         );
     }
 
