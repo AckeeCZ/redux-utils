@@ -85,7 +85,7 @@ The whole config object and its properties is optional.
     options: {
         logging: process.env.NODE_ENV === 'development'
     },
-    actionFilter: {
+    actionFilters: {
         // action UPDATE is passed here as 1st arg.
         // The function returns boolean. If true is returned,
         // state is merged with an action.payload object.
