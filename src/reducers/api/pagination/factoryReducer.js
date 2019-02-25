@@ -51,6 +51,7 @@ export default function makePaginationApiReducer(customParams) {
             case types.INVALIDATE:
             case types.FAILURE:
             case types.RESET:
+            case types.UPDATE:
                 return {
                     ...state,
                     ...basicApiReducer(state, action),

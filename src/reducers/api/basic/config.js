@@ -6,6 +6,7 @@ export const actionTypes = {
     SUCCESS: UNUSED_ACTION_TYPE,
     FAILURE: UNUSED_ACTION_TYPE,
     RESET: UNUSED_ACTION_TYPE,
+    UPDATE: UNUSED_ACTION_TYPE,
 };
 
 export const initialState = {
@@ -23,3 +24,7 @@ export const options = {
 };
 
 export const selectors = {};
+
+export const actionFilters = {
+    update: () => false,
+};

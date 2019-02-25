@@ -22,12 +22,16 @@ const getParams = (customParams = {}) => {
             ...Config.actionTypes,
             ...customParams.actionTypes,
         },
+        actionFilters: {
+            ...Config.actionFilters,
+            ...customParams.actionFilters,
+        },
         options,
     };
 };
 
 export default function makeBasicApiReducer(customParams) {
-    const { actionTypes: types, initialState } = getParams(customParams);
+    const { actionTypes: types, initialState, actionFilters } = getParams(customParams);
 
     function basicApiReducer(state = initialState, action) {
         switch (action.type) {
@@ -67,12 +71,23 @@ export default function makeBasicApiReducer(customParams) {
             case types.RESET:
                 return initialState;
 
+            case types.UPDATE: {
+                if (actionFilters.update(action)) {
+                    return {
+                        ...state,
+                        ...action.payload,
+                    };
+                }
+
+                return state;
+            }
+
             default:
                 return state;
         }
     }
 
-    basicApiReducer.getInitialState = () => initialState;
+    basicApiReducer.INITIAL_STATE = initialState;
 
     return basicApiReducer;
 }
