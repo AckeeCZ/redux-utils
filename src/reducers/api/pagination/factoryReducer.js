@@ -28,12 +28,16 @@ const getParams = (customParams = {}) => {
             ...Config.selectors,
             ...customParams.selectors,
         },
+        actionFilters: {
+            ...Config.actionFilters,
+            ...customParams.actionFilters,
+        },
         options,
     };
 };
 
 export default function makePaginationApiReducer(customParams) {
-    const { actionTypes: types, initialState, selectors, options } = getParams(customParams);
+    const { actionTypes: types, initialState, selectors, options, actionFilters } = getParams(customParams);
 
     const basicApiReducer = makeBasicApiReducer({
         actionTypes: types,
@@ -47,6 +51,7 @@ export default function makePaginationApiReducer(customParams) {
             case types.INVALIDATE:
             case types.FAILURE:
             case types.RESET:
+            case types.UPDATE:
                 return {
                     ...state,
                     ...basicApiReducer(state, action),
@@ -64,6 +69,19 @@ export default function makePaginationApiReducer(customParams) {
                     hasMore,
                     totalCount,
                 };
+            }
+
+            case types.SET_PAGE: {
+                if (actionFilters.setPage(action)) {
+                    const { page } = action.payload;
+
+                    return {
+                        ...state,
+                        page,
+                    };
+                }
+
+                return state;
             }
 
             default:

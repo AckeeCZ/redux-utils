@@ -19,11 +19,13 @@ This reducer can handle both of them.
 
 -   `actionTypes: Object`
 
-    -   `REQUEST: String|Symbol (or any primitive type)` - recommended, not required
+    -   `REQUEST: String|Symbol (or any primitive type)` - recommended for basic usage
     -   `INVALIDATE: String|Symbol`
-    -   `SUCCESS: String|Symbol` - recommended, not required
-    -   `FAILURE: String|Symbol` - recommended, not required
+    -   `SUCCESS: String|Symbol` - recommended for basic usage
+    -   `FAILURE: String|Symbol` - recommended for basic usage
     -   `RESET: String|Symbol`
+    -   `SET_PAGE: String|Symbol`
+    -   `UPDATE: String|Symbol`
 
 -   `initialState: Object`
 
@@ -43,7 +45,12 @@ This reducer can handle both of them.
     -   `currentCount: Function` - required
 
 -   `options: Object`
+
     -   `logging: Boolean`
+
+-   `actionFilters: Object`
+    -   `setPage: Function`
+    -   `update: Function`
 
 ### Returns
 
@@ -69,6 +76,12 @@ This reducer can handle both of them.
 
         // reset reducer to initial state
         RESET: UNUSED_ACTION_TYPE,
+
+        // action that updates 'page' property (action.payload.page)
+        SET_PAGE: UNUSED_ACTION_TYPE,
+
+        // arbitrary state update (new state = current state merged with action.payload object)
+        UPDATE: UNUSED_ACTION_TYPE,
     },
 
     // reducer initial state
@@ -111,7 +124,16 @@ This reducer can handle both of them.
         currentCount: action => action.payload.ids.length,
     },
     options: {
-        logging: process.env.NODE_ENV === 'development'
+        logging: process.env.NODE_ENV === 'development',
+    },
+    actionFilters: {
+        // To be able to use general action, here is action validator where you can filter out unwanted actions (e.g. action.meta.category !== 'myCategory')
+        setPage: action => true,
+
+        // action UPDATE is passed here as 1st arg.
+        // The function returns boolean. If true is returned,
+        // state is merged with an action.payload object.
+        update: action => true,
     }
 }
 ```

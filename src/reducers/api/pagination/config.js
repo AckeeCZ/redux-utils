@@ -1,7 +1,10 @@
-import { isEnvDevelopment } from '../../../constants';
+import { isEnvDevelopment, UNUSED_ACTION_TYPE } from '../../../constants';
 import * as BasicAPIReducer from '../basic';
 
-export const { actionTypes } = BasicAPIReducer.config;
+export const actionTypes = {
+    ...BasicAPIReducer.config,
+    SET_PAGE: UNUSED_ACTION_TYPE,
+};
 
 export const initialState = {
     ...BasicAPIReducer.config.initialState,
@@ -28,4 +31,8 @@ export const options = {
 export const selectors = {
     totalCount: action => action.meta.totalCount,
     currentCount: action => action.payload.ids.length,
+};
+
+export const actionFilters = {
+    setPage: () => false,
 };

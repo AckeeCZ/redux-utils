@@ -12,11 +12,12 @@ The whole config object and its properties is optional.
 
 -   `actionTypes: Object`
 
-    -   `REQUEST: String|Symbol (or any primitive type)` - recommended, not required
+    -   `REQUEST: String|Symbol (or any primitive type)` - recommended for basic usage
     -   `INVALIDATE: String|Symbol`
-    -   `SUCCESS: String|Symbol` - recommended, not required
-    -   `FAILURE: String|Symbol` - recommended, not required
+    -   `SUCCESS: String|Symbol` - recommended for basic usage
+    -   `FAILURE: String|Symbol` - recommended for basic usage
     -   `RESET: String|Symbol`
+    -   `UPDATE: String|Symbol`
 
 -   `initialState: Object`
 
@@ -26,7 +27,11 @@ The whole config object and its properties is optional.
     -   `didInvalidate: Boolean`
 
 -   `options: Object`
+
     -   `logging: Boolean`
+
+-   `actionFilters: Object`
+    -   `update: Function`
 
 ### Returns
 
@@ -52,6 +57,9 @@ The whole config object and its properties is optional.
 
         // reset reducer to initial state
         RESET: UNUSED_ACTION_TYPE,
+
+        // arbitrary state update (new state = current state merged with action.payload object)
+        UPDATE: UNUSED_ACTION_TYPE,
     },
 
     // reducer initial state
@@ -76,6 +84,12 @@ The whole config object and its properties is optional.
     },
     options: {
         logging: process.env.NODE_ENV === 'development'
+    },
+    actionFilter: {
+        // action UPDATE is passed here as 1st arg.
+        // The function returns boolean. If true is returned,
+        // state is merged with an action.payload object.
+        update: action => true,
     }
 }
 ```
