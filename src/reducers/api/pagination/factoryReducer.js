@@ -65,7 +65,6 @@ export default function makePaginationApiReducer(customParams) {
                 return {
                     ...state,
                     ...basicApiReducer(state, action),
-                    page: hasMore ? state.page + 1 : state.page,
                     hasMore,
                     totalCount,
                 };
