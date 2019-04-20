@@ -17,10 +17,10 @@ const DEFAULT_TYPES = ['REQUEST', 'SUCCESS', 'FAILURE', 'INVALIDATE', 'RESET'];
 
 export function asyncType(params = {}) {
     const { types, typePrefix, modulePrefix } = {
-        types: DEFAULT_TYPES,
         typePrefix: '',
         modulePrefix: '',
         ...params,
+        types: params.types || DEFAULT_TYPES,
     };
     const actionTypes = {};
 
@@ -33,10 +33,15 @@ export function asyncType(params = {}) {
     return actionTypes;
 }
 
-export function moduleAsyncType(modulePrefix) {
+export function createAsyncType({ modulePrefix, defaultTypes }) {
     return params =>
         asyncType({
+            types: defaultTypes,
             ...params,
             modulePrefix,
         });
+}
+
+export function moduleAsyncType(modulePrefix) {
+    return createAsyncType({ modulePrefix });
 }
