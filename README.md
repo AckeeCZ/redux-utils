@@ -15,7 +15,7 @@ Common Redux utilities including:
 -   [API References](#api)
     -   [Action Type helpers](#api-action-type-helpers)
         -   [`asyncType`](#api-asyncType)
-        -   [`moduleAsyncType`](#api-moduleAsyncType)
+        -   [`createAsyncType`](#api-createAsyncType)
         -   [`createType`](#api-createType)
     -   [Factory Reducers](#api-factory-reducers)
         -   [`api.basic`](src/reducers/api/basic/README.md)
@@ -48,6 +48,25 @@ $ npm i -S @ackee/redux-utils
 ## <a name="api"></a>API
 
 ### <a name="api-action-type-helpers"></a>Action Type helpers
+
+#### `asyncType(params: object): object`
+
+##### `params`
+
+-   `types: array`
+-   `typePrefix: string`
+-   `modulePrefix: string`
+
+---
+
+#### `createAsyncType(params: object): asyncType`
+
+##### `params`
+
+-   `modulePrefix: string`
+-   `defaultTypes: array`
+
+---
 
 #### <a name="api-createType"></a>`createType(prefix, suffixes, modulePrefix)`
 

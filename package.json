@@ -1,6 +1,6 @@
 {
     "name": "@ackee/redux-utils",
-    "version": "1.0.0-beta.3",
+    "version": "1.0.0-beta.4",
     "description": "Common Redux utilities - factory reducers, async action type creator.",
     "main": "lib/index.js",
     "module": "es/index.js",
@@ -11,7 +11,8 @@
         "build": "yarn build:es & yarn build:lib",
         "prepare": "yarn build",
         "start": "yarn install && yarn lint && yarn build && onchange 'src/**/*.{js,jsx}' -- yarn build",
-        "lint": "eslint 'src/**/*.{js,jsx}'"
+        "lint": "eslint 'src/**/*.{js,jsx}'",
+        "test": "BABEL_ENV=test jest"
     },
     "author": "Jiří Čermák <jiri.cermak@ackee.cz>",
     "license": "MIT",
@@ -28,7 +29,9 @@
         "@babel/plugin-proposal-export-namespace-from": "7.x",
         "@babel/plugin-proposal-object-rest-spread": "7.x",
         "@babel/preset-env": "7.x",
+        "babel-core": "^7.0.0-bridge.0",
         "babel-eslint": "10.x",
+        "babel-jest": "24.x",
         "cross-env": "5.x",
         "eslint": "5.x",
         "eslint-config-ackee": "0.x",
@@ -52,14 +55,8 @@
     "husky": {
         "hooks": {
             "pre-commit": "lint-staged",
-            "pre-push": "yarn lint"
+            "pre-push": "yarn lint && yarn test"
         }
-    },
-    "jest": {
-        "testPathIgnorePatterns": [
-            "/node_modules",
-            "/lib"
-        ]
     },
     "lint-staged": {
         "*.{js,jsx,json,scss,less,css,md}": [
