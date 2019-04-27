@@ -3,12 +3,13 @@ module.exports = function(api) {
         lib: ['@babel/env'],
         es: [
             [
-                '@babel/preset-env',
+                '@babel/env',
                 {
                     modules: false,
                 },
             ],
         ],
+        test: ['@babel/env'],
     };
 
     return {

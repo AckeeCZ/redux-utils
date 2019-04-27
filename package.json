@@ -11,7 +11,8 @@
         "build": "yarn build:es & yarn build:lib",
         "prepare": "yarn build",
         "start": "yarn install && yarn lint && yarn build && onchange 'src/**/*.{js,jsx}' -- yarn build",
-        "lint": "eslint 'src/**/*.{js,jsx}'"
+        "lint": "eslint 'src/**/*.{js,jsx}'",
+        "test": "BABEL_ENV=test jest"
     },
     "author": "Jiří Čermák <jiri.cermak@ackee.cz>",
     "license": "MIT",
@@ -24,11 +25,13 @@
     },
     "devDependencies": {
         "@babel/cli": "7.x",
-        "@babel/core": "7.x",
+        "@babel/core": "^7.4.4",
         "@babel/plugin-proposal-export-namespace-from": "7.x",
         "@babel/plugin-proposal-object-rest-spread": "7.x",
         "@babel/preset-env": "7.x",
+        "babel-core": "^7.0.0-bridge.0",
         "babel-eslint": "10.x",
+        "babel-jest": "^24.7.1",
         "cross-env": "5.x",
         "eslint": "5.x",
         "eslint-config-ackee": "0.x",
@@ -40,6 +43,7 @@
         "onchange": "5.x",
         "prettier": "1.x",
         "prettier-config-ackee": "0.x",
+        "regenerator-runtime": "^0.13.2",
         "reselect": "4.x"
     },
     "browserslist": [
@@ -54,12 +58,6 @@
             "pre-commit": "lint-staged",
             "pre-push": "yarn lint"
         }
-    },
-    "jest": {
-        "testPathIgnorePatterns": [
-            "/node_modules",
-            "/lib"
-        ]
     },
     "lint-staged": {
         "*.{js,jsx,json,scss,less,css,md}": [
