@@ -2,12 +2,12 @@ import { UNUSED_ACTION_TYPE } from 'Consts';
 import * as BasicApiReducerConfig from '../basic/config';
 
 export const actionTypes = {
-    ...BasicApiReducerConfig.config.actionTypes,
+    ...BasicApiReducerConfig.actionTypes,
     SET_PAGE: UNUSED_ACTION_TYPE,
 };
 
 export const initialState = {
-    ...BasicApiReducerConfig.config.initialState,
+    ...BasicApiReducerConfig.initialState,
 
     // current page
     page: 1,
