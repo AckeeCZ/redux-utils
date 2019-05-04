@@ -1,3 +1,3 @@
-export * as api from './api';
-export * as container from './container';
-export * as reset from './reset';
+export * from './api';
+export * from './container';
+export * from './reset';

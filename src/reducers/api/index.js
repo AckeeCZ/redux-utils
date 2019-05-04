@@ -1,2 +1,2 @@
-export { default as basic } from './basic';
-export { default as pagination } from './pagination';
+export { default as basicApiReducer } from './basic';
+export { default as paginationApiReducer } from './pagination';

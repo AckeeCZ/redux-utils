@@ -1,2 +1,2 @@
-export { default as basic } from './basic';
-export { default as container } from './container';
+export { default as basicResetReducer } from './basic';
+export { default as containerResetReducer } from './container';

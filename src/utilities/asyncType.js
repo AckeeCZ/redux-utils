@@ -41,7 +41,3 @@ export function createAsyncType({ modulePrefix, defaultTypes }) {
             modulePrefix,
         });
 }
-
-export function moduleAsyncType(modulePrefix) {
-    return createAsyncType({ modulePrefix });
-}

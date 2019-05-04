@@ -1,2 +1,2 @@
-export { default } from './factoryReducer';
+export { default as containerReducer } from './factoryReducer';
 export * as config from './config';

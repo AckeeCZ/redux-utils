@@ -13,7 +13,7 @@ const stringifyKeys = obj => {
  * @param {String} [typeId] - API type ID (e.g. 'fetch', 'delete')
  * @param {String} [itemId] - entity item ID (e.g. 'userId', 'postId')
  */
-export const api = (state, entityKey, typeId, itemId) => {
+export const apiSelector = (state, entityKey, typeId, itemId) => {
     const entity = state.api[entityKey];
 
     if (entity === undefined) {
@@ -41,8 +41,8 @@ export const api = (state, entityKey, typeId, itemId) => {
     return entityTypes[itemId] || entityTypes.placeholder;
 };
 
-export const apiPagination = createSelector(
-    api,
+export const apiPaginationSelector = createSelector(
+    apiSelector,
     group => {
         const { page, amount, ...rest } = group;
 
