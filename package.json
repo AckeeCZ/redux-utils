@@ -13,6 +13,7 @@
         "prepare": "yarn build",
         "start": "yarn install && yarn lint && yarn build && onchange 'src/**/*.{js,jsx}' -- yarn build",
         "lint": "eslint 'src/**/*.{js,jsx}'",
+        "size": "package-size ./lib ./es --no-cache",
         "test": "BABEL_ENV=test jest"
     },
     "author": "Jiří Čermák <jiri.cermak@ackee.cz>",
@@ -33,18 +34,23 @@
         "babel-core": "^7.0.0-bridge.0",
         "babel-eslint": "10.x",
         "babel-jest": "24.x",
+        "babel-plugin-module-resolver": "^3.2.0",
         "cross-env": "5.x",
         "eslint": "5.x",
         "eslint-config-ackee": "0.x",
         "eslint-config-prettier": "4.x",
+        "eslint-import-resolver-webpack": "^0.11.1",
+        "eslint-plugin-import": "^2.17.2",
         "eslint-plugin-jest": "22.x",
         "husky": "1.x",
         "jest": "24.x",
         "lint-staged": "8.x",
         "onchange": "5.x",
+        "package-size": "^2.3.0",
         "prettier": "1.x",
         "prettier-config-ackee": "0.x",
-        "reselect": "4.x"
+        "reselect": "4.x",
+        "webpack": "^4.30.0"
     },
     "browserslist": [
         "last 2 version",

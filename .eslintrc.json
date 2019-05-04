@@ -12,5 +12,12 @@
         },
         "sourceType": "module"
     },
-    "plugins": ["jest"]
+    "plugins": ["jest", "import"],
+    "settings": {
+        "import/resolver": {
+            "webpack": {
+                "config": "webpack.config.js"
+            }
+        }
+    }
 }
