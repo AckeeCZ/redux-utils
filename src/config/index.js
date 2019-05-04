@@ -1,1 +1,26 @@
-export const logger = console;
+export const config = {
+    logger: console,
+};
+
+export class ReduxUtilsError extends Error {
+    constructor(message) {
+        super(typeof message === 'string' ? message : JSON.stringify(message, null, 2));
+        this.name = 'ReduxUtilsError';
+    }
+}
+
+export const emptyActionTypesError = customParams => ({
+    code: 'container/empty_actionTypes',
+    reason: `'actionTypes' must be non empty array of strings. Received params: ${customParams}`,
+});
+
+export const undefinedActionTypesWarning = (reducerName, params) => ({
+    code: `${reducerName}/missing_actionTypes`,
+    reason: `'actionTypes' parameter is undefined, params: ${JSON.stringify(params, null, 2)}`,
+});
+
+export const undefinedItemIdWarning = action => ({
+    code: 'container/missing_itemId',
+    reason: `'itemId' is undefined. Check if 'selectors.itemId' returns item id from Redux action.`,
+    action: JSON.stringify(action, null, 2),
+});

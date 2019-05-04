@@ -1,6 +1,6 @@
 # Container reducer
 
-## `container(config): reducer`
+## `containerReducer(config): reducer`
 
 Purpose of this reducer is to replace the boilerplate for creating container reducers
 
@@ -19,7 +19,7 @@ function usersReducer(state, action) {
 }
 
 // This might be replaced with:
-const usersReducer = reducers.container({
+const usersReducer = containerReducer({
     childReducer: userReducer,
     actionTypes: ['FETCH_USER_REQUEST'],
 });
@@ -41,7 +41,6 @@ Additionally to this simplification, the container reducer factory may create a 
 -   `options: Object`
     -   `ignoreWarnings: Boolean`
     -   `placeholder: Boolean`
-    -   `logging: Boolean`
 
 ### Default config
 
@@ -56,7 +55,6 @@ Additionally to this simplification, the container reducer factory may create a 
     options: {
         ignoreWarnings: process.env.NODE_ENV !== 'development',
         placeholder: true,
-        logging: process.env.NODE_ENV === 'development',
     }
 }
 ```
@@ -66,7 +64,7 @@ Additionally to this simplification, the container reducer factory may create a 
 This reducer factory solves issue, for example, when you need to store a fetch user state separately by user ID.
 
 ```js
-import { reducers } from '@ackee/redux-utils';
+import { basicApiReducer, containerReducer } from '@ackee/redux-utils';
 
 // actions:
 
@@ -95,12 +93,12 @@ const actionTypes = {
     FAILURE: 'FETCH_USER_FAILURE',
 };
 
-const basicApiReducer = reducers.api.basic({
+const apiReducer = basicApiReducer({
     actionTypes,
 });
 
-const containerReducer = reducers.container({
-    childReducer: basicApiReducer,
+export default containerReducer({
+    childReducer: apiReducer,
     actionTypes: Object.values(actionTypes),
     selectors: {
         itemId: action => action.meta.userId,
@@ -111,17 +109,17 @@ const containerReducer = reducers.container({
     The containerReducer will produce following structure:
     {
         placeholder: {
-            isFetching: false,
+            inProgress: false,
             success: false,
             error: '',
             // ...
         },
         userIdA: {
-            isFetching: false,
+            inProgress: false,
             // ...
         },
         userIdA: {
-            isFetching: false,
+            inProgress: false,
             // ...
         },
     }

@@ -1,16 +1,10 @@
-import { logger } from '../../../config';
-import * as Consts from '../../../constants';
+import { config, undefinedActionTypesWarning } from 'Config';
 
 import * as Config from './config';
 
 const getParams = (customParams = {}) => {
-    const options = {
-        ...Config.options.logging,
-        ...customParams.options,
-    };
-
-    if (options.logging && !customParams.actionTypes) {
-        logger.warn(Consts.warnings.undefinedActionTypes(Consts.types.BASIC, customParams));
+    if (!customParams.actionTypes) {
+        config.logger.warn(undefinedActionTypesWarning('basicApiReducer', customParams));
     }
 
     return {
@@ -26,7 +20,6 @@ const getParams = (customParams = {}) => {
             ...Config.actionFilters,
             ...customParams.actionFilters,
         },
-        options,
     };
 };
 
@@ -39,22 +32,22 @@ export default function makeBasicApiReducer(customParams) {
                 return {
                     ...state,
                     error: initialState.error,
-                    isFetching: true,
-                    didInvalidate: false,
+                    inProgress: true,
+                    cancelled: false,
                     success: false,
                 };
 
-            case types.INVALIDATE:
+            case types.CANCEL:
                 return {
                     ...state,
-                    isFetching: false,
-                    didInvalidate: true,
+                    inProgress: false,
+                    cancelled: true,
                 };
 
             case types.SUCCESS:
                 return {
                     ...state,
-                    isFetching: false,
+                    inProgress: false,
                     success: true,
                 };
 
@@ -63,7 +56,7 @@ export default function makeBasicApiReducer(customParams) {
 
                 return {
                     ...state,
-                    isFetching: false,
+                    inProgress: false,
                     error,
                 };
             }

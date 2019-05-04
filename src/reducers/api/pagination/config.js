@@ -1,13 +1,14 @@
-import { isEnvDevelopment, UNUSED_ACTION_TYPE } from '../../../constants';
-import * as BasicAPIReducer from '../basic';
+import { UNUSED_ACTION_TYPE } from 'Consts';
+import * as BasicApiReducerConfig from '../basic/config';
 
 export const actionTypes = {
-    ...BasicAPIReducer.config,
+    ...BasicApiReducerConfig.config.actionTypes,
     SET_PAGE: UNUSED_ACTION_TYPE,
 };
 
 export const initialState = {
-    ...BasicAPIReducer.config.initialState,
+    ...BasicApiReducerConfig.config.initialState,
+
     // current page
     page: 1,
 
@@ -22,10 +23,6 @@ export const initialState = {
 
     // has more items to fetch
     hasMore: true,
-};
-
-export const options = {
-    logging: isEnvDevelopment,
 };
 
 export const selectors = {

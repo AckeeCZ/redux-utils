@@ -1,3 +1,4 @@
+import { ReduxUtilsError } from 'Config';
 import { parseResetActionType } from '../utilities';
 
 const invalidItemIdError = itemId => ({
@@ -7,7 +8,7 @@ const invalidItemIdError = itemId => ({
 
 const addItemIdToActionTypes = (dest = {}, itemId = '', actionTypes = []) => {
     if (!itemId) {
-        throw invalidItemIdError(itemId);
+        throw new ReduxUtilsError(invalidItemIdError(itemId));
     }
 
     for (const actionType of actionTypes) {

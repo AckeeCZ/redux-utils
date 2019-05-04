@@ -1,18 +1,12 @@
-import { logger } from '../../../config';
-import * as Consts from '../../../constants';
+import { config, undefinedActionTypesWarning } from 'Config';
 
 import makeBasicApiReducer from '../basic';
 
 import * as Config from './config';
 
 const getParams = (customParams = {}) => {
-    const options = {
-        ...Config.options,
-        ...customParams.options,
-    };
-
-    if (options.logging && !customParams.actionTypes) {
-        logger.warn(Consts.warnings.undefinedActionTypes(Consts.types.PAGINATION, customParams));
+    if (!customParams.actionTypes) {
+        config.logger.warn(undefinedActionTypesWarning('paginationApiReducer', customParams));
     }
 
     return {
@@ -32,7 +26,6 @@ const getParams = (customParams = {}) => {
             ...Config.actionFilters,
             ...customParams.actionFilters,
         },
-        options,
     };
 };
 
@@ -48,7 +41,7 @@ export default function makePaginationApiReducer(customParams) {
     function paginationApiReducer(state = initialState, action) {
         switch (action.type) {
             case types.REQUEST:
-            case types.INVALIDATE:
+            case types.CANCEL:
             case types.FAILURE:
             case types.RESET:
             case types.UPDATE:
@@ -88,7 +81,7 @@ export default function makePaginationApiReducer(customParams) {
         }
     }
 
-    paginationApiReducer.getInitialState = () => initialState;
+    paginationApiReducer.INITIAL_STATE = initialState;
 
     return paginationApiReducer;
 }

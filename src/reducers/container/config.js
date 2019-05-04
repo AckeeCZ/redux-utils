@@ -1,13 +1,10 @@
-import { isEnvDevelopment } from '../../constants';
-
 export const actionTypes = [];
 
 export const initialState = {};
 
 export const options = {
-    ignoreWarnings: !isEnvDevelopment,
+    ignoreWarnings: process.env.NODE_ENV !== 'development',
     placeholder: true,
-    logging: isEnvDevelopment,
 };
 
 export const selectors = {

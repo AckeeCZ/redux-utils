@@ -1,6 +1,6 @@
 # Pagination API reducer
 
-## `api.pagination(config): reducer`
+## `paginationApiReducer(config): reducer`
 
 Purpose of this reducer is to **reflect current state of an API request with pagination**.
 
@@ -20,7 +20,7 @@ This reducer can handle both of them.
 -   `actionTypes: Object`
 
     -   `REQUEST: String|Symbol (or any primitive type)` - recommended for basic usage
-    -   `INVALIDATE: String|Symbol`
+    -   `CANCEL: String|Symbol`
     -   `SUCCESS: String|Symbol` - recommended for basic usage
     -   `FAILURE: String|Symbol` - recommended for basic usage
     -   `RESET: String|Symbol`
@@ -29,10 +29,10 @@ This reducer can handle both of them.
 
 -   `initialState: Object`
 
-    -   `isFetching: Boolean`
-    -   `error: Object`
+    -   `inProgress: Boolean`
+    -   `error: String`
     -   `success: Boolean`
-    -   `didInvalidate: Boolean`
+    -   `cancelled: Boolean`
     -   `page: Number`
     -   `amount: Number`
     -   `totalCount: Number`
@@ -43,10 +43,6 @@ This reducer can handle both of them.
 
     -   `totalCount: Function` - required
     -   `currentCount: Function` - required
-
--   `options: Object`
-
-    -   `logging: Boolean`
 
 -   `actionFilters: Object`
     -   `setPage: Function`
@@ -86,15 +82,12 @@ This reducer can handle both of them.
 
     // reducer initial state
     initialState: {
-        // REQUEST sets isFetching to true
-        // INVALIDATE, FAILURE, or SUCCESS set isFetching to false
-        isFetching: false,
+        // REQUEST sets inProgress to true
+        // INVALIDATE, FAILURE, or SUCCESS set inProgress to false
+        inProgress: false,
 
         // FAILURE action set this property to action.error
-        error: {
-            code: null,
-            message: '',
-        },
+        error: '',
 
         // SUCCESS sets this to true,
         // REQUEST sets this to false
@@ -102,7 +95,7 @@ This reducer can handle both of them.
 
         // INVALIDATE sets this to true,
         // REQUEST sets this to false
-        didInvalidate: false,
+        cancelled: false,
 
         // current page
         page: 1,
@@ -122,9 +115,6 @@ This reducer can handle both of them.
     selectors: {
         totalCount: action => action.meta.totalCount,
         currentCount: action => action.payload.ids.length,
-    },
-    options: {
-        logging: process.env.NODE_ENV === 'development',
     },
     actionFilters: {
         // To be able to use general action, here is action validator where you can filter out unwanted actions (e.g. action.meta.category !== 'myCategory')

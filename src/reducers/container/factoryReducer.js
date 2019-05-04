@@ -1,5 +1,4 @@
-import { logger } from '../../config';
-import * as Consts from '../../constants';
+import { config, emptyActionTypesError, ReduxUtilsError, undefinedItemIdWarning } from 'Config';
 
 import * as Config from './config';
 
@@ -16,7 +15,7 @@ function getInitialState({ childReducer, initialState: customInitialState, optio
 
 const getParams = (customParams = {}) => {
     if (customParams.actionTypes.length === 0) {
-        throw Consts.errors.emptyActionTypes(customParams);
+        throw new ReduxUtilsError(emptyActionTypesError(customParams));
     }
 
     const options = {
@@ -56,23 +55,19 @@ export default function makeContainerReducer(customParams) {
 
         const itemId = selectors.itemId(action);
 
-        switch (itemId) {
-            case undefined: {
-                if (options.logging && !options.ignoreWarnings) {
-                    logger.warn(Consts.warnings.undefinedItemId(action));
-                }
-
-                return state;
+        if (itemId === undefined) {
+            if (!options.ignoreWarnings) {
+                config.logger.warn(undefinedItemIdWarning(action));
             }
 
-            default: {
-                const itemInitialState = initialState[itemId] || initialState.placeholder;
-
-                return {
-                    ...state,
-                    [itemId]: childReducer(state[itemId], action, itemInitialState),
-                };
-            }
+            return state;
         }
+
+        const itemInitialState = initialState[itemId] || initialState.placeholder;
+
+        return {
+            ...state,
+            [itemId]: childReducer(state[itemId], action, itemInitialState),
+        };
     };
 }

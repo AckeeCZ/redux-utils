@@ -1,6 +1,6 @@
 # Basic API reducer
 
-## `api.basic(config): reducer`
+## `basicApiReducer(config): reducer`
 
 Purpose of this reducer is to **reflect current state of an API request**.
 
@@ -13,7 +13,7 @@ The whole config object and its properties is optional.
 -   `actionTypes: Object`
 
     -   `REQUEST: String|Symbol (or any primitive type)` - recommended for basic usage
-    -   `INVALIDATE: String|Symbol`
+    -   `CANCEL: String|Symbol`
     -   `SUCCESS: String|Symbol` - recommended for basic usage
     -   `FAILURE: String|Symbol` - recommended for basic usage
     -   `RESET: String|Symbol`
@@ -21,14 +21,10 @@ The whole config object and its properties is optional.
 
 -   `initialState: Object`
 
-    -   `isFetching: Boolean`
-    -   `error: Object`
+    -   `inProgress: Boolean`
+    -   `error: String`
     -   `success: Boolean`
-    -   `didInvalidate: Boolean`
-
--   `options: Object`
-
-    -   `logging: Boolean`
+    -   `cancelled: Boolean`
 
 -   `actionFilters: Object`
     -   `update: Function`
@@ -46,8 +42,8 @@ The whole config object and its properties is optional.
         // API request was created
         REQUEST: UNUSED_ACTION_TYPE,
 
-        // API request was invalidated / cancelled
-        INVALIDATE: UNUSED_ACTION_TYPE,
+        // API request was cancelled
+        CANCEL: UNUSED_ACTION_TYPE,
 
         // API request succeed
         SUCCESS: UNUSED_ACTION_TYPE,
@@ -64,15 +60,12 @@ The whole config object and its properties is optional.
 
     // reducer initial state
     initialState: {
-        // REQUEST sets isFetching to true
-        // INVALIDATE, FAILURE, or SUCCESS set isFetching to false
-        isFetching: false,
+        // REQUEST sets inProgress to true
+        // INVALIDATE, FAILURE, or SUCCESS set inProgress to false
+        inProgress: false,
 
         // FAILURE action set this property to action.error
-        error: {
-            code: null,
-            message: '',
-        },
+        error: '',
 
         // SUCCESS sets this to true,
         // REQUEST sets this to false
@@ -80,10 +73,7 @@ The whole config object and its properties is optional.
 
         // INVALIDATE sets this to true,
         // REQUEST sets this to false
-        didInvalidate: false,
-    },
-    options: {
-        logging: process.env.NODE_ENV === 'development'
+        cancelled: false,
     },
     actionFilters: {
         // action UPDATE is passed here as 1st arg.
@@ -99,7 +89,7 @@ The whole config object and its properties is optional.
 #### Example
 
 ```js
-import { reducers } from '@ackee/redux-utils';
+import { basicApiReducer } from '@ackee/redux-utils';
 
 // example of action creators for fetching todo items
 const fetchTodosRequest = () => ({
@@ -116,7 +106,7 @@ const fetchTodosFailure = error => ({
     error,
 });
 
-const apiReducer = reducers.api.basic({
+const apiReducer = basicApiReducer({
     actionTypes: {
         REQUEST: 'FETCH_TODOS_REQUEST',
         SUCCESS: 'FETCH_TODOS_SUCCESS',

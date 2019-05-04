@@ -1,3 +1,4 @@
+import { ReduxUtilsError } from 'Config';
 import { createSelector } from 'reselect';
 
 const stringifyKeys = obj => {
@@ -18,7 +19,7 @@ export const apiSelector = (state, entityKey, typeId, itemId) => {
 
     if (entity === undefined) {
         const validKeys = stringifyKeys(state.api);
-        throw new Error(`No entity with the '${entityKey}' key was found.\nValid entity keys: ${validKeys}.`);
+        throw new ReduxUtilsError(`No entity with the '${entityKey}' key was found.\nValid entity keys: ${validKeys}.`);
     }
 
     if (typeId === undefined) {
@@ -29,7 +30,7 @@ export const apiSelector = (state, entityKey, typeId, itemId) => {
 
     if (entityTypes === undefined) {
         const validEntityTypes = stringifyKeys(entity);
-        throw new Error(
+        throw new ReduxUtilsError(
             `No entity type with the '${typeId}' type was found within '${entityKey}' entity.\nValid entity types: ${validEntityTypes}.`,
         );
     }

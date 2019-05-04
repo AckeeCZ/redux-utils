@@ -1,6 +1,6 @@
 # Container reset reducer
 
-## `reset.container(config): reducer`
+## `containerResetReducer(config): reducer`
 
 > TODO
 

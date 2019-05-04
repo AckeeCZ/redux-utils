@@ -1,6 +1,6 @@
 # Basic reset reducer
 
-## `reset.basic(reducer, actionTypes): reducer`
+## `basicResetReducer(reducer, actionTypes): reducer`
 
 Purpose of this reducer is reset provided reducer to its initial state if corresponding action is dispatched.
 
@@ -14,7 +14,7 @@ Purpose of this reducer is reset provided reducer to its initial state if corres
 #### Example
 
 ```js
-import { reducers } from '@ackee/redux-utils';
+import { basicResetReducer } from '@ackee/redux-utils';
 
 const initialState = {
     value: 0,
@@ -25,7 +25,7 @@ function counterReducer(state = initialState, action) {
 }
 
 // When the `COUNTER_RESET` is dispatched, counterReducer will be reseted to its initial state
-export default reducers.reset.basic(counterReducer, 'COUNTER_RESET');
+export default basicResetReducer(counterReducer, 'COUNTER_RESET');
 ```
 
 ---
