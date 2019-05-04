@@ -19,13 +19,14 @@ module.exports = function(api) {
             '@babel/plugin-proposal-object-rest-spread',
             '@babel/plugin-proposal-export-namespace-from',
             [
-                require.resolve('babel-plugin-module-resolver'),
+                'babel-plugin-module-resolver',
                 {
                     alias: babelAliases,
                 },
             ],
+            '@babel/plugin-transform-runtime',
         ],
         presets: presets[api.env()],
-        ignore: ['**/__tests__/'],
+        ignore: ['**/__tests__/', '**/*.test.js'],
     };
 };
