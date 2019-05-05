@@ -23,7 +23,7 @@
         "url": "https://github.com/AckeeCZ/redux-utils"
     },
     "dependencies": {
-        "@babel/runtime": "^7.4.4"
+        "@babel/runtime": "7.x"
     },
     "peerDependencies": {
         "reselect": "4.x"
@@ -33,28 +33,28 @@
         "@babel/core": "7.x",
         "@babel/plugin-proposal-export-namespace-from": "7.x",
         "@babel/plugin-proposal-object-rest-spread": "7.x",
-        "@babel/plugin-transform-runtime": "^7.4.4",
+        "@babel/plugin-transform-runtime": "7.x",
         "@babel/preset-env": "7.x",
         "babel-core": "^7.0.0-bridge.0",
         "babel-eslint": "10.x",
         "babel-jest": "24.x",
-        "babel-plugin-module-resolver": "^3.2.0",
+        "babel-plugin-module-resolver": "3.x",
         "cross-env": "5.x",
         "eslint": "5.x",
         "eslint-config-ackee": "0.x",
         "eslint-config-prettier": "4.x",
-        "eslint-import-resolver-webpack": "^0.11.1",
-        "eslint-plugin-import": "^2.17.2",
+        "eslint-import-resolver-webpack": "0.x",
+        "eslint-plugin-import": "2.x",
         "eslint-plugin-jest": "22.x",
         "husky": "1.x",
         "jest": "24.x",
         "lint-staged": "8.x",
         "onchange": "5.x",
-        "package-size": "^2.3.0",
+        "package-size": "2.x",
         "prettier": "1.x",
         "prettier-config-ackee": "0.x",
         "reselect": "4.x",
-        "webpack": "^4.30.0"
+        "webpack": "4.x"
     },
     "browserslist": [
         "last 2 version",
