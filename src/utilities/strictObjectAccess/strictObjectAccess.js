@@ -32,7 +32,10 @@ const handler = {
     @param {Object} target
     @return {Object}
 */
-export default function strictObjectAccess(target = {}, enabled = process.env.NODE_ENV === 'development') {
+export default function strictObjectAccess(
+    target = {},
+    enabled = process ? process.env.NODE_ENV === 'development' : true,
+) {
     // omit the functionality outside of development env.
     return enabled ? new Proxy(target, handler) : target;
 }

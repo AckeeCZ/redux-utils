@@ -167,4 +167,4 @@ export default apiReducer;
 
 ---
 
-## Continue to [Container reducer](/src/reducers/container/README.md)
+## Continue to [Container reducer](./containerReducer.md)

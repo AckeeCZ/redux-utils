@@ -30,4 +30,4 @@ export default basicResetReducer(counterReducer, 'COUNTER_RESET');
 
 ---
 
-## Continue to [Container reset reducer](/src/reducers/reset/container/README.md)
+## Continue to [Container reset reducer](./containerResetReducer.md)

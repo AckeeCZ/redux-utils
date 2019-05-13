@@ -42,7 +42,7 @@ export const apiSelector = (state, entityKey, typeId, itemId) => {
     return entityTypes[itemId] || entityTypes.placeholder;
 };
 
-export const apiPaginationSelector = createSelector(
+export const paginationApiSelector = createSelector(
     apiSelector,
     group => {
         const { page, amount, ...rest } = group;

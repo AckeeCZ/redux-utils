@@ -1,15 +1,15 @@
 # API Selectors
 
-Selectors for the [basic API reducer](/src/reducers/api/basic/README.md) and for the [pagination API reducer](/src/reducers/api/pagination/README.md).
+Selectors for the [basic API reducer](../reducers/basicApiReducer.md) and for the [pagination API reducer](../reducers/paginationApiReducer.md).
 
 ## Table of contents
 
--   [`api`](#api-selector)
--   [`apiPagination`](#api-pagination-selector)
+-   [`apiSelector`](#api-selector)
+-   [`paginationApiSelector`](#api-pagination-selector)
 
 ---
 
-### <a name="api-selector"></a>`api(state, entityKey, typeId?, itemId?)`
+### <a name="apiSelector"></a>`apiSelector(state, entityKey, typeId?, itemId?)`
 
 #### Parameters:
 
@@ -21,14 +21,16 @@ Selectors for the [basic API reducer](/src/reducers/api/basic/README.md) and for
 #### Valid use-cases:
 
 ```js
-ReduxUtils.selectors.api(state, 'users');
+import { apiSelector } from '@ackee/redux-utils';
 
-ReduxUtils.selectors.api(state, 'users', 'create');
+apiSelector(state, 'users');
 
-ReduxUtils.selectors.api(state, 'users', 'fetch', 1);
+apiSelector(state, 'users', 'create');
+
+apiSelector(state, 'users', 'fetch', 1);
 ```
 
-### <a name="api-pagination-selector"></a>`apiPagination(state, entityKey, typeId, itemId?)`
+### <a name="paginationApiSelector"></a>`paginationApiSelector(state, entityKey, typeId, itemId?)`
 
 Identical to the `api` selector above, but it additionally returns `offset` property: `offset = (page - 1) * amount`.
 
@@ -42,9 +44,11 @@ Identical to the `api` selector above, but it additionally returns `offset` prop
 #### Valid use-cases:
 
 ```js
-ReduxUtils.selectors.apiPagination(state, 'user', 'create');
+import { paginationApiSelector } from '@ackee/redux-utils';
 
-ReduxUtils.selectors.apiPagination(state, 'users', 'fetch', 1);
+paginationApiSelector(state, 'user', 'create');
+
+paginationApiSelector(state, 'users', 'fetch', 1);
 ```
 
 ---
@@ -78,17 +82,17 @@ const state = {
         users: {
             // type IDs:
             create: {
-                isFetching: false,
+                inProgress: false,
                 // ...
             },
             fetch: {
                 // item IDs:
                 userId1: {
-                    isFetching: true,
+                    inProgress: true,
                     // ...
                 },
                 placeholder: {
-                    isFetching: false,
+                    inProgress: false,
                     // ...
                 },
             },

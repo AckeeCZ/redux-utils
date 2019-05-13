@@ -130,4 +130,4 @@ export default containerReducer;
 
 ---
 
-## Continue to [Basic reset reducer](/src/reducers/reset/basic/README.md)
+## Continue to [Basic reset reducer](./basicResetReducer.md)
