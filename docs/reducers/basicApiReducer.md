@@ -119,4 +119,4 @@ export default apiReducer;
 
 ---
 
-## Continue to [Pagination API reducer](./paginationReducer.md)
+## Continue to [Pagination API reducer](./paginationApiReducer.md)

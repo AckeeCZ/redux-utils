@@ -26,7 +26,7 @@ Common Redux utilities, including:
         -   [`apiSelector`](./docs/selectors/selectors.md#apiSelector)
         -   [`apiPaginationSelector`](./docs/selectors/selectors.md#paginationApiSelector)
     -   Utilities
-        -   [`strictObjectAccess`]('docs/utils/strictObjectAccess.md')
+        -   [`strictObjectAccess`](./docs/utils/strictObjectAccess.md)
 
 ---
 
