@@ -30,13 +30,17 @@ const Types = {
     B: 'b',
 };
 
+// Access defined property:
 console.log(Types.A); // -> 'a'
+// Access undefined property:
 console.log(Types.X); // -> 'undefined'
 
 const TypesProxy = strictObjectAccess(Types);
 
+// Access defined property:
 console.log(TypesProxy.A); // -> 'a'
-console.log(TypesProxy.X); // However, this is going to throw an error:
+// Access undefined property:
+console.log(TypesProxy.X); // This is going to throw an error:
 /*
     Uncaught StrictAccessError: Accessing this object property results in an undefined value.
     Used property key: 'X',
