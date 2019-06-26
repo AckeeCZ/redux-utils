@@ -18,7 +18,7 @@ Common Redux utilities, including:
         -   [`createAsyncType`](./docs/utils/asyncType.md#createAsyncType)
     -   Reducer factories
         -   [`basicApiReducer`](./docs/reducers/basicApiReducer.md)
-        -   [`paignationApiReducer`](./docs/reducers/paignationApiReducer.md)
+        -   [`paginationApiReducer`](./docs/reducers/paginationApiReducer.md)
         -   [`containerReducer`](./docs/reducers/containerReducer.md)
         -   [`basicResetReducer`](./docs/reducers/basicResetReducer.md)
         -   [`containerResetReducer`](./docs/reducers/containerResetReducer.md)
