@@ -28,6 +28,7 @@ export const initialState = {
 export const selectors = {
     totalCount: action => action.meta.totalCount,
     currentCount: action => action.payload.ids.length,
+    hasMore: action => action.meta.hasMore,
 };
 
 export const actionFilters = {
