@@ -41,8 +41,9 @@ This reducer can handle both of them.
 
 -   `selectors: Object`
 
-    -   `totalCount: Function` - required
-    -   `currentCount: Function` - required
+    -   `totalCount: Function`
+    -   `currentCount: Function`
+    -   `hasMore: Function`
 
 -   `actionFilters: Object`
     -   `setPage: Function`
@@ -115,6 +116,7 @@ This reducer can handle both of them.
     selectors: {
         totalCount: action => action.meta.totalCount,
         currentCount: action => action.payload.ids.length,
+        hasMore: action => action.meta.hasMore,
     },
     actionFilters: {
         // To be able to use general action, here is action validator where you can filter out unwanted actions (e.g. action.meta.category !== 'myCategory')
@@ -130,18 +132,66 @@ This reducer can handle both of them.
 
 ---
 
-#### Example
+#### Example - with `totalCount`
 
 ```js
-import { reducers } from '@ackee/redux-utils';
+import { paginationApiReducer } from '@ackee/redux-utils';
 
 // example of action creators for fetching todo items
 const fetchUsersRequest = () => ({
     type: 'FETCH_USERS_REQUEST',
 });
 
-const fetchUsersSuccess = users => ({
+const fetchUsersSuccess = ({ byId = {}, ids = [] }, totalCount) => ({
     type: 'FETCH_USERS_SUCCESS',
+    meta: {
+        totalCount,
+    },
+    payload: {
+        byId,
+        ids,
+    },
+});
+
+const fetchUsersFailure = error => ({
+    type: 'FETCH_USERS_FAILURE',
+    error,
+});
+
+const reducer = paginationApiReducer({
+    actionTypes: {
+        REQUEST: 'FETCH_USERS_REQUEST',
+        SUCCESS: 'FETCH_USERS_SUCCESS',
+        FAILURE: 'FETCH_USERS_FAILURE',
+    },
+    selectors: {
+        currentCount: action => action.payload.ids.length,
+        totalCount: action => action.meta.totalCount,
+    },
+    initialState: {
+        // fetch 30 items per request
+        limit: 30,
+    },
+});
+
+export default reducer;
+```
+
+### Example - with `hasMore` flag
+
+```js
+import { paginationApiReducer } from '@ackee/redux-utils';
+
+// example of action creators for fetching todo items
+const fetchUsersRequest = () => ({
+    type: 'FETCH_USERS_REQUEST',
+});
+
+const fetchUsersSuccess = (users, hasMore) => ({
+    type: 'FETCH_USERS_SUCCESS',
+    meta: {
+        hasMore,
+    },
     payload: users,
 });
 
@@ -150,19 +200,18 @@ const fetchUsersFailure = error => ({
     error,
 });
 
-const apiReducer = reducers.api.pagination({
+const reducer = paginationApiReducer({
     actionTypes: {
         REQUEST: 'FETCH_USERS_REQUEST',
         SUCCESS: 'FETCH_USERS_SUCCESS',
         FAILURE: 'FETCH_USERS_FAILURE',
     },
-    initialState: {
-        // fetch 30 items per request
-        limit: 30,
+    selectors: {
+        hasMore: action => action.meta.hasMore,
     },
 });
 
-export default apiReducer;
+export default reducer;
 ```
 
 ---
