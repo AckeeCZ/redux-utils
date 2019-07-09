@@ -25,6 +25,7 @@ The whole config object and its properties is optional.
     -   `error: String`
     -   `success: Boolean`
     -   `cancelled: Boolean`
+    -   `lastSuccessAt: null|Number`
 
 -   `actionFilters: Object`
     -   `update: Function`
@@ -74,6 +75,11 @@ The whole config object and its properties is optional.
         // INVALIDATE sets this to true,
         // REQUEST sets this to false
         cancelled: false,
+
+        // REQUEST resets it null
+        // SUCCESS sets it  action.meta.lastSuccessAt
+        // NOTE: It won't set it directly to Date.now(), because reducer must be a pure function.
+        lastSuccessAt: null,
     },
     actionFilters: {
         // action UPDATE is passed here as 1st arg.

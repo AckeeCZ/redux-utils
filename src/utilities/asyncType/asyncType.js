@@ -30,7 +30,7 @@ export function asyncType(params = {}) {
         actionTypes[prefixedType] = modulePrefix ? `${modulePrefix}/${prefixedType}` : prefixedType;
     });
 
-    return actionTypes;
+    return Object.freeze(actionTypes);
 }
 
 export function createAsyncType({ modulePrefix, defaultTypes }) {

@@ -33,6 +33,7 @@ This reducer can handle both of them.
     -   `error: String`
     -   `success: Boolean`
     -   `cancelled: Boolean`
+    -   `lastSuccessAt: null|Number`
     -   `page: Number`
     -   `amount: Number`
     -   `totalCount: Number`
@@ -97,6 +98,8 @@ This reducer can handle both of them.
         // INVALIDATE sets this to true,
         // REQUEST sets this to false
         cancelled: false,
+
+        lastSuccessAt: null,
 
         // current page
         page: 1,

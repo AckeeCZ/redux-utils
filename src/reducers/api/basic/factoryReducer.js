@@ -12,14 +12,14 @@ const getParams = (customParams = {}) => {
             ...Config.initialState,
             ...customParams.initialState,
         }),
-        actionTypes: {
+        actionTypes: Object.freeze({
             ...Config.actionTypes,
             ...customParams.actionTypes,
-        },
-        actionFilters: {
+        }),
+        actionFilters: Object.freeze({
             ...Config.actionFilters,
             ...customParams.actionFilters,
-        },
+        }),
     };
 };
 
@@ -35,6 +35,7 @@ export default function makeBasicApiReducer(customParams) {
                     inProgress: true,
                     cancelled: false,
                     success: false,
+                    lastSuccessAt: null,
                 };
 
             case types.CANCEL:
@@ -44,12 +45,16 @@ export default function makeBasicApiReducer(customParams) {
                     cancelled: true,
                 };
 
-            case types.SUCCESS:
+            case types.SUCCESS: {
+                const { lastSuccessAt = initialState.lastSuccessAt } = action.meta || {};
+
                 return {
                     ...state,
                     inProgress: false,
                     success: true,
+                    lastSuccessAt,
                 };
+            }
 
             case types.FAILURE: {
                 const { error = initialState.error } = action;
