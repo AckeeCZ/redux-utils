@@ -14,6 +14,7 @@ export const initialState = {
     cancelled: false,
     error: '',
     success: false,
+    lastSuccessAt: null,
 };
 
 export const actionFilters = {
