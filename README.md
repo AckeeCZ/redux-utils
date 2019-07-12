@@ -24,7 +24,7 @@ Common Redux utilities, including:
         -   [`containerResetReducer`](./docs/reducers/containerResetReducer.md)
     -   [Selectors for API reducers](./docs/selectors/selectors.md)
         -   [`apiSelector`](./docs/selectors/selectors.md#apiSelector)
-        -   [`apiPaginationSelector`](./docs/selectors/selectors.md#paginationApiSelector)
+        -   [`paginationApiSelector`](./docs/selectors/selectors.md#paginationApiSelector)
     -   Utilities
         -   [`strictObjectAccess`](./docs/utils/strictObjectAccess.md)
 
