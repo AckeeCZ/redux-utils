@@ -58,7 +58,7 @@ export default function makePaginationApiReducer(customParams) {
                 return {
                     ...state,
                     ...basicApiReducer(state, action),
-                    hasMore: hasMore === undefined ? currentCount >= state.amount : hasMore,
+                    hasMore: hasMore === undefined ? currentCount >= state.limit : hasMore,
                     totalCount,
                 };
             }
