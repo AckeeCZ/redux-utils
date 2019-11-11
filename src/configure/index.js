@@ -1,5 +1,9 @@
 import { config, ReduxUtilsError } from '../config';
 
+import configBasicApiReducer from '../config/reducers/basicApiReducer';
+import configPaginationApiReducer from '../config/reducers/paginationApiReducer';
+import configContainerReducer from '../config/reducers/containerReducer';
+
 config.init = false;
 
 export default function configure(customConfig = {}) {
@@ -9,6 +13,11 @@ export default function configure(customConfig = {}) {
 
     config.init = true;
 
-    Object.assign(config, customConfig);
+    config.basicApiReducer = configBasicApiReducer(customConfig.basicApiReducer);
+    config.paginationApiReducer = configPaginationApiReducer(customConfig.paginationApiReducer);
+    config.containerReducer = configContainerReducer(customConfig.containerReducer);
+
+    config.logger = customConfig.logger || config.logger;
+
     Object.freeze(config);
 }

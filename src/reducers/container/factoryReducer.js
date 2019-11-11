@@ -1,7 +1,5 @@
 import { config, emptyActionTypesError, ReduxUtilsError, undefinedItemIdWarning } from 'Config';
 
-import * as Config from './config';
-
 function getInitialState({ childReducer, initialState: customInitialState, options }) {
     const placeholder = childReducer(undefined, {});
     const initialState = { ...customInitialState };
@@ -19,7 +17,7 @@ const getParams = (customParams = {}) => {
     }
 
     const options = {
-        ...Config.options,
+        ...config.containerReducer.options,
         ...customParams.options,
     };
 
@@ -33,11 +31,11 @@ const getParams = (customParams = {}) => {
         ...customParams,
         options,
         selectors: {
-            ...Config.selectors,
+            ...config.containerReducer.selectors,
             ...customParams.selectors,
         },
         initialState: {
-            ...Config.initialState,
+            ...config.containerReducer.initialState,
             ...initialState,
         },
     };

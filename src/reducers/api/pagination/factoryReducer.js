@@ -11,7 +11,7 @@ const getParams = (customParams = {}) => {
 
     return {
         initialState: Object.freeze({
-            ...Config.initialState,
+            ...config.paginationApiReducer.initialState,
             ...customParams.initialState,
         }),
         actionTypes: {
@@ -19,7 +19,7 @@ const getParams = (customParams = {}) => {
             ...customParams.actionTypes,
         },
         selectors: {
-            ...Config.selectors,
+            ...config.paginationApiReducer.selectors,
             ...customParams.selectors,
         },
         actionFilters: {

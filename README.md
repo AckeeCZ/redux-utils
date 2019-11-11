@@ -12,6 +12,7 @@ Common Redux utilities, including:
 ## Table of contents
 
 -   [Installing](#installing)
+-   [Configuration](#configuration)
 -   API References
     -   [Action Type helpers](./docs/utils/asyncType.md)
         -   [`asyncType`](./docs/utils/asyncType.md#asyncType)
@@ -42,4 +43,46 @@ Using npm:
 
 ```bash
 $ npm i -S @ackee/redux-utils
+```
+
+## Configuration (optional)
+
+Available options:
+
+-   Set initial reducer state globally.
+-   Set custom logger.
+
+```js
+import { configure } from '@ackee/redux-utils';
+
+// Defaults:
+configure({
+    // Pass any object with error, warn and info methods.
+    logger: console,
+
+    containerReducer: reducerConfig => reducerConfig,
+    basicApiReducer: reducerConfig => reducerConfig,
+    paginationApiReducer: reducerConfig => reducerConfig,
+});
+```
+
+### Change reducer initial state globally
+
+```js
+import { configure } from '@ackee/redux-utils';
+
+configure({
+    // ...
+
+    basicApiReducer: ({ initialState, ...rest }) => {
+        return {
+            ...rest,
+            initialState: {
+                ...initialState,
+                // Override default error initial value:
+                error: null,
+            },
+        };
+    },
+});
 ```

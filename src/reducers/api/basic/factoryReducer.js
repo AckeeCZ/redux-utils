@@ -9,7 +9,7 @@ const getParams = (customParams = {}) => {
 
     return {
         initialState: Object.freeze({
-            ...Config.initialState,
+            ...config.basicApiReducer.initialState,
             ...customParams.initialState,
         }),
         actionTypes: Object.freeze({

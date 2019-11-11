@@ -9,14 +9,6 @@ export const actionTypes = {
     UPDATE: UNUSED_ACTION_TYPE,
 };
 
-export const initialState = {
-    inProgress: false,
-    cancelled: false,
-    error: '',
-    success: false,
-    lastSuccessAt: null,
-};
-
 export const actionFilters = {
     update: () => false,
 };

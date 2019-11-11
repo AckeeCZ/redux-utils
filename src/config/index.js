@@ -1,5 +1,13 @@
+import configBasicApiReducer from './reducers/basicApiReducer';
+import configPaginationApiReducer from './reducers/paginationApiReducer';
+import configContainerReducer from './reducers/containerReducer';
+
 export const config = {
     logger: console,
+
+    basicApiReducer: configBasicApiReducer(),
+    paginationApiReducer: configPaginationApiReducer(),
+    containerReducer: configContainerReducer(),
 };
 
 export class ReduxUtilsError extends Error {
