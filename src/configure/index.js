@@ -2,6 +2,7 @@ import { config, ReduxUtilsError } from '../config';
 
 import configBasicApiReducer from '../config/reducers/basicApiReducer';
 import configPaginationApiReducer from '../config/reducers/paginationApiReducer';
+import configInfiniteListReducer from '../config/reducers/infiniteListApiReducer';
 import configContainerReducer from '../config/reducers/containerReducer';
 
 config.init = false;
@@ -15,6 +16,7 @@ export default function configure(customConfig = {}) {
 
     config.basicApiReducer = configBasicApiReducer(customConfig.basicApiReducer);
     config.paginationApiReducer = configPaginationApiReducer(customConfig.paginationApiReducer);
+    config.infiniteListApiReducer = configInfiniteListReducer(customConfig.infiniteListApiReducer);
     config.containerReducer = configContainerReducer(customConfig.containerReducer);
 
     config.logger = customConfig.logger || config.logger;

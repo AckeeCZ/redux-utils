@@ -20,6 +20,7 @@ Common Redux utilities, including:
     -   Reducer factories
         -   [`basicApiReducer`](./docs/reducers/basicApiReducer.md)
         -   [`paginationApiReducer`](./docs/reducers/paginationApiReducer.md)
+        -   [`infiniteListApiReducer`](./docs/reducers/infiniteListApiReducer.md)
         -   [`containerReducer`](./docs/reducers/containerReducer.md)
         -   [`basicResetReducer`](./docs/reducers/basicResetReducer.md)
         -   [`containerResetReducer`](./docs/reducers/containerResetReducer.md)
@@ -63,6 +64,7 @@ configure({
     containerReducer: reducerConfig => reducerConfig,
     basicApiReducer: reducerConfig => reducerConfig,
     paginationApiReducer: reducerConfig => reducerConfig,
+    infiniteListApiReducer: reducerConfig => reducerConfig,
 });
 ```
 
