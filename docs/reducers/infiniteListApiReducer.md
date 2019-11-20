@@ -1,10 +1,11 @@
-# Pagination API reducer
+# Infinite list API reducer
 
-## `paginationApiReducer(config): reducer`
+## `infiniteListApiReducer(config): reducer`
 
-Purpose of this reducer is to **reflect current state of an API request with pagination**.
+Purpose of this reducer is to **reflect current API request state of infinite list**.
 
-This reducer is designed for the manuall switching pagination type. Use [infiniteListApiReducer](infiniteListApiReducer.md) for infinite scrolling.
+-   On each succesfully finished API request (`SUCCESS` action), `totalOffset` is incremented by fetched items length (i.e. by value of `selectors.currentCount`).
+-   If `payloadSize <` currently fetched items length, then `hasMore` is `false`.
 
 > The `paginationApiReducer` extends the [`basicApiReducer`](basicApiReducer.md).
 
@@ -19,7 +20,6 @@ This reducer is designed for the manuall switching pagination type. Use [infinit
     -   `SUCCESS: String|Symbol` - recommended for basic usage
     -   `FAILURE: String|Symbol` - recommended for basic usage
     -   `RESET: String|Symbol`
-    -   `SET_PAGE: String|Symbol`
     -   `UPDATE: String|Symbol`
 
 -   `initialState: Object`
@@ -29,20 +29,17 @@ This reducer is designed for the manuall switching pagination type. Use [infinit
     -   `success: Boolean`
     -   `cancelled: Boolean`
     -   `lastSuccessAt: null|Number`
-    -   `page: Number`
-    -   `amount: Number`
-    -   `totalCount: Number`
-    -   `limit: Number`
+
     -   `hasMore: Boolean`
+    -   `payloadSize: Number`
+    -   `totalOffset: Number`
 
 -   `selectors: Object`
 
-    -   `totalCount: Function`
     -   `currentCount: Function`
-    -   `hasMore: Function`
 
 -   `actionFilters: Object`
-    -   `setPage: Function`
+
     -   `update: Function`
 
 ### Returns
@@ -70,9 +67,6 @@ This reducer is designed for the manuall switching pagination type. Use [infinit
         // reset reducer to initial state
         RESET: UNUSED_ACTION_TYPE,
 
-        // action that updates 'page' property (action.payload.page)
-        SET_PAGE: UNUSED_ACTION_TYPE,
-
         // arbitrary state update (new state = current state merged with action.payload object)
         UPDATE: UNUSED_ACTION_TYPE,
     },
@@ -96,30 +90,19 @@ This reducer is designed for the manuall switching pagination type. Use [infinit
 
         lastSuccessAt: null,
 
-        // current page
-        page: 1,
-
-        // items per page
-        amount: 4,
-
-        // total number of items
-        totalCount: 0,
-
-        // fetch 20 items
-        limit: 20,
-
         // has more items to fetch
         hasMore: true,
+
+        // fetched items length
+        totalOffset: 0,
+
+        // number of items to be fetched in a single request
+        payloadSize: 10,
     },
     selectors: {
-        totalCount: action => action.meta.totalCount,
         currentCount: action => action.payload.ids.length,
-        hasMore: action => action.meta.hasMore,
     },
     actionFilters: {
-        // To be able to use general action, here is action validator where you can filter out unwanted actions (e.g. action.meta.category !== 'myCategory')
-        setPage: action => true,
-
         // action UPDATE is passed here as 1st arg.
         // The function returns boolean. If true is returned,
         // state is merged with an action.payload object.
@@ -130,21 +113,18 @@ This reducer is designed for the manuall switching pagination type. Use [infinit
 
 ---
 
-#### Example - with `totalCount`
+#### Example
 
 ```js
-import { paginationApiReducer } from '@ackee/redux-utils';
+import { infiniteListApiReducer } from '@ackee/redux-utils';
 
 // example of action creators for fetching todo items
 const fetchUsersRequest = () => ({
     type: 'FETCH_USERS_REQUEST',
 });
 
-const fetchUsersSuccess = ({ byId = {}, ids = [] }, totalCount) => ({
+const fetchUsersSuccess = ({ byId = {}, ids = [] }) => ({
     type: 'FETCH_USERS_SUCCESS',
-    meta: {
-        totalCount,
-    },
     payload: {
         byId,
         ids,
@@ -156,56 +136,15 @@ const fetchUsersFailure = error => ({
     error,
 });
 
-const reducer = paginationApiReducer({
+const reducer = infiniteListApiReducer({
     actionTypes: {
         REQUEST: 'FETCH_USERS_REQUEST',
         SUCCESS: 'FETCH_USERS_SUCCESS',
         FAILURE: 'FETCH_USERS_FAILURE',
-    },
-    selectors: {
-        currentCount: action => action.payload.ids.length,
-        totalCount: action => action.meta.totalCount,
     },
     initialState: {
-        // fetch 30 items per request
-        limit: 30,
-    },
-});
-
-export default reducer;
-```
-
-### Example - with `hasMore` flag
-
-```js
-import { paginationApiReducer } from '@ackee/redux-utils';
-
-// example of action creators for fetching todo items
-const fetchUsersRequest = () => ({
-    type: 'FETCH_USERS_REQUEST',
-});
-
-const fetchUsersSuccess = (users, hasMore) => ({
-    type: 'FETCH_USERS_SUCCESS',
-    meta: {
-        hasMore,
-    },
-    payload: users,
-});
-
-const fetchUsersFailure = error => ({
-    type: 'FETCH_USERS_FAILURE',
-    error,
-});
-
-const reducer = paginationApiReducer({
-    actionTypes: {
-        REQUEST: 'FETCH_USERS_REQUEST',
-        SUCCESS: 'FETCH_USERS_SUCCESS',
-        FAILURE: 'FETCH_USERS_FAILURE',
-    },
-    selectors: {
-        hasMore: action => action.meta.hasMore,
+        // fetch 10 items per request
+        payloadSize: 10,
     },
 });
 
@@ -214,4 +153,4 @@ export default reducer;
 
 ---
 
-## Continue to [Infinite list API reducer](./infiniteListApiReducer.md)
+## Continue to [Container reducer](./containerReducer.md)
