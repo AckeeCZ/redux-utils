@@ -1,35 +1,37 @@
 import { config, undefinedActionTypesWarning } from 'Config';
 
 import makeBasicApiReducer from '../basic';
-
-import * as Config from './config';
+import {
+    actionFilters as basicApiReducerActionFilters,
+    actionTypes as basicApiReducerActionTypes,
+} from '../basic/config';
 
 const getParams = (customParams = {}) => {
     if (!customParams.actionTypes) {
-        config.logger.warn(undefinedActionTypesWarning('paginationApiReducer', customParams));
+        config.logger.warn(undefinedActionTypesWarning('infiniteListApiReducer', customParams));
     }
 
     return {
         initialState: Object.freeze({
-            ...config.paginationApiReducer.initialState,
+            ...config.infiniteListApiReducer.initialState,
             ...customParams.initialState,
         }),
         actionTypes: {
-            ...Config.actionTypes,
+            ...basicApiReducerActionTypes,
             ...customParams.actionTypes,
         },
         selectors: {
-            ...config.paginationApiReducer.selectors,
+            ...config.infiniteListApiReducer.selectors,
             ...customParams.selectors,
         },
         actionFilters: {
-            ...Config.actionFilters,
+            ...basicApiReducerActionFilters,
             ...customParams.actionFilters,
         },
     };
 };
 
-export default function makePaginationApiReducer(customParams) {
+export default function makeInfiniteListApiReducer(customParams) {
     const { actionTypes: types, initialState, selectors, options, actionFilters } = getParams(customParams);
 
     const basicApiReducer = makeBasicApiReducer({
@@ -39,7 +41,7 @@ export default function makePaginationApiReducer(customParams) {
         actionFilters,
     });
 
-    function paginationApiReducer(state = initialState, action) {
+    function infiniteListApiReducer(state = initialState, action) {
         switch (action.type) {
             case types.REQUEST:
             case types.CANCEL:
@@ -52,29 +54,14 @@ export default function makePaginationApiReducer(customParams) {
                 };
 
             case types.SUCCESS: {
-                const totalCount = selectors.totalCount(action);
                 const currentCount = selectors.currentCount(action);
-                const hasMore = selectors.hasMore(action);
 
                 return {
                     ...state,
                     ...basicApiReducer(state, action),
-                    hasMore: hasMore === undefined ? currentCount >= state.limit : hasMore,
-                    totalCount,
+                    totalOffset: state.totalOffset + currentCount,
+                    hasMore: currentCount >= state.payloadSize,
                 };
-            }
-
-            case types.SET_PAGE: {
-                if (actionFilters.setPage(action)) {
-                    const { page } = action.payload;
-
-                    return {
-                        ...state,
-                        page,
-                    };
-                }
-
-                return state;
             }
 
             default:
@@ -82,7 +69,7 @@ export default function makePaginationApiReducer(customParams) {
         }
     }
 
-    paginationApiReducer.INITIAL_STATE = initialState;
+    infiniteListApiReducer.INITIAL_STATE = initialState;
 
-    return paginationApiReducer;
+    return infiniteListApiReducer;
 }

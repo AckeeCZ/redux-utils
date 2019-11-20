@@ -15,6 +15,7 @@ export default function configure(customConfig = {}) {
 
     config.basicApiReducer = configBasicApiReducer(customConfig.basicApiReducer);
     config.paginationApiReducer = configPaginationApiReducer(customConfig.paginationApiReducer);
+    config.infiniteListApiReducer = configContainerReducer(customConfig.infiniteListApiReducer);
     config.containerReducer = configContainerReducer(customConfig.containerReducer);
 
     config.logger = customConfig.logger || config.logger;

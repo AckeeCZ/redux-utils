@@ -1,5 +1,6 @@
 import configBasicApiReducer from './reducers/basicApiReducer';
 import configPaginationApiReducer from './reducers/paginationApiReducer';
+import configInfiniteListApiReducer from './reducers/infiniteListApiReducer';
 import configContainerReducer from './reducers/containerReducer';
 
 export const config = {
@@ -7,6 +8,7 @@ export const config = {
 
     basicApiReducer: configBasicApiReducer(),
     paginationApiReducer: configPaginationApiReducer(),
+    infiniteListApiReducer: configInfiniteListApiReducer(),
     containerReducer: configContainerReducer(),
 };
 
