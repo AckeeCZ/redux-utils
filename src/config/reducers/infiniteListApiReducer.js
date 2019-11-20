@@ -1,7 +1,10 @@
 import { mergeConfigs } from './utils';
-import { initialState as basicApiReducerInitialState } from './basicApiReducer';
+import * as BasicApiReducer from './basicApiReducer';
 
-export default function configurePaginationApiReducer(customConfigure) {
+export default function configureInfiniteListApiReducer(
+    customConfigure,
+    basicApiReducerInitialState = BasicApiReducer.initialState,
+) {
     const initialState = Object.freeze({
         ...basicApiReducerInitialState,
 
