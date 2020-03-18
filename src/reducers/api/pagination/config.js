@@ -7,5 +7,5 @@ export const actionTypes = {
 };
 
 export const actionFilters = {
-    setPage: () => false,
+    setPage: () => true,
 };
