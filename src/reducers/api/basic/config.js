@@ -10,5 +10,5 @@ export const actionTypes = {
 };
 
 export const actionFilters = {
-    update: () => false,
+    update: () => true,
 };
