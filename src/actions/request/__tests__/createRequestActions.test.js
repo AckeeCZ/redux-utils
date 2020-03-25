@@ -1,7 +1,7 @@
 import requestActions from '../requestActions';
 import { asyncType } from '../../../utilities/asyncType';
 
-describe('createRequestActions', () => {
+describe('requestActions', () => {
     const types = asyncType({
         modulePrefix: 'articles',
         typePrefix: 'FETCH_ARTICLES_',

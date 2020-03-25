@@ -13,4 +13,16 @@ const requestActionsTypes = config => {
     return { actions, types };
 };
 
+/**
+ * Generates a factory to create Redux actions and types with predefined module prefix and default types
+ * @param {Object} config { modulePrefix: String, defaultTypes: Array<Sting> }
+ * @returns {Function} factory for creating the actions and types
+ */
+export const createRequestActionsTypes = ({ modulePrefix, defaultTypes }) => config =>
+    requestActionsTypes({
+        types: defaultTypes,
+        ...config,
+        modulePrefix,
+    });
+
 export default requestActionsTypes;
