@@ -10,7 +10,6 @@ const config = {
             },
         ],
     ],
-    ignore: ['**/__tests__/', '**/*.test.js'],
 };
 
 if (process.env.BABEL_ENV === 'es') {

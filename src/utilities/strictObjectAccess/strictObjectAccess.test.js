@@ -1,7 +1,7 @@
 import strictObjectAccess, { StrictAccessError } from './strictObjectAccess';
 
-it('Should throw an error if the object property value is undefined', () => {
-    const objectWithStrictAccess = strictObjectAccess({});
+it.only('Should throw an error if the object property value is undefined', () => {
+    const objectWithStrictAccess = strictObjectAccess({}, true);
     const propertyKey = 'foo';
     const readProp = () => objectWithStrictAccess[propertyKey];
 
