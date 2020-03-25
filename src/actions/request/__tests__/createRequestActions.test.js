@@ -1,15 +1,5 @@
-import createRequestActions, { convertTypeToActionName } from '../createRequestActions/createRequestActions';
-import { asyncType } from '../../utilities/asyncType';
-
-describe('convert type to action name', () => {
-    it('converts unprefixed type', () => {
-        expect(convertTypeToActionName('FETCH_ARTICLES_REQUEST')).toBe('fetchArticlesRequest');
-    });
-
-    it('converts prefixed type', () => {
-        expect(convertTypeToActionName('articles/FETCH_ARTICLES_REQUEST')).toBe('fetchArticlesRequest');
-    });
-});
+import requestActions from '../requestActions';
+import { asyncType } from '../../../utilities/asyncType';
 
 describe('createRequestActions', () => {
     const types = asyncType({
@@ -19,7 +9,7 @@ describe('createRequestActions', () => {
     let actions;
 
     beforeEach(() => {
-        actions = createRequestActions(types);
+        actions = requestActions(types);
     });
 
     it('creates actions from given types', () => {
@@ -50,10 +40,7 @@ describe('createRequestActions', () => {
 
         expect(actions.fetchArticlesSuccess(payload, meta)).toEqual({
             type: types.FETCH_ARTICLES_SUCCESS,
-            meta: {
-                lastSuccessAt: Date.now(),
-                ...meta,
-            },
+            meta,
             payload,
         });
     });
