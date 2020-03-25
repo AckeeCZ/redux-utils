@@ -1,2 +1,2 @@
 export { default as requestActions } from './requestActions';
-export { default as requestActionsTypes } from './requestActionsTypes';
+export { default as requestActionsTypes, createRequestActionsTypes } from './requestActionsTypes';
