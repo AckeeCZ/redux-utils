@@ -1,4 +1,4 @@
-# Action creators helpers
+# Action types helpers
 
 ## `asyncType(params: object) => object`
 
