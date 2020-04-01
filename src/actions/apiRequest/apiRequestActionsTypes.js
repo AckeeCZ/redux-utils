@@ -1,4 +1,4 @@
-import createRequestActions from './requestActions';
+import createRequestActions from './apiRequestActions';
 import { asyncType } from '../../utilities/asyncType';
 
 /**
@@ -6,7 +6,7 @@ import { asyncType } from '../../utilities/asyncType';
  * @param {Object} config configuration object same as for asyncType factory
  * @returns {Object} consisting of types and actions objects
  */
-const requestActionsTypes = config => {
+const apiRequestActionsTypes = config => {
     const types = asyncType(config);
     const actions = createRequestActions(types);
 
@@ -18,11 +18,11 @@ const requestActionsTypes = config => {
  * @param {Object} config { modulePrefix: String, defaultTypes: Array<Sting> }
  * @returns {Function} factory for creating the actions and types
  */
-export const createRequestActionsTypes = ({ modulePrefix, defaultTypes }) => config =>
-    requestActionsTypes({
+export const createApiRequestActionsTypes = ({ modulePrefix, defaultTypes }) => config =>
+    apiRequestActionsTypes({
         types: defaultTypes,
         ...config,
         modulePrefix,
     });
 
-export default requestActionsTypes;
+export default apiRequestActionsTypes;

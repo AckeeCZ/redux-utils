@@ -1,7 +1,7 @@
-import requestActions from '../requestActions';
+import apiRequestActions from '../apiRequestActions';
 import { asyncType } from '../../../utilities/asyncType';
 
-describe('requestActions', () => {
+describe('apiRequestActions', () => {
     const types = asyncType({
         modulePrefix: 'articles',
         typePrefix: 'FETCH_ARTICLES_',
@@ -9,7 +9,7 @@ describe('requestActions', () => {
     let actions;
 
     beforeEach(() => {
-        actions = requestActions(types);
+        actions = apiRequestActions(types);
     });
 
     it('creates actions from given types', () => {

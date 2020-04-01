@@ -1,11 +1,11 @@
-import requestActionsTypes, { createRequestActionsTypes } from '../requestActionsTypes';
+import apiRequestActionsTypes, { createApiRequestActionsTypes } from '../apiRequestActionsTypes';
 
-describe('requestActionsTypes', () => {
+describe('apiRequestActionsTypes', () => {
     let types;
     let actions;
 
     beforeEach(() => {
-        const obj = requestActionsTypes({
+        const obj = apiRequestActionsTypes({
             modulePrefix: 'articles',
             typePrefix: 'FETCH_ARTICLES_',
         });
@@ -30,9 +30,9 @@ describe('requestActionsTypes', () => {
     });
 });
 
-describe('createRequestActionsTypes', () => {
+describe('createApiRequestActionsTypes', () => {
     it('creates actions and types factory with given module prefix', () => {
-        const createActionsTypes = createRequestActionsTypes({
+        const createActionsTypes = createApiRequestActionsTypes({
             modulePrefix: 'articles',
         });
         const { types, actions } = createActionsTypes({

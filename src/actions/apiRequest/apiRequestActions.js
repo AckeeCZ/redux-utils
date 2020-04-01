@@ -6,7 +6,7 @@ import templates from './templates';
  * @param {Array.<String>} types Redux action types
  * @returns {Object} generated action creators
  */
-const requestActions = types => {
+const apiRequestActions = types => {
     return Object.values(types).reduce((actions, type) => {
         const name = convertTypeToActionName(type);
         const suffix = type.slice(type.lastIndexOf('_') + 1);
@@ -16,4 +16,4 @@ const requestActions = types => {
     }, {});
 };
 
-export default requestActions;
+export default apiRequestActions;
