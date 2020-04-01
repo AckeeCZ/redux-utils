@@ -1,4 +1,4 @@
-# Request action creators helpers
+# API request action creator helpers
 
 ## `apiRequestActions(types: Object) => Object`
 
