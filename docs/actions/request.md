@@ -1,6 +1,6 @@
 # Request action creators helpers
 
-## `requestActions(types: Object) => Object`
+## `apiRequestActions(types: Object) => Object`
 
 A function generating an object with action creators for corresponding action types.
 
@@ -15,7 +15,7 @@ An object with action creators named by corresponding action types.
 ### Example
 
 ```js
-import { asyncType, requestActions } from '@ackee/redux-utils';
+import { asyncType, apiRequestActions } from '@ackee/redux-utils';
 
 // Use asyncType helper or define manually
 const types = asyncType({
@@ -23,7 +23,7 @@ const types = asyncType({
     typePrefix: 'FETCH_ARTICLES_',
 });
 
-const actions = requestActions(types);
+const actions = apiRequestActions(types);
 
 /*
 {
@@ -50,7 +50,7 @@ const actions = requestActions(types);
 */
 ```
 
-## <a name="requestActionsTypes"></a> `requestActionsTypes(config: Object) => Object`
+## <a name="apiRequestActionsTypes"></a> `apiRequestActionsTypes(config: Object) => Object`
 
 A function generating **both** request action types and creators.
 
@@ -60,20 +60,20 @@ A function generating **both** request action types and creators.
 
 ### Returns
 
-An object with `types` and `actions` key. `types` are generated action types and `actions` is an object with action creators (same as for `requestActions`)
+An object with `types` and `actions` key. `types` are generated action types and `actions` is an object with action creators (same as for `apiRequestActions`)
 
 ### Example
 
 ```js
-import { requestActionsTypes } from '@ackee/redux-utils';
+import { apiRequestActionsTypes } from '@ackee/redux-utils';
 
-const { types, actions } = requestActionsTypes({
+const { types, actions } = apiRequestActionsTypes({
     modulePrefix: 'articles',
     typePrefix: 'FETCH_ARTICLES_',
 });
 ```
 
-## <a name="createRequestActionsTypes"></a> `createRequestActionsTypes(config: Object) => Function`
+## <a name="createApiRequestActionsTypes"></a> `createApiRequestActionsTypes(config: Object) => Function`
 
 A function generating a factory to create Redux actions and types with predefined module prefix and default types. Similar to [`createAsyncType`](../utils/asyncType.md).
 
@@ -84,18 +84,18 @@ A function generating a factory to create Redux actions and types with predefine
 
 ### Returns
 
-A function for creating action types and actions with pre-defined parameters. It is the same function as `requestActionsTypes`.
+A function for creating action types and actions with pre-defined parameters. It is the same function as `apiRequestActionsTypes`.
 
 ### Example
 
 ```js
-import { createRequestActionsTypes } from '@ackee/redux-utils';
+import { createApiRequestActionsTypes } from '@ackee/redux-utils';
 
-const requestActionsTypes = createRequestActionsTypes({
+const apiRequestActionsTypes = createApiRequestActionsTypes({
     modulePrefix: 'articles',
 });
 
-const { types, actions } = requestActionsTypes({
+const { types, actions } = apiRequestActionsTypes({
     typePrefix: 'FETCH_ARTICLES_',
 });
 ```
