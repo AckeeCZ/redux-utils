@@ -1,7 +1,7 @@
 /*
     Usage:
 
-    const actionTypes = createTypes({
+    const actionTypes = apiRequestType({
         types: ['REQUEST', 'SUCCESS', 'FAILURE'],
         typePrefix: 'FETCH_POSTS_'
     });

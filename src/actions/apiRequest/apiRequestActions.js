@@ -7,13 +7,15 @@ import templates from './templates';
  * @returns {object} generated action creators
  */
 const apiRequestActions = types => {
-    return Object.values(types).reduce((actions, type) => {
+    const actionCreators = Object.values(types).reduce((actions, type) => {
         const name = convertTypeToActionName(type);
         const suffix = type.slice(type.lastIndexOf('_') + 1);
 
         actions[name] = templates[suffix](type);
         return actions;
     }, {});
+
+    return Object.freeze(actionCreators);
 };
 
 export default apiRequestActions;
