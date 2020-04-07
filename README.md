@@ -7,7 +7,7 @@
 Common Redux utilities, including:
 
 -   Reducer factories (`containerReducer`, `resetReducer`, `basicApiReducer` a more).
--   Generic API request action type and creator factories (`asyncType`, `requestActions`, `requestActionsTypes`).
+-   Generic API request action type and creator factories (`asyncType`, `apiRequestActions`).
 
 ## Table of contents
 
@@ -19,8 +19,6 @@ Common Redux utilities, including:
         -   [`createAsyncType`](./docs/utils/asyncType.md#createAsyncType)
     -   Action Creator helpers
         -   [`apiRequestActions`](./docs/actions/request.md)
-        -   [`apiRequestActionsTypes`](./docs/actions/request.md#apiRequestActionsTypes)
-        -   [`createApiRequestActionsTypes`](./docs/actions/request.md#createApiRequestActionsTypes)
     -   Reducer factories
         -   [`basicApiReducer`](./docs/reducers/basicApiReducer.md)
         -   [`paginationApiReducer`](./docs/reducers/paginationApiReducer.md)
