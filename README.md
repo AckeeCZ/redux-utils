@@ -14,9 +14,9 @@ Common Redux utilities, including:
 -   [Installing](#installing)
 -   [Configuration](#configuration)
 -   API References
-    -   [Action Type helpers](./docs/utils/asyncType.md)
-        -   [`asyncType`](./docs/utils/asyncType.md#asyncType)
-        -   [`createAsyncType`](./docs/utils/asyncType.md#createAsyncType)
+    -   [Action Type helpers](./docs/utils/apiRequestType.md)
+        -   [`apiRequestType`](./docs/utils/apiRequestType.md#apiRequestType)
+        -   [`createApiRequestType`](./docs/utils/apiRequestType.md#createApiRequestType)
     -   Action Creator helpers
         -   [`apiRequestActions`](./docs/actions/request.md)
     -   Reducer factories
