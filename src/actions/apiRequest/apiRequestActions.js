@@ -3,8 +3,8 @@ import templates from './templates';
 
 /**
  * Generates Redux action creators for given action types
- * @param {Array.<String>} types Redux action types
- * @returns {Object} generated action creators
+ * @param {Array.<string>} types Redux action types
+ * @returns {object} generated action creators
  */
 const apiRequestActions = types => {
     return Object.values(types).reduce((actions, type) => {
