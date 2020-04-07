@@ -15,7 +15,7 @@
 
 const DEFAULT_TYPES = ['REQUEST', 'SUCCESS', 'FAILURE', 'CANCEL', 'RESET'];
 
-export function asyncType(params = {}) {
+export function apiRequestType(params = {}) {
     const { types, typePrefix, modulePrefix } = {
         typePrefix: '',
         modulePrefix: '',
@@ -33,9 +33,9 @@ export function asyncType(params = {}) {
     return Object.freeze(actionTypes);
 }
 
-export function createAsyncType({ modulePrefix, defaultTypes }) {
+export function createApiRequestType({ modulePrefix, defaultTypes }) {
     return params =>
-        asyncType({
+        apiRequestType({
             types: defaultTypes,
             ...params,
             modulePrefix,

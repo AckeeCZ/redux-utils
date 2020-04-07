@@ -1,8 +1,8 @@
 import apiRequestActions from '../apiRequestActions';
-import { asyncType } from '../../../utilities/asyncType';
+import { apiRequestType } from '../../../utilities/apiRequestType';
 
 describe('apiRequestActions', () => {
-    const types = asyncType({
+    const types = apiRequestType({
         modulePrefix: 'articles',
         typePrefix: 'FETCH_ARTICLES_',
     });
