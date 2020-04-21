@@ -1,17 +1,23 @@
 import { convertTypeToActionName } from './utils';
-import templates from './templates';
+import { list, detail } from './templates';
+
+const defaultOptions = {
+    isDetailRequest: false,
+};
 
 /**
  * Generates Redux action creators for given action types
  * @param {Array.<string>} types Redux action types
- * @returns {object} generated action creators
+ * @param {Object} [options] for creating action creators
+ * @returns {Object} generated action creators
  */
-const apiRequestActions = types => {
+const apiRequestActions = (types, options = defaultOptions) => {
     const actionCreators = Object.values(types).reduce((actions, type) => {
+        const template = options.isDetailRequest ? detail : list;
         const name = convertTypeToActionName(type);
         const suffix = type.slice(type.lastIndexOf('_') + 1);
 
-        actions[name] = templates[suffix](type);
+        actions[name] = template[suffix](type);
         return actions;
     }, {});
 
