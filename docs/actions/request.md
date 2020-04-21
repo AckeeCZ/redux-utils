@@ -15,10 +15,10 @@ An object with action creators named by corresponding action types.
 ### Example
 
 ```js
-import { asyncType, apiRequestActions } from '@ackee/redux-utils';
+import { apiRequestType, apiRequestActions } from '@ackee/redux-utils';
 
-// Use asyncType helper or define manually
-const types = asyncType({
+// Use apiRequestType helper or define manually
+const types = apiRequestType({
     modulePrefix: 'articles',
     typePrefix: 'FETCH_ARTICLES_',
 });
