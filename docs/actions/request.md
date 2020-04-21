@@ -1,16 +1,26 @@
 # API request action creator helpers
 
-## `apiRequestActions(types: Object) => Object`
+## `apiRequestActions(types: Object, options?: Object) => Object`
 
 A function generating an object with action creators for corresponding action types.
 
 ### Parameters
 
 -   `types: Object` - an object with action types (e.g. `{ REQUEST: 'REQUEST', FAILURE: 'FAILURE' }`)
+-   `options?: Object` - an optional object parameter with options
+    -   `isDetailRequest: Boolean` - If true is passed, the created actions will accept `id` as the first parameter. This is useful for fetching details of an entity. Default value is `false`.
 
 ### Returns
 
 An object with action creators named by corresponding action types.
+
+### Default options
+
+```
+{
+    isDetailRequest: false
+}
+```
 
 ### Example
 

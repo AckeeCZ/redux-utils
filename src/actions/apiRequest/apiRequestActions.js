@@ -7,7 +7,7 @@ const defaultOptions = {
 
 /**
  * Generates Redux action creators for given action types
- * @param {Array.<string>} types Redux action types
+ * @param {Object} types Redux action types
  * @param {Object} [options] for creating action creators
  * @returns {Object} generated action creators
  */
