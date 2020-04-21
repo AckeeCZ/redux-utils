@@ -1,6 +1,6 @@
-# Action creators helpers
+# Action types helpers
 
-## `asyncType(params: object) => object`
+## `apiRequestType(params: object) => object`
 
 A utility for dynamically creating (asynchronous) action types.
 
@@ -32,9 +32,9 @@ An object that includes:
 #### Custom `typePrefix`
 
 ```js
-import { asyncType } from '@ackee/redux-utils';
+import { apiRequestType } from '@ackee/redux-utils';
 
-const fetchUserTypes = asyncType({
+const fetchUserTypes = apiRequestType({
     typePrefix: 'FETCH_USER_',
 });
 
@@ -53,9 +53,9 @@ console.log(fetchUserType);
 #### Custom `types`
 
 ```js
-import { asyncType } from '@ackee/redux-utils';
+import { apiRequestType } from '@ackee/redux-utils';
 
-const fetchUserTypes = asyncType({
+const fetchUserTypes = apiRequestType({
     typePrefix: 'FETCH_USER_',
     types: ['REQUEST', 'SUCCESS', 'FAILURE'],
 });
@@ -73,9 +73,9 @@ console.log(fetchUserType);
 #### With `modulePrefix`
 
 ```js
-import { asyncType } from '@ackee/redux-utils';
+import { apiRequestType } from '@ackee/redux-utils';
 
-const fetchUserTypes = asyncType({
+const fetchUserTypes = apiRequestType({
     modulePrefix: 'users',
     typePrefix: 'FETCH_USER_',
     types: ['REQUEST', 'SUCCESS', 'FAILURE'],
@@ -91,30 +91,30 @@ console.log(fetchUserType);
 */
 ```
 
-## `createAsyncType(params: object): function`
+## `createApiRequestType(params: object): function`
 
-This function returns predefined `asyncType` utility with `modulePrefix` and/or custom default `types` parameters.
+This function returns predefined `apiRequestType` utility with `modulePrefix` and/or custom default `types` parameters.
 
 ### Parameters
 
--   `modulePrefix?: string` - a default `modulePrefix` for `asyncType` utility
--   `types?: array<string>` - a default `types` for `asyncType` utility
+-   `modulePrefix?: string` - a default `modulePrefix` for `apiRequestType` utility
+-   `types?: array<string>` - a default `types` for `apiRequestType` utility
 
 ### Returns
 
-A function, binded `asyncType` utility with those provided parameters.
+A function, binded `apiRequestType` utility with those provided parameters.
 
 ### Example
 
 ```js
-import { createAsyncType } from '@ackee/redux-utils';
+import { createApiRequestType } from '@ackee/redux-utils';
 
-const asyncType = createAsyncType({
+const apiRequestType = createApiRequestType({
     modulePrefix: 'users',
     types: ['REQUEST', 'SUCCESS', 'FAILURE'],
 });
 
-const fetchUserTypes = asyncType({
+const fetchUserTypes = apiRequestType({
     typePrefix: 'FETCH_USER_',
 });
 console.log(deletedUserTypes);
@@ -126,7 +126,7 @@ console.log(deletedUserTypes);
 }
 */
 
-const deleteUserTypes = asyncType({
+const deleteUserTypes = apiRequestType({
     typePrefix: 'DELETE_USER_',
 });
 console.log(deletedUserTypes);

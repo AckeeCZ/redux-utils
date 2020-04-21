@@ -1,2 +1,2 @@
-export { asyncType, createAsyncType } from './asyncType';
+export { apiRequestType, createApiRequestType } from './apiRequestType';
 export { default as strictObjectAccess } from './strictObjectAccess';
