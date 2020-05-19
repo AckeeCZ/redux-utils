@@ -35,7 +35,6 @@ export default function makeBasicApiReducer(customParams) {
                     inProgress: true,
                     cancelled: false,
                     success: false,
-                    lastSuccessAt: null,
                 };
 
             case types.CANCEL:
