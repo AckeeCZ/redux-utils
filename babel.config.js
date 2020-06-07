@@ -7,7 +7,6 @@ const config = {
             {
                 loose: true,
                 modules: process.env.BABEL_ENV === 'es' ? false : 'commonjs',
-                debug: true,
                 bugfixes: true,
             },
         ],
