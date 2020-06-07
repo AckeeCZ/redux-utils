@@ -1,7 +1,17 @@
 const { babelAliases } = require('./config/aliases');
 
 const config = {
-    presets: [],
+    presets: [
+        [
+            '@babel/env',
+            {
+                loose: true,
+                modules: process.env.BABEL_ENV === 'es' ? false : 'commonjs',
+                debug: true,
+                bugfixes: true,
+            },
+        ],
+    ],
     plugins: [
         [
             'babel-plugin-module-resolver',
@@ -9,26 +19,10 @@ const config = {
                 alias: babelAliases,
             },
         ],
+        '@babel/plugin-proposal-object-rest-spread',
+        '@babel/plugin-transform-runtime',
     ],
     ignore: ['**/__tests__/', '**/*.test.js'],
 };
-
-if (process.env.BABEL_ENV === 'es') {
-    config.presets.push([
-        '@babel/modules',
-        {
-            loose: true,
-        },
-    ]);
-} else {
-    config.presets.push([
-        '@babel/env',
-        {
-            loose: true,
-        },
-    ]);
-
-    config.plugins.push(...['@babel/plugin-proposal-object-rest-spread', '@babel/plugin-transform-runtime']);
-}
 
 module.exports = config;

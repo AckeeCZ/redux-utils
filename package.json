@@ -23,38 +23,40 @@
         "url": "https://github.com/AckeeCZ/redux-utils"
     },
     "dependencies": {
-        "@babel/runtime": "7.x"
+        "@babel/runtime": "7.10.2"
     },
     "peerDependencies": {
         "reselect": "4.x"
     },
     "devDependencies": {
-        "@babel/cli": "7.x",
-        "@babel/core": "7.x",
-        "@babel/plugin-proposal-object-rest-spread": "7.x",
-        "@babel/plugin-transform-runtime": "7.x",
-        "@babel/preset-env": "7.x",
+        "@ackee/browserslist-config": "1.0.0",
+        "@babel/cli": "7.10.1",
+        "@babel/core": "7.10.2",
+        "@babel/plugin-proposal-object-rest-spread": "7.10.1",
+        "@babel/plugin-transform-runtime": "7.10.1",
+        "@babel/preset-env": "7.10.2",
         "@babel/preset-modules": "0.x",
         "babel-core": "^7.0.0-bridge.0",
         "babel-eslint": "10.x",
-        "babel-jest": "24.x",
-        "babel-plugin-module-resolver": "3.x",
-        "cross-env": "5.x",
-        "eslint": "5.x",
+        "babel-jest": "26.0.1",
+        "babel-plugin-module-resolver": "4.0.0",
+        "babel-preset-react-app": "^9.1.2",
+        "cross-env": "7.0.2",
+        "eslint": "7.2.0",
         "eslint-config-ackee": "0.x",
-        "eslint-config-prettier": "4.x",
+        "eslint-config-prettier": "6.11.0",
         "eslint-import-resolver-webpack": "0.x",
-        "eslint-plugin-import": "2.x",
-        "eslint-plugin-jest": "22.x",
-        "husky": "1.x",
-        "jest": "24.x",
-        "lint-staged": "8.x",
-        "onchange": "5.x",
+        "eslint-plugin-import": "2.20.2",
+        "eslint-plugin-jest": "23.13.2",
+        "husky": "4.2.5",
+        "jest": "26.0.1",
+        "lint-staged": "10.2.9",
+        "onchange": "7.0.2",
         "package-size": "2.x",
-        "prettier": "1.x",
+        "prettier": "2.0.5",
         "prettier-config-ackee": "0.x",
         "reselect": "4.x",
-        "webpack": "4.x"
+        "webpack": "4.43.0"
     },
     "husky": {
         "hooks": {
@@ -64,11 +66,13 @@
     },
     "lint-staged": {
         "*.{js,jsx,json,scss,less,css,md}": [
-            "prettier --config ./prettier.config.js --write && yarn lint",
-            "git add"
+            "prettier --config ./prettier.config.js --write"
         ]
     },
     "publishConfig": {
         "access": "public"
-    }
+    },
+    "browserslist": [
+        "extends @ackee/browserslist-config"
+    ]
 }
