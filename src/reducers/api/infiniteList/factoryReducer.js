@@ -55,12 +55,14 @@ export default function makeInfiniteListApiReducer(customParams) {
 
             case types.SUCCESS: {
                 const currentCount = selectors.currentCount(action);
+                const totalCount = selectors.totalCount(action);
 
                 return {
                     ...state,
                     ...basicApiReducer(state, action),
                     totalOffset: state.totalOffset + currentCount,
                     hasMore: currentCount >= state.payloadSize,
+                    totalCount,
                 };
             }
 
