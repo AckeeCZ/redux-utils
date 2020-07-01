@@ -29,7 +29,7 @@
         "reselect": "4.x"
     },
     "devDependencies": {
-        "@ackee/browserslist-config": "1.0.0",
+        "@ackee/browserslist-config": "^1.0.1",
         "@babel/cli": "7.10.1",
         "@babel/core": "7.10.2",
         "@babel/plugin-proposal-object-rest-spread": "7.10.1",
