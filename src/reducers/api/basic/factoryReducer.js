@@ -47,7 +47,7 @@ const getParams = (customParams = {}) => {
         * @param {(action: object) => boolean} [params.actionFilters.update]
 
  * @returns {(state: object, action: object) => object}
- */
+*/
 export default function makeBasicApiReducer(params) {
     const { actionTypes: types, initialState, actionFilters } = getParams(params);
 

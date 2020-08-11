@@ -1,6 +1,6 @@
 import { config, undefinedActionTypesWarning } from 'Config';
 
-import makeBasicApiReducer from '../basic';
+import makeBasicApiReducer from '../basic/factoryReducer';
 
 import * as Config from './config';
 
