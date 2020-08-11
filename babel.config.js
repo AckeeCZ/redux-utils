@@ -23,7 +23,7 @@ const config = {
         [
             '@babel/plugin-transform-runtime',
             {
-                useESModules: true,
+                useESModules: false,
                 regenerator: false,
                 helpers: true,
             },
