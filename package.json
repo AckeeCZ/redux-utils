@@ -1,6 +1,6 @@
 {
     "name": "@ackee/redux-utils",
-    "version": "2.3.3",
+    "version": "2.4.0",
     "description": "Common Redux utilities - reducer factories, utility for generating action types.",
     "main": "lib/index.js",
     "module": "es/index.js",
@@ -29,7 +29,7 @@
         "reselect": "4.x"
     },
     "devDependencies": {
-        "@ackee/browserslist-config": "1.0.0",
+        "@ackee/browserslist-config": "^1.0.1",
         "@babel/cli": "7.10.1",
         "@babel/core": "7.10.2",
         "@babel/plugin-proposal-object-rest-spread": "7.10.1",

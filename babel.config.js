@@ -5,6 +5,7 @@ const config = {
         [
             '@babel/env',
             {
+                useBuiltIns: false,
                 loose: true,
                 modules: process.env.BABEL_ENV === 'es' ? false : 'commonjs',
                 bugfixes: true,
@@ -19,7 +20,14 @@ const config = {
             },
         ],
         '@babel/plugin-proposal-object-rest-spread',
-        '@babel/plugin-transform-runtime',
+        [
+            '@babel/plugin-transform-runtime',
+            {
+                useESModules: true,
+                regenerator: false,
+                helpers: true,
+            },
+        ],
     ],
     ignore: ['**/__tests__/', '**/*.test.js'],
 };

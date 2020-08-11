@@ -9,10 +9,11 @@ const stringifyKeys = obj => {
 
 /**
  *
- * @param {Object} state - Redux state.
- * @param {String} entityKey - Entity name (e.g. 'users', 'user').
- * @param {String} [typeId] - API type ID (e.g. 'fetch', 'delete')
- * @param {String} [itemId] - entity item ID (e.g. 'userId', 'postId')
+ * @param {object} state - Redux state.
+ * @param {string} entityKey - Entity name (e.g. 'users', 'user').
+ * @param {string} [typeId] - API type ID (e.g. 'fetch', 'delete')
+ * @param {string} [itemId] - entity item ID (e.g. 'userId', 'postId')
+ * @return {object}
  */
 export const apiSelector = (state, entityKey, typeId, itemId) => {
     const entity = state.api[entityKey];
@@ -42,16 +43,20 @@ export const apiSelector = (state, entityKey, typeId, itemId) => {
     return entityTypes[itemId] || entityTypes.placeholder;
 };
 
-export const paginationApiSelector = createSelector(
-    apiSelector,
-    group => {
-        const { page, amount, ...rest } = group;
+/**
+ * @param {object} state - Redux state.
+ * @param {string} entityKey - Entity name (e.g. 'users', 'user').
+ * @param {string} [typeId] - API type ID (e.g. 'fetch', 'delete')
+ * @param {string} [itemId] - entity item ID (e.g. 'userId', 'postId')
+ * @return {object}
+ */
+export const paginationApiSelector = createSelector(apiSelector, group => {
+    const { page, amount, ...rest } = group;
 
-        return {
-            ...rest,
-            page,
-            amount,
-            offset: (page - 1) * amount,
-        };
-    },
-);
+    return {
+        ...rest,
+        page,
+        amount,
+        offset: (page - 1) * amount,
+    };
+});

@@ -23,8 +23,33 @@ const getParams = (customParams = {}) => {
     };
 };
 
-export default function makeBasicApiReducer(customParams) {
-    const { actionTypes: types, initialState, actionFilters } = getParams(customParams);
+/**
+ * Docs: https://github.com/AckeeCZ/redux-utils/blob/master/docs/reducers/basicApiReducer.md
+ * 
+ * @param {object} params 
+
+    * @param {object} params.actionTypes 
+        * @param {(string | undefined)} params.actionTypes.REQUEST
+        * @param {(string | undefined)} params.actionTypes.CANCEL
+        * @param {(string | undefined)} params.actionTypes.SUCCESS
+        * @param {(string | undefined)} params.actionTypes.FAILURE
+        * @param {(string | undefined)} params.actionTypes.RESET
+        * @param {(string | undefined)} params.actionTypes.UPDATE
+
+    * @param {object} [params.initialState]
+        * @param {boolean} params.initialState.inProgress
+        * @param {any} params.initialState.error
+        * @param {boolean} params.initialState.success
+        * @param {boolean} params.initialState.cancelled
+        * @param {number | null} params.initialState.lastSuccessAt
+        
+    * @param {object} [params.actionFilters]
+        * @param {(action: object) => boolean} [params.actionFilters.update]
+
+ * @returns {(state: object, action: object) => object}
+*/
+export default function makeBasicApiReducer(params) {
+    const { actionTypes: types, initialState, actionFilters } = getParams(params);
 
     function basicApiReducer(state = initialState, action) {
         switch (action.type) {
