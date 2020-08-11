@@ -7,6 +7,16 @@ import configContainerReducer from '../config/reducers/containerReducer';
 
 config.init = false;
 
+/**
+ * Docs:https://github.com/ackeeCZ/redux-utils#configuration-optional
+ *
+ * @param {object} customConfig
+ * @param {object} customConfig.basicApiReducer
+ * @param {object} customConfig.paginationApiReducer
+ * @param {object} customConfig.containerReducer
+ * @param {object} customConfig.logger
+ * @param {function} customConfig.logger.warn
+ */
 export default function configure(customConfig = {}) {
     if (config.init) {
         throw new ReduxUtilsError(`The 'configure' method may be called only once.`);

@@ -15,6 +15,13 @@
 
 const DEFAULT_TYPES = ['REQUEST', 'SUCCESS', 'FAILURE', 'CANCEL', 'RESET'];
 
+/**
+ * @param {object} params
+ * @param {string} [params.typePrefix]
+ * @param {string} [params.modulePrefix]
+ * @param {string[]} [params.types]
+ * @returns {object}
+ */
 export function asyncType(params = {}) {
     const { types, typePrefix, modulePrefix } = {
         typePrefix: '',
@@ -33,6 +40,12 @@ export function asyncType(params = {}) {
     return Object.freeze(actionTypes);
 }
 
+/**
+ * @param {object} params
+ * @param {string} [params.modulePrefix]
+ * @param {string[]} [params.defaultTypes]
+ * @returns {asyncType}
+ */
 export function createAsyncType({ modulePrefix, defaultTypes }) {
     return params =>
         asyncType({
