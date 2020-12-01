@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { ReduxUtilsError } from 'Config';
 import { createSelector } from 'reselect';
 

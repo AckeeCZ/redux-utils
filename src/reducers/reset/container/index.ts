@@ -1,1 +1,1 @@
-export { default } from './fatoryReducer';
+export { default } from './factoryReducer';

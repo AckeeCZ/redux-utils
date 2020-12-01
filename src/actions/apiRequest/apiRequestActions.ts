@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { convertTypeToActionName } from './utils';
 import { list, detail } from './templates';
 

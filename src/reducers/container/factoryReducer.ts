@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { config, emptyActionTypesError, ReduxUtilsError, undefinedItemIdWarning } from 'Config';
 
 function getInitialState({ childReducer, initialState: customInitialState, options }) {

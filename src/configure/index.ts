@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { config, ReduxUtilsError } from '../config';
 
 import configBasicApiReducer from '../config/reducers/basicApiReducer';

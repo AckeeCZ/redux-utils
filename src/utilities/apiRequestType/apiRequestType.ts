@@ -1,3 +1,6 @@
+// @ts-nocheck
+import { RequestTypeParams } from '../../constants';
+
 /*
     Usage:
 
@@ -15,7 +18,7 @@
 
 const DEFAULT_TYPES = ['REQUEST', 'SUCCESS', 'FAILURE', 'CANCEL', 'RESET'];
 
-export function apiRequestType(params = {}) {
+export function apiRequestType(params /*: RequestTypeParams */ = {}) {
     const { types, typePrefix, modulePrefix } = {
         typePrefix: '',
         modulePrefix: '',

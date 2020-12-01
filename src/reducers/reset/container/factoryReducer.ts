@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { ReduxUtilsError } from 'Config';
 import { parseResetActionType } from '../utilities';
 

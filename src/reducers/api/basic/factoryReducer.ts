@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { config, undefinedActionTypesWarning } from 'Config';
 
 import * as Config from './config';

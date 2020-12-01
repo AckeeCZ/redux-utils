@@ -33,7 +33,8 @@
         "url": "https://github.com/AckeeCZ/redux-utils"
     },
     "dependencies": {
-        "@babel/runtime": "7.x"
+        "@babel/runtime": "7.x",
+        "@types/node": "^14.14.10"
     },
     "peerDependencies": {
         "reselect": "4.x"
@@ -57,6 +58,7 @@
         "eslint-import-resolver-webpack": "0.x",
         "eslint-plugin-import": "2.x",
         "eslint-plugin-jest": "22.x",
+        "gitmoji-changelog": "2.x",
         "husky": "1.x",
         "jest": "24.x",
         "lint-staged": "8.x",

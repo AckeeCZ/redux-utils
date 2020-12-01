@@ -7,6 +7,7 @@ const config = {
             'babel-plugin-module-resolver',
             {
                 alias: babelAliases,
+                root: ['./src'],
             },
         ],
     ],
