@@ -19,7 +19,7 @@ import { RequestTypeParams } from '../../constants';
 
 const DEFAULT_TYPES = ['REQUEST', 'SUCCESS', 'FAILURE', 'CANCEL', 'RESET'];
 
-export function apiRequestType(params /*: RequestTypeParams */ = {}) {
+export function apiRequestType(params: RequestTypeParams = {}) {
     const { types, typePrefix, modulePrefix } = {
         typePrefix: '',
         modulePrefix: '',

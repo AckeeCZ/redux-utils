@@ -1,8 +1,19 @@
+const path = require('path');
 const { babelAliases } = require('./config/aliases');
 
 const config = {
-    presets: [],
+    presets: ['@babel/preset-typescript'],
     plugins: [
+        '@babel/proposal-class-properties',
+        '@babel/proposal-object-rest-spread',
+        '@babel/plugin-proposal-nullish-coalescing-operator',
+        [
+            'babel-plugin-custom-import-path-transform',
+            {
+                transformImportPath: path.resolve(__dirname, 'scripts/transformImportPath.js'),
+            },
+        ],
+        '@babel/plugin-transform-runtime',
         [
             'babel-plugin-module-resolver',
             {
@@ -28,8 +39,6 @@ if (process.env.BABEL_ENV === 'es') {
             loose: true,
         },
     ]);
-
-    config.plugins.push(...['@babel/plugin-proposal-object-rest-spread', '@babel/plugin-transform-runtime']);
 }
 
 module.exports = config;

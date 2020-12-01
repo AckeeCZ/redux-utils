@@ -42,6 +42,8 @@
     "devDependencies": {
         "@babel/cli": "7.x",
         "@babel/core": "7.x",
+        "@babel/plugin-proposal-class-properties": "^7.8.3",
+        "@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.3",
         "@babel/plugin-proposal-object-rest-spread": "7.x",
         "@babel/plugin-transform-runtime": "7.x",
         "@babel/preset-env": "7.x",
@@ -49,6 +51,7 @@
         "@babel/preset-typescript": "^7.9.0",
         "babel-core": "^7.0.0-bridge.0",
         "babel-eslint": "10.x",
+        "babel-plugin-custom-import-path-transform": "1.x",
         "babel-jest": "24.x",
         "babel-plugin-module-resolver": "3.x",
         "cross-env": "5.x",
