@@ -1,3 +1,4 @@
+/* tslint:disable */
 import { mergeConfigs } from './utils';
 import * as BasicApiReducer from './basicApiReducer';
 

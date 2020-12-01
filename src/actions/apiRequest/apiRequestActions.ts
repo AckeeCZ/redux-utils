@@ -1,4 +1,5 @@
 // @ts-nocheck
+/* tslint:disable */
 import { convertTypeToActionName } from './utils';
 import { list, detail } from './templates';
 

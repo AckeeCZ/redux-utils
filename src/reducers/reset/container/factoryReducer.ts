@@ -1,4 +1,5 @@
 // @ts-nocheck
+/* tslint:disable */
 import { ReduxUtilsError } from 'Config';
 import { parseResetActionType } from '../utilities';
 

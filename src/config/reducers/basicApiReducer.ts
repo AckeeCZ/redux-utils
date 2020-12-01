@@ -1,3 +1,4 @@
+/* tslint:disable */
 import { mergeConfigs } from './utils';
 
 export const initialState = Object.freeze({

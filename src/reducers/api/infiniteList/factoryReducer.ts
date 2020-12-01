@@ -1,4 +1,5 @@
 // @ts-nocheck
+/* tslint:disable */
 import { config, undefinedActionTypesWarning } from 'Config';
 
 import makeBasicApiReducer from '../basic';

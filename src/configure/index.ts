@@ -1,4 +1,5 @@
 // @ts-nocheck
+/* tslint:disable */
 import { config, ReduxUtilsError } from '../config';
 
 import configBasicApiReducer from '../config/reducers/basicApiReducer';

@@ -1,4 +1,5 @@
 // @ts-nocheck
+/* tslint:disable */
 import { config, emptyActionTypesError, ReduxUtilsError, undefinedItemIdWarning } from 'Config';
 
 function getInitialState({ childReducer, initialState: customInitialState, options }) {

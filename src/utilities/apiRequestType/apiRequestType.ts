@@ -1,4 +1,5 @@
 // @ts-nocheck
+/* tslint:disable */
 import { RequestTypeParams } from '../../constants';
 
 /*
