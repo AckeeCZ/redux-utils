@@ -1,9 +1,7 @@
-// @ts-nocheck
-/* tslint:disable */
 export class StrictAccessError extends Error {
     constructor(target: Object, propertyKey: PropertyKey) {
         const msg = 'Accessing this object property results in an undefined value.';
-        const usedKey = `Used property key: '${propertyKey}',`;
+        const usedKey = `Used property key: '${propertyKey?.toString()}',`;
         const affectedObject = `Affected object: ${JSON.stringify(target, null, 2)}`;
         const message = [msg, usedKey, affectedObject].join('\n');
 
