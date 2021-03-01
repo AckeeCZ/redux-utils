@@ -1,6 +1,6 @@
 // @ts-nocheck
 /* tslint:disable */
-import { ReduxUtilsError } from 'Config';
+import { ReduxUtilsError } from '../../../config';
 import { parseResetActionType } from '../utilities';
 
 const invalidItemIdError = itemId => ({
