@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* tslint:disable */
 interface RequestTypeParams {
     types?: any;
     params?: RequestTypeParams;
