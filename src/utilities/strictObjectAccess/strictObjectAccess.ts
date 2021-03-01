@@ -1,7 +1,7 @@
 export class StrictAccessError extends Error {
-    constructor(target: Object, propertyKey: PropertyKey) {
+    constructor(target: Object, propertyKey: String) {
         const msg = 'Accessing this object property results in an undefined value.';
-        const usedKey = `Used property key: '${propertyKey?.toString()}',`;
+        const usedKey = `Used property key: '${propertyKey}',`;
         const affectedObject = `Affected object: ${JSON.stringify(target, null, 2)}`;
         const message = [msg, usedKey, affectedObject].join('\n');
 
