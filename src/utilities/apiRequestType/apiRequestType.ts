@@ -1,6 +1,9 @@
-// @ts-nocheck
-/* tslint:disable */
-import { RequestTypeParams } from '../../constants';
+interface RequestTypeParams {
+    types?: any;
+    params?: RequestTypeParams;
+    typePrefix?: String;
+    modulePrefix?: String;
+}
 
 /*
     Usage:
