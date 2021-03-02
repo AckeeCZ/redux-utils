@@ -54,7 +54,7 @@ export default function makeContainerReducer(customParams: CustomParams) {
 
     const types = new Set(actionTypes);
 
-    return function containerReducer(state: ApiReducerState = initialState, action: Action) {
+    const containerReducer = (state: ApiReducerState = initialState, action: Action) => {
         if (!types.has(action.type)) {
             return state;
         }
@@ -76,4 +76,5 @@ export default function makeContainerReducer(customParams: CustomParams) {
             [itemId]: childReducer(state[itemId], action, itemInitialState),
         };
     };
+    return containerReducer;
 }
