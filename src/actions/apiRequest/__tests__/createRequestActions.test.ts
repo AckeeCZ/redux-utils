@@ -2,11 +2,11 @@ import apiRequestActions from '../apiRequestActions';
 import { apiRequestType } from '../../../utilities/apiRequestType';
 
 describe('apiRequestActions - list', () => {
-    const types = apiRequestType({
+    const types: Record<string, string> = apiRequestType({
         modulePrefix: 'articles',
         typePrefix: 'FETCH_ARTICLES_',
     });
-    let actions;
+    let actions: any;
 
     beforeEach(() => {
         actions = apiRequestActions(types);
@@ -68,11 +68,11 @@ describe('apiRequestActions - list', () => {
 });
 
 describe('apiRequestActions - detail', () => {
-    const types = apiRequestType({
+    const types: Record<string, string> = apiRequestType({
         modulePrefix: 'articles',
         typePrefix: 'FETCH_ARTICLE_',
     });
-    let actions;
+    let actions: any;
 
     beforeEach(() => {
         actions = apiRequestActions(types, { isDetailRequest: true });

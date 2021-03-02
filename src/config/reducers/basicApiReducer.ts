@@ -1,7 +1,7 @@
-/* tslint:disable */
 import { mergeConfigs } from './utils';
+import { ApiReducerState } from './types';
 
-export const initialState = Object.freeze({
+export const initialState: ApiReducerState = Object.freeze({
     inProgress: false,
     cancelled: false,
     error: '',
@@ -9,6 +9,6 @@ export const initialState = Object.freeze({
     lastSuccessAt: null,
 });
 
-export default function configurateBasicApiReducer(customConfigure) {
+export default function configurateBasicApiReducer(customConfigure?: any) {
     return mergeConfigs({ initialState }, customConfigure);
 }

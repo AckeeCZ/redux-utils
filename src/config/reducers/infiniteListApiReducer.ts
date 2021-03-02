@@ -1,12 +1,12 @@
-/* tslint:disable */
 import { mergeConfigs } from './utils';
 import * as BasicApiReducer from './basicApiReducer';
+import { Action, ApiReducerState, InfiniteReducerState } from './types';
 
 export default function configureInfiniteListApiReducer(
-    customConfigure,
-    basicApiReducerInitialState = BasicApiReducer.initialState,
+    customConfigure?: any,
+    basicApiReducerInitialState: ApiReducerState = BasicApiReducer.initialState,
 ) {
-    const initialState = Object.freeze({
+    const initialState: InfiniteReducerState = Object.freeze({
         ...basicApiReducerInitialState,
 
         // has more items to fetch
@@ -20,7 +20,7 @@ export default function configureInfiniteListApiReducer(
     });
 
     const selectors = Object.freeze({
-        currentCount: action => action.payload.ids.length,
+        currentCount: (action: Action) => action.payload.ids.length,
     });
 
     return mergeConfigs(

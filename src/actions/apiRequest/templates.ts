@@ -1,27 +1,26 @@
-/* tslint:disable */
 export const list = {
-    REQUEST: type => (params = {}) => ({
+    REQUEST: (type: string) => (params = {}) => ({
         type,
         payload: params,
     }),
-    SUCCESS: type => (payload, meta = {}) => ({ type, meta, payload }),
-    FAILURE: type => error => ({ type, error }),
-    CANCEL: type => () => ({ type }),
-    RESET: type => () => ({ type }),
+    SUCCESS: (type: string) => (payload: any, meta = {}) => ({ type, meta, payload }),
+    FAILURE: (type: string) => (error: any) => ({ type, error }),
+    CANCEL: (type: string) => () => ({ type }),
+    RESET: (type: string) => () => ({ type }),
 };
 
 export const detail = {
-    REQUEST: type => (id, params = {}) => ({
+    REQUEST: (type: string) => (id: number | string, params: any = {}) => ({
         type,
         meta: { id },
         payload: params,
     }),
-    SUCCESS: type => (id, payload, meta) => ({
+    SUCCESS: (type: string) => (id: number | string, payload: any, meta: any) => ({
         type,
-        meta: { id, ...meta },
         payload,
+        meta: { id, ...meta },
     }),
-    FAILURE: type => (id, error) => ({ type, meta: { id }, error }),
-    CANCEL: type => id => ({ type, meta: { id } }),
-    RESET: type => id => ({ type, meta: { id } }),
+    FAILURE: (type: string) => (id: number | string, error: any) => ({ type, error, meta: { id } }),
+    CANCEL: (type: string) => (id: number | string) => ({ type, meta: { id } }),
+    RESET: (type: string) => (id: number | string) => ({ type, meta: { id } }),
 };

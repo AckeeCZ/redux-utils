@@ -1,12 +1,11 @@
-// @ts-nocheck
-/* tslint:disable */
-import { config, undefinedActionTypesWarning } from 'Config';
+import { config, PaginationReducerState, Action, undefinedActionTypesWarning } from '../../../config';
+import { CustomParams } from '../../types';
 
 import makeBasicApiReducer from '../basic';
 
 import * as Config from './config';
 
-const getParams = (customParams = {}) => {
+const getParams = (customParams: CustomParams = {}) => {
     if (!customParams.actionTypes) {
         config.logger.warn(undefinedActionTypesWarning('paginationApiReducer', customParams));
     }
@@ -31,17 +30,19 @@ const getParams = (customParams = {}) => {
     };
 };
 
-export default function makePaginationApiReducer(customParams) {
-    const { actionTypes: types, initialState, selectors, options, actionFilters } = getParams(customParams);
+export default function makePaginationApiReducer(customParams: CustomParams) {
+    const { actionTypes: types, initialState, selectors, options, actionFilters }: CustomParams = getParams(
+        customParams,
+    );
 
     const basicApiReducer = makeBasicApiReducer({
-        actionTypes: types,
         initialState,
         options,
         actionFilters,
+        actionTypes: types,
     });
 
-    function paginationApiReducer(state = initialState, action) {
+    function paginationApiReducer(state: PaginationReducerState = initialState, action: Action) {
         switch (action.type) {
             case types.REQUEST:
             case types.CANCEL:
@@ -60,9 +61,9 @@ export default function makePaginationApiReducer(customParams) {
 
                 return {
                     ...state,
+                    totalCount,
                     ...basicApiReducer(state, action),
                     hasMore: hasMore === undefined ? currentCount >= state.limit : hasMore,
-                    totalCount,
                 };
             }
 

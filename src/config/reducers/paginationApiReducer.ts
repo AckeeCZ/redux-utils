@@ -1,12 +1,12 @@
-/* tslint:disable */
 import { mergeConfigs } from './utils';
 import * as BasicApiReducer from './basicApiReducer';
+import { Action, ApiReducerState, PaginationReducerState } from './types';
 
 export default function configurePaginationApiReducer(
-    customConfigure,
-    basicApiReducerInitialState = BasicApiReducer.initialState,
+    customConfigure?: any,
+    basicApiReducerInitialState: ApiReducerState = BasicApiReducer.initialState,
 ) {
-    const initialState = Object.freeze({
+    const initialState: PaginationReducerState = Object.freeze({
         ...basicApiReducerInitialState,
 
         // current page
@@ -26,9 +26,9 @@ export default function configurePaginationApiReducer(
     });
 
     const selectors = Object.freeze({
-        totalCount: action => action.meta.totalCount,
-        currentCount: action => action.payload.ids.length,
-        hasMore: action => action.meta.hasMore,
+        totalCount: (action: Action) => action.meta.totalCount,
+        currentCount: (action: Action) => action.payload.ids.length,
+        hasMore: (action: Action) => action.meta.hasMore,
     });
 
     return mergeConfigs(
