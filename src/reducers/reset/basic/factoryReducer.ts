@@ -1,12 +1,7 @@
 import { ApiReducerState, Action } from '../../../config';
 import { parseResetActionType } from '../utilities';
 
-/**
- * reset reducer to initial state when 'actionType' is dispatched
- * @param {Function} reducer
- * @param {String|Array} actionType
- */
-export default function makeResetReducer(reducer: any, actionType: string) {
+export default function makeResetReducer(reducer: Function, actionType: string) {
     const actionTypes = new Set(parseResetActionType(actionType));
 
     const resetReducer = (state: ApiReducerState, action: Action) => {

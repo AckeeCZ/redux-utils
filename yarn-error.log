@@ -109,7 +109,7 @@ npm manifest:
           }
       },
       "lint-staged": {
-          "src/*.{ts,json,scss,less,css,md}": [
+          "src/*.{ts,json,md}": [
               "prettier --config ./prettier.config.js --write"
           ],
           "src/*.{ts}": [

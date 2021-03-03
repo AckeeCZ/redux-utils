@@ -7,13 +7,6 @@ const stringifyKeys = obj => {
     return `[${keys.join(', ')}]`;
 };
 
-/**
- *
- * @param {Object} state - Redux state.
- * @param {String} entityKey - Entity name (e.g. 'users', 'user').
- * @param {String} [typeId] - API type ID (e.g. 'fetch', 'delete')
- * @param {String} [itemId] - entity item ID (e.g. 'userId', 'postId')
- */
 export const apiSelector = (state: any, entityKey: string, typeId: string, itemId: string) => {
     const entity = state.api[entityKey];
 

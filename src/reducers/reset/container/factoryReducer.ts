@@ -62,16 +62,6 @@ const resetItemsToInitialState = (
     return newState;
 };
 
-/**
- * reset items of container reducer to initial state
- *
- * @param {Function} childReducer
- * @param {Function} containerReducer
- * @param {Object} itemInitialState
- * @param {Object} resetItems
- *
- * @return {Function}
- */
 const makeResetContainerReducer = ({ childReducer, containerReducer, itemInitialState, resetItems }: any): Function => {
     // create map where key is an action type
     // and value is an array of child reducers keys
