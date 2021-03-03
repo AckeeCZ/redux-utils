@@ -1,5 +1,5 @@
 export class StrictAccessError extends Error {
-    constructor(target: Object, propertyKey: String) {
+    constructor(target: Object, propertyKey: string) {
         const msg = 'Accessing this object property results in an undefined value.';
         const usedKey = `Used property key: '${propertyKey}',`;
         const affectedObject = `Affected object: ${JSON.stringify(target, null, 2)}`;
@@ -14,8 +14,7 @@ export class StrictAccessError extends Error {
 }
 
 const handler = {
-    get(...args: any) {
-        const [target, propertyKey, receiver] = args;
+    get(target: object, propertyKey: string, receiver: any) {
         const HMR_PROPERTY_NAME = '$$typeof';
 
         if (!Reflect.has(target, propertyKey) && propertyKey !== HMR_PROPERTY_NAME) {
@@ -34,7 +33,7 @@ const handler = {
 */
 export default function strictObjectAccess(
     target: any = {},
-    enabled: any = process ? process.env.NODE_ENV === 'development' : true,
+    enabled: boolean = process ? process.env.NODE_ENV === 'development' : true,
 ) {
     // omit the functionality outside of development env.
     return enabled ? new Proxy(target, handler) : target;
