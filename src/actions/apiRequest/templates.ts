@@ -1,3 +1,4 @@
+/* tslint:disable */
 export const list = {
     REQUEST: type => (params = {}) => ({
         type,

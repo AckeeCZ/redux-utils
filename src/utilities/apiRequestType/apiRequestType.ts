@@ -1,3 +1,12 @@
+// @ts-nocheck
+/* tslint:disable */
+interface RequestTypeParams {
+    types?: any;
+    params?: RequestTypeParams;
+    typePrefix?: String;
+    modulePrefix?: String;
+}
+
 /*
     Usage:
 
@@ -15,7 +24,7 @@
 
 const DEFAULT_TYPES = ['REQUEST', 'SUCCESS', 'FAILURE', 'CANCEL', 'RESET'];
 
-export function apiRequestType(params = {}) {
+export function apiRequestType(params: RequestTypeParams = {}) {
     const { types, typePrefix, modulePrefix } = {
         typePrefix: '',
         modulePrefix: '',

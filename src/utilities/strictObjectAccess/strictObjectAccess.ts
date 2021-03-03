@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* tslint:disable */
 export class StrictAccessError extends Error {
     constructor(target, propKey) {
         const msg = 'Accessing this object property results in an undefined value.';

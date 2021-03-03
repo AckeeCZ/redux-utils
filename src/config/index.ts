@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* tslint:disable */
 import configBasicApiReducer from './reducers/basicApiReducer';
 import configPaginationApiReducer from './reducers/paginationApiReducer';
 import configInfiniteListApiReducer from './reducers/infiniteListApiReducer';

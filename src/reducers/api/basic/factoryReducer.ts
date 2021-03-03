@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* tslint:disable */
 import { config, undefinedActionTypesWarning } from 'Config';
 
 import * as Config from './config';
