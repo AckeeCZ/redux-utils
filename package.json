@@ -23,7 +23,6 @@
         "changelog": "gitmoji-changelog",
         "version": "yarn changelog && code --wait CHANGELOG.md && git add CHANGELOG.md",
         "release": "yarn version",
-        "prettier": "prettier --config ./prettier.config.ts --write './src/**/*.ts'",
         "size": "package-size ./es --no-cache"
     },
     "author": "Jiří Čermák <jiri.cermak@ackee.cz>",
@@ -46,8 +45,6 @@
         "@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.3",
         "@babel/plugin-proposal-object-rest-spread": "7.x",
         "@babel/plugin-transform-runtime": "7.x",
-        "@babel/preset-env": "7.x",
-        "@babel/preset-modules": "0.x",
         "@babel/preset-typescript": "^7.9.0",
         "babel-core": "^7.0.0-bridge.0",
         "babel-eslint": "10.x",
@@ -58,7 +55,6 @@
         "eslint": "5.x",
         "eslint-config-ackee": "0.x",
         "eslint-config-prettier": "4.x",
-        "eslint-import-resolver-webpack": "0.x",
         "eslint-plugin-import": "2.x",
         "eslint-plugin-jest": "22.x",
         "gitmoji-changelog": "2.x",
@@ -73,8 +69,7 @@
         "ts-jest": "25.x",
         "tslint-config-ackee": "^0.3.0",
         "tslint-config-prettier": "1.x",
-        "typescript": "3.x",
-        "webpack": "4.x"
+        "typescript": "3.x"
     },
     "husky": {
         "hooks": {
