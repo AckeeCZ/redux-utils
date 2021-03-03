@@ -1,5 +1,3 @@
-// @ts-nocheck
-/* tslint:disable */
 import { ReduxUtilsError, ApiReducerState, Action } from '../../../config';
 import { parseResetActionType } from '../utilities';
 
@@ -8,7 +6,7 @@ const invalidItemIdError = (itemId: string) => ({
     message: `'resetItems' object has invalid itemId parameter: ${itemId}. It must be non-empty string.`,
 });
 
-const addItemIdToActionTypes = (dest: any = {}, itemId: string = '', actionTypes: string[] = []) => {
+const addItemIdToActionTypes = (dest: object = {}, itemId: string = '', actionTypes: string[] = []) => {
     if (!itemId) {
         throw new ReduxUtilsError(invalidItemIdError(itemId));
     }
@@ -26,7 +24,7 @@ const addItemIdToActionTypes = (dest: any = {}, itemId: string = '', actionTypes
     create map, where key is action type
     and value is set of child reducer ids
  */
-const createRevertedMap = (resetItems: any = {}) => {
+const createRevertedMap = (resetItems: object = {}) => {
     const tempDest: Record<string, string[]> = {};
 
     // create object where key is action type and value is array of items ids
@@ -46,17 +44,18 @@ const createRevertedMap = (resetItems: any = {}) => {
     return revertedMap;
 };
 
+type ValueOf<T> = T[keyof T];
+
 const resetItemsToInitialState = (
     itemIds = new Set<keyof ApiReducerState>(),
-    childReducer: Function,
+    childReducer: (...args: any) => ValueOf<ApiReducerState>,
     itemInitialState: ApiReducerState,
 ) => {
     const newState: ApiReducerState = {};
     const mockAction: Action = {};
 
     for (const itemId of itemIds.values()) {
-        // TODO Fix this TS issue with any assigning to never and remove TS disable comment above
-        newState[itemId] = childReducer(undefined, mockAction, itemInitialState);
+        newState[itemId as ValueOf<ApiReducerState>] = childReducer(undefined, mockAction, itemInitialState);
     }
 
     return newState;
@@ -69,7 +68,7 @@ const makeResetContainerReducer = ({ childReducer, containerReducer, itemInitial
     // and value is array of action types -> reverted map)
     const actionTypes = createRevertedMap(resetItems);
 
-    return function resetContainerReducer(state: ApiReducerState, action: Action) {
+    const resetContainerReducer = (state: ApiReducerState, action: Action) => {
         const itemIds = actionTypes.get(action.type);
 
         if (itemIds) {
@@ -83,6 +82,7 @@ const makeResetContainerReducer = ({ childReducer, containerReducer, itemInitial
 
         return containerReducer(state, action, itemInitialState);
     };
+    return resetContainerReducer;
 };
 
 export default makeResetContainerReducer;
