@@ -1,6 +1,5 @@
-// @ts-nocheck
-/* tslint:disable */
-import { config, undefinedActionTypesWarning } from 'Config';
+import { config, InfiniteReducerState, Action, undefinedActionTypesWarning } from '../../../config';
+import { CustomParams } from '../../types';
 
 import makeBasicApiReducer from '../basic';
 import {
@@ -8,7 +7,7 @@ import {
     actionTypes as basicApiReducerActionTypes,
 } from '../basic/config';
 
-const getParams = (customParams = {}) => {
+const getParams = (customParams: CustomParams = {}) => {
     if (!customParams.actionTypes) {
         config.logger.warn(undefinedActionTypesWarning('infiniteListApiReducer', customParams));
     }
@@ -33,17 +32,19 @@ const getParams = (customParams = {}) => {
     };
 };
 
-export default function makeInfiniteListApiReducer(customParams) {
-    const { actionTypes: types, initialState, selectors, options, actionFilters } = getParams(customParams);
+export default function makeInfiniteListApiReducer(customParams: CustomParams) {
+    const { actionTypes: types, initialState, selectors, options, actionFilters }: CustomParams = getParams(
+        customParams,
+    );
 
     const basicApiReducer = makeBasicApiReducer({
-        actionTypes: types,
         initialState,
         options,
         actionFilters,
+        actionTypes: types,
     });
 
-    function infiniteListApiReducer(state = initialState, action) {
+    function infiniteListApiReducer(state: InfiniteReducerState = initialState, action: Action) {
         switch (action.type) {
             case types.REQUEST:
             case types.CANCEL:

@@ -2,11 +2,11 @@ import apiRequestActions from '../apiRequestActions';
 import { apiRequestType } from '../../../utilities/apiRequestType';
 
 describe('apiRequestActions - list', () => {
-    const types = apiRequestType({
+    const types: Record<string, string> = apiRequestType({
         modulePrefix: 'articles',
         typePrefix: 'FETCH_ARTICLES_',
     });
-    let actions;
+    let actions: any;
 
     beforeEach(() => {
         actions = apiRequestActions(types);
@@ -39,9 +39,9 @@ describe('apiRequestActions - list', () => {
         const meta = { totalCount: 4 };
 
         expect(actions.fetchArticlesSuccess(payload, meta)).toEqual({
-            type: types.FETCH_ARTICLES_SUCCESS,
             meta,
             payload,
+            type: types.FETCH_ARTICLES_SUCCESS,
         });
     });
 
@@ -49,8 +49,8 @@ describe('apiRequestActions - list', () => {
         const error = { id: 'error.api.general' };
 
         expect(actions.fetchArticlesFailure(error)).toEqual({
-            type: types.FETCH_ARTICLES_FAILURE,
             error,
+            type: types.FETCH_ARTICLES_FAILURE,
         });
     });
 
@@ -68,11 +68,11 @@ describe('apiRequestActions - list', () => {
 });
 
 describe('apiRequestActions - detail', () => {
-    const types = apiRequestType({
+    const types: Record<string, string> = apiRequestType({
         modulePrefix: 'articles',
         typePrefix: 'FETCH_ARTICLE_',
     });
-    let actions;
+    let actions: any;
 
     beforeEach(() => {
         actions = apiRequestActions(types, { isDetailRequest: true });
@@ -100,9 +100,9 @@ describe('apiRequestActions - detail', () => {
         const payload = { id: 1, title: 'Test 1' };
 
         expect(actions.fetchArticleSuccess(1, payload)).toEqual({
+            payload,
             type: types.FETCH_ARTICLE_SUCCESS,
             meta: { id: 1 },
-            payload,
         });
     });
 
@@ -110,9 +110,9 @@ describe('apiRequestActions - detail', () => {
         const error = { id: 'error.api.general' };
 
         expect(actions.fetchArticleFailure(45, error)).toEqual({
+            error,
             type: types.FETCH_ARTICLE_FAILURE,
             meta: { id: 45 },
-            error,
         });
     });
 

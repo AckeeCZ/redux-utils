@@ -1,10 +1,8 @@
-// @ts-nocheck
-/* tslint:disable */
-import { config, undefinedActionTypesWarning } from 'Config';
-
+import { config, ApiReducerState, Action, undefinedActionTypesWarning } from '../../../config';
+import { CustomParams } from '../../types';
 import * as Config from './config';
 
-const getParams = (customParams = {}) => {
+const getParams = (customParams: CustomParams = {}) => {
     if (!customParams.actionTypes) {
         config.logger.warn(undefinedActionTypesWarning('basicApiReducer', customParams));
     }
@@ -25,10 +23,10 @@ const getParams = (customParams = {}) => {
     };
 };
 
-export default function makeBasicApiReducer(customParams) {
-    const { actionTypes: types, initialState, actionFilters } = getParams(customParams);
+export default function makeBasicApiReducer(customParams: CustomParams) {
+    const { actionTypes: types, initialState, actionFilters }: CustomParams = getParams(customParams);
 
-    function basicApiReducer(state = initialState, action) {
+    function basicApiReducer(state: ApiReducerState = initialState, action: Action) {
         switch (action.type) {
             case types.REQUEST:
                 return {
@@ -52,9 +50,9 @@ export default function makeBasicApiReducer(customParams) {
 
                 return {
                     ...state,
+                    lastSuccessAt,
                     inProgress: false,
                     success: true,
-                    lastSuccessAt,
                 };
             }
 
@@ -63,8 +61,8 @@ export default function makeBasicApiReducer(customParams) {
 
                 return {
                     ...state,
-                    inProgress: false,
                     error,
+                    inProgress: false,
                 };
             }
 

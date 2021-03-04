@@ -1,6 +1,4 @@
-// @ts-nocheck
-/* tslint:disable */
-import { config, ReduxUtilsError } from '../config';
+import { config, CustomConfig, ReduxUtilsError } from '../config';
 
 import configBasicApiReducer from '../config/reducers/basicApiReducer';
 import configPaginationApiReducer from '../config/reducers/paginationApiReducer';
@@ -9,7 +7,7 @@ import configContainerReducer from '../config/reducers/containerReducer';
 
 config.init = false;
 
-export default function configure(customConfig = {}) {
+export default function configure(customConfig: CustomConfig = {}) {
     if (config.init) {
         throw new ReduxUtilsError(`The 'configure' method may be called only once.`);
     }

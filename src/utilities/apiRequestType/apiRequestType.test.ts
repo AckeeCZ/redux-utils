@@ -2,7 +2,7 @@ import { apiRequestType, createApiRequestType } from './apiRequestType';
 
 describe('apiRequestType', () => {
     it('creates types', () => {
-        const types = apiRequestType({
+        const types: Record<string, string> = apiRequestType({
             types: ['REQUEST', 'SUCCESS', 'FAILURE'],
         });
 
@@ -14,7 +14,7 @@ describe('apiRequestType', () => {
     });
 
     it('creates types with a type and module prefix', () => {
-        const types = apiRequestType({
+        const types: Record<string, string> = apiRequestType({
             typePrefix: 'FETCH_',
             modulePrefix: 'articles',
         });
@@ -31,8 +31,8 @@ describe('apiRequestType', () => {
 
 describe('createApiRequestType', () => {
     it('creates a factory with module prefix', () => {
-        const createTypes = createApiRequestType({ modulePrefix: 'articles' });
-        const types = createTypes({ typePrefix: 'FETCH_' });
+        const createTypes: Function = createApiRequestType({ modulePrefix: 'articles' });
+        const types: Record<string, string> = createTypes({ typePrefix: 'FETCH_' });
 
         expect(typeof createTypes).toBe('function');
         expect(types).toEqual({

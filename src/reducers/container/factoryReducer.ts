@@ -1,8 +1,14 @@
-// @ts-nocheck
-/* tslint:disable */
-import { config, emptyActionTypesError, ReduxUtilsError, undefinedItemIdWarning } from 'Config';
+import {
+    config,
+    ApiReducerState,
+    Action,
+    emptyActionTypesError,
+    ReduxUtilsError,
+    undefinedItemIdWarning,
+} from '../../config';
+import { CustomParams } from '../types';
 
-function getInitialState({ childReducer, initialState: customInitialState, options }) {
+function getInitialState({ childReducer, initialState: customInitialState, options }: CustomParams) {
     const placeholder = childReducer(undefined, {});
     const initialState = { ...customInitialState };
 
@@ -13,7 +19,7 @@ function getInitialState({ childReducer, initialState: customInitialState, optio
     return initialState;
 }
 
-const getParams = (customParams = {}) => {
+const getParams = (customParams: CustomParams = {}) => {
     if (customParams.actionTypes.length === 0) {
         throw new ReduxUtilsError(emptyActionTypesError(customParams));
     }
@@ -24,9 +30,9 @@ const getParams = (customParams = {}) => {
     };
 
     const initialState = getInitialState({
+        options,
         childReducer: customParams.childReducer,
         initialState: customParams.initialState,
-        options,
     });
 
     return {
@@ -43,12 +49,12 @@ const getParams = (customParams = {}) => {
     };
 };
 
-export default function makeContainerReducer(customParams) {
-    const { options, actionTypes, initialState, selectors, childReducer } = getParams(customParams);
+export default function makeContainerReducer(customParams: CustomParams) {
+    const { options, actionTypes, initialState, selectors, childReducer }: CustomParams = getParams(customParams);
 
     const types = new Set(actionTypes);
 
-    return function containerReducer(state = initialState, action) {
+    const containerReducer = (state: ApiReducerState = initialState, action: Action) => {
         if (!types.has(action.type)) {
             return state;
         }
@@ -70,4 +76,5 @@ export default function makeContainerReducer(customParams) {
             [itemId]: childReducer(state[itemId], action, itemInitialState),
         };
     };
+    return containerReducer;
 }

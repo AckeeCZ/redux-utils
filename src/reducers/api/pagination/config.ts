@@ -1,6 +1,4 @@
-// @ts-nocheck
-/* tslint:disable */
-import { UNUSED_ACTION_TYPE } from 'Consts';
+import { UNUSED_ACTION_TYPE } from '../../../constants';
 import * as BasicApiReducerConfig from '../basic/config';
 
 export const actionTypes = {

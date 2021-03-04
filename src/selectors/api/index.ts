@@ -1,7 +1,5 @@
-// @ts-nocheck
-/* tslint:disable */
-import { ReduxUtilsError } from 'Config';
 import { createSelector } from 'reselect';
+import { ReduxUtilsError } from '../../config';
 
 const stringifyKeys = obj => {
     const keys = Object.keys(obj).map(x => `'${x}'`);
@@ -9,14 +7,7 @@ const stringifyKeys = obj => {
     return `[${keys.join(', ')}]`;
 };
 
-/**
- *
- * @param {Object} state - Redux state.
- * @param {String} entityKey - Entity name (e.g. 'users', 'user').
- * @param {String} [typeId] - API type ID (e.g. 'fetch', 'delete')
- * @param {String} [itemId] - entity item ID (e.g. 'userId', 'postId')
- */
-export const apiSelector = (state, entityKey, typeId, itemId) => {
+export const apiSelector = (state: any, entityKey: string, typeId: string, itemId: string) => {
     const entity = state.api[entityKey];
 
     if (entity === undefined) {
@@ -44,16 +35,13 @@ export const apiSelector = (state, entityKey, typeId, itemId) => {
     return entityTypes[itemId] || entityTypes.placeholder;
 };
 
-export const paginationApiSelector = createSelector(
-    apiSelector,
-    group => {
-        const { page, amount, ...rest } = group;
+export const paginationApiSelector = createSelector(apiSelector, group => {
+    const { page, amount, ...rest } = group;
 
-        return {
-            ...rest,
-            page,
-            amount,
-            offset: (page - 1) * amount,
-        };
-    },
-);
+    return {
+        ...rest,
+        page,
+        amount,
+        offset: (page - 1) * amount,
+    };
+});

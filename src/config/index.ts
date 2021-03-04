@@ -1,11 +1,13 @@
-// @ts-nocheck
-/* tslint:disable */
 import configBasicApiReducer from './reducers/basicApiReducer';
 import configPaginationApiReducer from './reducers/paginationApiReducer';
 import configInfiniteListApiReducer from './reducers/infiniteListApiReducer';
 import configContainerReducer from './reducers/containerReducer';
+import { CustomConfig } from './types';
 
-export const config = {
+export * from './reducers/types';
+export * from './types';
+
+export const config: CustomConfig = {
     logger: console,
 
     basicApiReducer: configBasicApiReducer(),
@@ -13,9 +15,8 @@ export const config = {
     infiniteListApiReducer: configInfiniteListApiReducer(),
     containerReducer: configContainerReducer(),
 };
-
 export class ReduxUtilsError extends Error {
-    constructor(message) {
+    constructor(message: string | object) {
         super(typeof message === 'string' ? message : JSON.stringify(message, null, 2));
         this.name = 'ReduxUtilsError';
     }
