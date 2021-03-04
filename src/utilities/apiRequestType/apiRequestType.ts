@@ -1,10 +1,9 @@
-// @ts-nocheck
-/* tslint:disable */
 interface RequestTypeParams {
     types?: any;
     params?: RequestTypeParams;
-    typePrefix?: String;
-    modulePrefix?: String;
+    defaultTypes?: any;
+    typePrefix?: string;
+    modulePrefix?: string;
 }
 
 /*
@@ -42,7 +41,7 @@ export function apiRequestType(params: RequestTypeParams = {}) {
     return Object.freeze(actionTypes);
 }
 
-export function createApiRequestType({ modulePrefix, defaultTypes }) {
+export function createApiRequestType({ modulePrefix, defaultTypes }: RequestTypeParams = {}) {
     return params =>
         apiRequestType({
             types: defaultTypes,
