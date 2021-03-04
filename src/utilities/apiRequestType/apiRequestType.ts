@@ -2,8 +2,8 @@ interface RequestTypeParams {
     types?: any;
     params?: RequestTypeParams;
     defaultTypes?: any;
-    typePrefix?: String;
-    modulePrefix?: String;
+    typePrefix?: string;
+    modulePrefix?: string;
 }
 
 /*
