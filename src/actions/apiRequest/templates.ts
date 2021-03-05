@@ -3,8 +3,8 @@ export const list = {
         type,
         payload: params,
     }),
-    SUCCESS: (type: string) => <T>(payload: T, meta: object = {}) => ({ type, meta, payload }),
-    FAILURE: (type: string) => <T>(error: T) => ({ type, error }),
+    SUCCESS: (type: string) => <T extends object>(payload: T, meta: object = {}) => ({ type, meta, payload }),
+    FAILURE: (type: string) => <T extends any>(error: T) => ({ type, error }),
     CANCEL: (type: string) => () => ({ type }),
     RESET: (type: string) => () => ({ type }),
 };
@@ -15,12 +15,12 @@ export const detail = {
         meta: { id },
         payload: params,
     }),
-    SUCCESS: (type: string) => <T>(id: number | string, payload: T, meta: object) => ({
+    SUCCESS: (type: string) => <T, M extends object>(id: number | string, payload: T, meta: M) => ({
         type,
         payload,
         meta: { id, ...meta },
     }),
-    FAILURE: (type: string) => <T>(id: number | string, error: T) => ({ type, error, meta: { id } }),
+    FAILURE: (type: string) => <T extends any>(id: number | string, error: T) => ({ type, error, meta: { id } }),
     CANCEL: (type: string) => (id: number | string) => ({ type, meta: { id } }),
     RESET: (type: string) => (id: number | string) => ({ type, meta: { id } }),
 };
