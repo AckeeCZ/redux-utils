@@ -16,7 +16,7 @@ export const initialState: ApiReducerState = Object.freeze({
 });
 
 export default function configurateBasicApiReducer(
-    customConfigure: (initialState: MergeConfigArgs) => ExtendedConfig,
+    customConfigure?: (initialState: MergeConfigArgs) => ExtendedConfig,
 ): ExtendedConfig {
     return mergeConfigs({ initialState }, customConfigure);
 }
