@@ -25,7 +25,7 @@ const getParams = (customParams: CustomParams = {}) => {
 
 /**
  * Docs: https://github.com/AckeeCZ/redux-utils/blob/master/docs/reducers/basicApiReducer.md
- * 
+ *
  * @param {object} params
 
     * @param {object} params.actionTypes

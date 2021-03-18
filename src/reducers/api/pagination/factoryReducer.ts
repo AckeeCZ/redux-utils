@@ -32,9 +32,9 @@ const getParams = (customParams: CustomParams = {}) => {
 
 /**
  * Docs: https://github.com/AckeeCZ/redux-utils/blob/master/docs/reducers/paginationApiReducer.md
- * 
- * @param {object} params 
-    * @param {object} params.actionTypes 
+ *
+ * @param {object} params
+    * @param {object} params.actionTypes
         * @param {(string | undefined)} params.actionTypes.REQUEST
         * @param {(string | undefined)} params.actionTypes.CANCEL
         * @param {(string | undefined)} params.actionTypes.SUCCESS
@@ -54,12 +54,12 @@ const getParams = (customParams: CustomParams = {}) => {
         * @param {number} params.initialState.amount
         * @param {number} params.initialState.totalCount
         * @param {number} params.initialState.limit
-        
+
      * @param {object} [params.selectors]
         * @param {(action: object) => number} [params.selectors.totalCount]
         * @param {(action: object) => number} [params.selectors.currentCount]
         * @param {(action: object) => boolean} [params.selectors.hasMore]
-        
+
     * @param {object} [params.actionFilters]
         * @param {(action: object) => boolean} [params.actionFilters.update]
         * @param {(action: object) => boolean} [params.actionFilters.update]

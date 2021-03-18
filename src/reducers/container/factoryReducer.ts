@@ -50,8 +50,8 @@ const getParams = (customParams: CustomParams = {}) => {
 };
 
 /**
- * @param {object} params 
-    * @param {(state: object, action: object) => object} params.childReducer 
+ * @param {object} params
+    * @param {(state: object, action: object) => object} params.childReducer
     * @param {string[]} params.actionTypes
     * @param {object} [params.initialState]
 
