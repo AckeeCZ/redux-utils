@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="3.0.1"></a>
-## 3.0.1 (2021-03-18)
+<a name="3.0.3"></a>
+## 3.0.3 (2021-03-18)
 
 ### Added
 
@@ -17,7 +17,7 @@
 
 ### Changed
 
-- ♻️ improving global exports [[8919822](https://github.com/AckeeCZ/redux-utils/commit/8919822d1287f4e74f16574206297bd93e5ac192)]
+- ♻️ improvim global exports [[8919822](https://github.com/AckeeCZ/redux-utils/commit/8919822d1287f4e74f16574206297bd93e5ac192)]
 - 🚨 trailing whitespaces jsdoc [[fdef553](https://github.com/AckeeCZ/redux-utils/commit/fdef553865e96e66b19bd4347d635f13d11ddb43)]
 - 🎨 ts optional type fixed [[2048a9c](https://github.com/AckeeCZ/redux-utils/commit/2048a9c9cc4f0d93553b324234c18120b666d48b)]
 - 🎨 ts types added [[e5b0c4e](https://github.com/AckeeCZ/redux-utils/commit/e5b0c4eebc9fcaa9de5eadc480dd7f69261a7fdb)]
@@ -51,6 +51,7 @@
 
 ### Miscellaneous
 
+-  v3.0.1 [[02ccc43](https://github.com/AckeeCZ/redux-utils/commit/02ccc43fb21f7dde8a37a8fbbe039027204c4461)]
 -  Merge pull request [#42](https://github.com/AckeeCZ/redux-utils/issues/42) from AckeeCZ/3.2.0-alpha [[0a554d0](https://github.com/AckeeCZ/redux-utils/commit/0a554d0a5c6afad260dc0aaed3d50204a864ac86)]
 - 🔀 rebasing master [[8071c03](https://github.com/AckeeCZ/redux-utils/commit/8071c03b40300c053247f42585f625e91511761b)]
 -  Merge pull request [#40](https://github.com/AckeeCZ/redux-utils/issues/40) from AckeeCZ/feat/types-config [[f409cff](https://github.com/AckeeCZ/redux-utils/commit/f409cff30ea0e203c9199b094b96f1d0cdc176f9)]
@@ -72,9 +73,9 @@
 -  Merge pull request [#34](https://github.com/AckeeCZ/redux-utils/issues/34) from AckeeCZ/feat/typescript-init-errors-fix [[43287b2](https://github.com/AckeeCZ/redux-utils/commit/43287b2defd131147ba5fba33a44b3b964bae429)]
 - 🏷️ tslint fixed [[13858e7](https://github.com/AckeeCZ/redux-utils/commit/13858e79bbaad6436d6ad15532701e0bb668085e)]
 - 🏷️ adding types into all files left [[2cc52ff](https://github.com/AckeeCZ/redux-utils/commit/2cc52ffbc2344cce86379147e8f65711e32b3580)]
+-  2.4.3 [[7159943](https://github.com/AckeeCZ/redux-utils/commit/7159943b8568059f22b7f9b79d7001f87ce85786)]
 - 📝 Update changelog [[f36d289](https://github.com/AckeeCZ/redux-utils/commit/f36d28970b575f0a29110143d9a7512bbadbbb6e)]
 -  2.4.2 [[e194bb7](https://github.com/AckeeCZ/redux-utils/commit/e194bb769401c78955c8276d1f17d82017f4a68b)]
--  2.4.3 [[7159943](https://github.com/AckeeCZ/redux-utils/commit/7159943b8568059f22b7f9b79d7001f87ce85786)]
 -  Merge pull request [#26](https://github.com/AckeeCZ/redux-utils/issues/26) from AckeeCZ/dependabot/npm_and_yarn/lodash-4.17.19 [[caa76db](https://github.com/AckeeCZ/redux-utils/commit/caa76db99743be2bb0107424313166ba1d832bed)]
 -  Merge pull request [#27](https://github.com/AckeeCZ/redux-utils/issues/27) from AckeeCZ/dependabot/npm_and_yarn/elliptic-6.5.3 [[21b7367](https://github.com/AckeeCZ/redux-utils/commit/21b7367d6669b8dfb7e783f4904b11177db52c43)]
 -  Bump elliptic from 6.5.2 to 6.5.3 [[e7e980a](https://github.com/AckeeCZ/redux-utils/commit/e7e980a3908877df149552fd5c1ea197c4c72e69)]
@@ -89,6 +90,85 @@
 - 💡 update docs [[974e203](https://github.com/AckeeCZ/redux-utils/commit/974e203b20f3d97761900d2176de05d2c075c15f)]
 - 💡 update documentation [[a564a61](https://github.com/AckeeCZ/redux-utils/commit/a564a617d9751b7f257ebf6c9bb39cac24300486)]
 - 📝 add documentation for request actions [[01ce1c3](https://github.com/AckeeCZ/redux-utils/commit/01ce1c337cd74f762e8035c0584a849a25178f00)]
+
+
+<a name="2.4.1"></a>
+## 2.4.1 (2020-08-11)
+
+### Changed
+
+- 🚸 Remove index files with re-exports to enable jsdocs [[40f1ebb](https://github.com/AckeeCZ/redux-utils/commit/40f1ebbd4520c33f6590e9684168f5f9b75023fa)]
+
+### Miscellaneous
+
+-  2.4.1 [[e1d18b5](https://github.com/AckeeCZ/redux-utils/commit/e1d18b57284a12ca493b5b419bb8b6f2713b842e)]
+- 📝 Update changelog [[9318c47](https://github.com/AckeeCZ/redux-utils/commit/9318c474d6512256f5e1ebb55e1484384fde9747)]
+-  Merge pull request [#29](https://github.com/AckeeCZ/redux-utils/issues/29) from AckeeCZ/feature/jsdocs [[6542a9c](https://github.com/AckeeCZ/redux-utils/commit/6542a9cbf4d807ba025cf60c49b3d988655d4cec)]
+- 📝 Add jsdocs with params types [[62c62d7](https://github.com/AckeeCZ/redux-utils/commit/62c62d7a54e4ff3277e27af741651c10f3ed590c)]
+
+
+<a name="2.4.0"></a>
+## 2.4.0 (2020-07-01)
+
+### Added
+
+- ✨ Extend infiniteListApiReducer - add totalCount property support [[34ea064](https://github.com/AckeeCZ/redux-utils/commit/34ea064120fc9d6840094bddb44babad33a335ca)]
+
+### Changed
+
+- 🔧 Update babel config [[f26ca99](https://github.com/AckeeCZ/redux-utils/commit/f26ca99e29bc6ab5f4538e81a1930388d8c428ac)]
+- ⬆️ Upgrade @ackee/browserslist-config [[989f2b1](https://github.com/AckeeCZ/redux-utils/commit/989f2b136999448a45504edee668ec4ec746c2c4)]
+
+### Miscellaneous
+
+-  2.4.0 [[7e70b63](https://github.com/AckeeCZ/redux-utils/commit/7e70b63adeada676bc5aa03d267892a9d69f8edc)]
+- 📝 Update changelog [[6c8ebd7](https://github.com/AckeeCZ/redux-utils/commit/6c8ebd7bbf1399ce48da730a8197dd514cc170ba)]
+
+
+<a name="2.3.3"></a>
+## 2.3.3 (2020-06-07)
+
+### Changed
+
+- 🔧 Disable debug option [[a5a40e9](https://github.com/AckeeCZ/redux-utils/commit/a5a40e96af8883bf2a9fb08f1c41ee369b102b90)]
+
+### Miscellaneous
+
+-  2.3.3 [[9cf5ea2](https://github.com/AckeeCZ/redux-utils/commit/9cf5ea2e9e5d0bce6a6fe05393b587b39187a968)]
+
+
+<a name="2.3.2"></a>
+## 2.3.2 (2020-06-07)
+
+### Changed
+
+- ⬆️ Upgrade dependencies; add @ackee/browserslist-config [[20a25ac](https://github.com/AckeeCZ/redux-utils/commit/20a25ac31b9338177851381fb89ffa3062b0c920)]
+
+### Miscellaneous
+
+-  2.3.2 [[efdde92](https://github.com/AckeeCZ/redux-utils/commit/efdde92f4568748c36e0d717baca7ada117b31d8)]
+- 📝 Update changelog [[c480d4a](https://github.com/AckeeCZ/redux-utils/commit/c480d4a947935f4c8332e706024ad87a4c63aa1d)]
+
+
+<a name="2.3.1"></a>
+## 2.3.1 (2020-05-19)
+
+### Miscellaneous
+
+-  2.3.1 [[d215c8d](https://github.com/AckeeCZ/redux-utils/commit/d215c8d3da67094dbff6e7b52b1ff57b16868560)]
+- 📝 Update docs [[6e94166](https://github.com/AckeeCZ/redux-utils/commit/6e94166c9248381ed407d96c1ff6a32224ff4165)]
+
+
+<a name="2.3.0"></a>
+## 2.3.0 (2020-05-19)
+
+### Breaking changes
+
+- 💥 Don&#x27;t reset lastSuccessAt at REQUEST [[0424f19](https://github.com/AckeeCZ/redux-utils/commit/0424f1945ac74e57f794e7800c59714b315c712e)]
+
+### Miscellaneous
+
+-  2.3.0 [[9593d46](https://github.com/AckeeCZ/redux-utils/commit/9593d463a35f2b00c82bbd5d1db0835af9c08c26)]
 
 
 <a name="3.0.0-alpha.0"></a>
