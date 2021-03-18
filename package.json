@@ -1,20 +1,30 @@
 {
     "name": "@ackee/redux-utils",
-    "version": "2.4.3",
+    "version": "3.0.0",
     "description": "Common Redux utilities - reducer factories, utility for generating action types.",
     "main": "lib/index.js",
     "module": "es/index.js",
     "sideEffects": false,
     "scripts": {
-        "prettier": "prettier --config ./prettier.config.js --write './src/**/*.{js,jsx}'",
-        "build:lib": "rm -rf ./lib && cross-env BABEL_ENV=lib babel src --out-dir lib",
-        "build:es": "rm -rf ./es && cross-env BABEL_ENV=es babel src --out-dir es",
-        "build": "yarn build:es & yarn build:lib",
+        "build:lib": "BABEL_ENV=lib babel src --out-dir lib --extensions \".ts\" --source-maps inline",
+        "build:es": "BABEL_ENV=es babel src --out-dir es --extensions \".ts\" --source-maps inline",
+        "build:js": "yarn build:es",
+        "build:types": "tsc --project tsconfig.types.json --emitDeclarationOnly",
+        "clean": "rm -rf lib es",
+        "build": "yarn clean && yarn build:js && yarn build:types",
         "prepare": "yarn build",
-        "start": "yarn install && yarn lint && yarn build && onchange 'src/**/*.{js,jsx}' -- yarn build",
-        "lint": "eslint 'src/**/*.{js,jsx}'",
-        "size": "package-size ./es --no-cache",
-        "test": "cross-env BABEL_ENV=test jest"
+        "lint": "tslint \"src/**/*.ts\"",
+        "test": "BABEL_ENV=test jest",
+        "push": "yarn build && yalc push",
+        "type-check": "tsc --noEmit",
+        "type-check:watch": "yarn type-check -- --watch",
+        "start": "yarn build && onchange 'src/**/*.ts' -- yarn rebuild",
+        "rebuild": "yarn clean && yarn build:es && yalc push",
+        "changelog": "gitmoji-changelog",
+        "version": "yarn changelog && code --wait CHANGELOG.md && git add CHANGELOG.md",
+        "release": "yarn version",
+        "prettier": "prettier --config ./prettier.config.ts --write './src/**/*.ts'",
+        "size": "package-size ./es --no-cache"
     },
     "author": "Jiří Čermák <jiri.cermak@ackee.cz>",
     "license": "MIT",
@@ -23,12 +33,17 @@
         "url": "https://github.com/AckeeCZ/redux-utils"
     },
     "dependencies": {
-        "@babel/runtime": "7.10.2"
+        "@ackee/eslint-config": "^2.5.0",
+        "@babel/runtime": "7.10.2",
+        "@types/jest": "^26.0.20",
+        "@types/node": "^14.14.10"
     },
     "peerDependencies": {
         "reselect": "4.x"
     },
     "devDependencies": {
+        "@babel/plugin-proposal-class-properties": "^7.8.3",
+        "@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.3",
         "@ackee/browserslist-config": "^1.0.1",
         "@babel/cli": "7.10.1",
         "@babel/core": "7.10.2",
@@ -36,8 +51,11 @@
         "@babel/plugin-transform-runtime": "7.10.1",
         "@babel/preset-env": "7.10.2",
         "@babel/preset-modules": "0.x",
+        "@babel/preset-typescript": "^7.9.0",
         "babel-core": "^7.0.0-bridge.0",
         "babel-eslint": "10.x",
+        "babel-plugin-custom-import-path-transform": "1.x",
+        "gitmoji-changelog": "2.x",
         "babel-jest": "26.0.1",
         "babel-plugin-module-resolver": "4.0.0",
         "babel-preset-react-app": "^9.1.2",
@@ -56,17 +74,23 @@
         "prettier": "2.0.5",
         "prettier-config-ackee": "0.x",
         "reselect": "4.x",
-        "webpack": "4.43.0"
+        "ts-jest": "25.x",
+        "tslint-config-ackee": "^0.3.0",
+        "tslint-config-prettier": "1.x",
+        "typescript": "3.x"
     },
     "husky": {
         "hooks": {
             "pre-commit": "lint-staged",
-            "pre-push": "yarn lint"
+            "pre-push": "yarn test && yarn lint"
         }
     },
     "lint-staged": {
-        "*.{js,jsx,json,scss,less,css,md}": [
+        "src/*.{ts,json,md}": [
             "prettier --config ./prettier.config.js --write"
+        ],
+        "src/*.{ts}": [
+            "yarn lint"
         ]
     },
     "publishConfig": {
