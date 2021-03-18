@@ -1,9 +1,12 @@
 export { apiRequestType, createApiRequestType } from './utilities/apiRequestType';
+
+export { default as apiRequestActions } from './actions/apiRequest/apiRequestActions';
+
+export { default as configure } from './configure';
+
 export { default as strictObjectAccess } from './utilities/strictObjectAccess/strictObjectAccess';
 
 export { apiSelector, paginationApiSelector } from './selectors/api';
-
-export { default as configure } from './configure';
 
 export { default as basicApiReducer } from './reducers/api/basic/factoryReducer';
 export { default as infiniteListApiReducer } from './reducers/api/infiniteList/factoryReducer';
