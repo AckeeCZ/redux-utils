@@ -49,6 +49,21 @@ const getParams = (customParams: CustomParams = {}) => {
     };
 };
 
+/**
+ * @param {object} params 
+    * @param {(state: object, action: object) => object} params.childReducer 
+    * @param {string[]} params.actionTypes
+    * @param {object} [params.initialState]
+
+    * @param {object} params.selectors
+        * @param {(action: object) => string} params.selectors.itemId
+
+    * @param {object} [params.options]
+        * @param {boolean} params.options.ignoreWarnings
+        * @param {boolean} params.options.placeholder
+
+ * @returns {(state: object, action: object) => object}
+ */
 export default function makeContainerReducer(customParams: CustomParams) {
     const { options, actionTypes, initialState, selectors, childReducer }: CustomParams = getParams(customParams);
 

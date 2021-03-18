@@ -28,8 +28,9 @@ const handler = {
 /**
     If there is an attempt to read an undefined property,
     an error is thrown.
-    @param {Object} target
-    @return {Object}
+    @param {object} target
+    @param {boolean} enabled
+    @return {object}
 */
 export default function strictObjectAccess(
     target: any = {},

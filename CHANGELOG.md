@@ -18,6 +18,48 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 -   Tests
+## 2.4.3 - 2020-08-11
+
+### Fixes
+
+-   Fixes babel config.
+
+## 2.4.1 - 2020-08-11
+
+### Added
+
+-   Add jsdocs comments.
+
+### Updated
+
+-   Upgrade `@ackee/browserslist-config`.
+-   Update babel config.
+
+## 2.4.0 - 2020-07-01
+
+### Added
+
+-   `infiniteListApiReducer` - add `totalCount` prop support.
+
+## 2.3.3 - 2020-06-07
+
+### Updated
+
+-   Disable `debug` option in babel config.
+
+## 2.3.2 - 2020-06-07
+
+### Added
+
+-   Add shared browserslist - `@ackee/browserslist-config`.
+
+### Updated
+
+-   Upgrade dependencies.
+
+## 2.3.0 - 2020-05-19
+
+-   Reset `lastSuccessAt` prop only on `SUCCESS`, `RESET` and `UPDATE`. Don't reset it on `REQUEST`.
 
 ## 2.2.2 - 2020-03-18
 

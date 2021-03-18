@@ -23,6 +23,14 @@ interface RequestTypeParams {
 
 const DEFAULT_TYPES = ['REQUEST', 'SUCCESS', 'FAILURE', 'CANCEL', 'RESET'];
 
+/**
+ * @param {object} params
+ * @param {string} [params.typePrefix]
+ * @param {string} [params.modulePrefix]
+ * @param {string[]} [params.types]
+ * @returns {object}
+ */
+// TODO remove defaultTypes and union with createApiRequestType params
 export function apiRequestType(params: RequestTypeParams = {}) {
     const { types, typePrefix, modulePrefix } = {
         typePrefix: '',
@@ -41,6 +49,12 @@ export function apiRequestType(params: RequestTypeParams = {}) {
     return Object.freeze(actionTypes);
 }
 
+/**
+ * @param {object} params
+ * @param {string} [params.modulePrefix]
+ * @param {string[]} [params.defaultTypes]
+ * @returns {asyncType}
+ */
 export function createApiRequestType({ modulePrefix, defaultTypes }: RequestTypeParams = {}) {
     return params =>
         apiRequestType({

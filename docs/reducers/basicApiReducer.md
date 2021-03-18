@@ -76,8 +76,8 @@ The whole config object and its properties is optional.
         // REQUEST sets this to false
         cancelled: false,
 
-        // REQUEST resets it null
-        // SUCCESS sets it  action.meta.lastSuccessAt
+        // REQUEST doesn't reset it to null
+        // SUCCESS sets it action.meta.lastSuccessAt
         // NOTE: It won't set it directly to Date.now(), because reducer must be a pure function.
         lastSuccessAt: null,
     },

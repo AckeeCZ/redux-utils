@@ -61,6 +61,19 @@ const resetItemsToInitialState = (
     return newState;
 };
 
+/**
+ * Reset items of container reducer to initial state.
+ *
+ * Docs: https://github.com/AckeeCZ/redux-utils/blob/master/docs/reducers/containerResetReducer.md
+ *
+ * @param {object} params
+ * @param {(state: object, action: object) => object} params.childReducer
+ * @param {(state: object, action: object) => object} params.containerReducer
+ * @param {object} params.itemInitialState
+ * @param {object} params.resetItems
+ *
+ * @returns {(state: object, action: object) => object}
+ */
 const makeResetContainerReducer = ({ childReducer, containerReducer, itemInitialState, resetItems }: any): Function => {
     // create map where key is an action type
     // and value is an array of child reducers keys

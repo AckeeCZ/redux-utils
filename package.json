@@ -1,6 +1,6 @@
 {
     "name": "@ackee/redux-utils",
-    "version": "3.0.0-alpha.0",
+    "version": "3.0.0",
     "description": "Common Redux utilities - reducer factories, utility for generating action types.",
     "main": "lib/index.js",
     "module": "es/index.js",
@@ -34,7 +34,7 @@
     },
     "dependencies": {
         "@ackee/eslint-config": "^2.5.0",
-        "@babel/runtime": "7.x",
+        "@babel/runtime": "7.10.2",
         "@types/jest": "^26.0.20",
         "@types/node": "^14.14.10"
     },
@@ -42,33 +42,36 @@
         "reselect": "4.x"
     },
     "devDependencies": {
-        "@babel/cli": "7.x",
-        "@babel/core": "7.x",
         "@babel/plugin-proposal-class-properties": "^7.8.3",
         "@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.3",
-        "@babel/plugin-proposal-object-rest-spread": "7.x",
-        "@babel/plugin-transform-runtime": "7.x",
-        "@babel/preset-env": "7.x",
+        "@ackee/browserslist-config": "^1.0.1",
+        "@babel/cli": "7.10.1",
+        "@babel/core": "7.10.2",
+        "@babel/plugin-proposal-object-rest-spread": "7.10.1",
+        "@babel/plugin-transform-runtime": "7.10.1",
+        "@babel/preset-env": "7.10.2",
         "@babel/preset-modules": "0.x",
         "@babel/preset-typescript": "^7.9.0",
         "babel-core": "^7.0.0-bridge.0",
         "babel-eslint": "10.x",
-        "babel-jest": "24.x",
         "babel-plugin-custom-import-path-transform": "1.x",
-        "babel-plugin-module-resolver": "3.x",
-        "cross-env": "5.x",
-        "eslint": "5.x",
-        "eslint-config-ackee": "0.x",
-        "eslint-config-prettier": "4.x",
-        "eslint-plugin-import": "2.x",
-        "eslint-plugin-jest": "22.x",
         "gitmoji-changelog": "2.x",
-        "husky": "1.x",
-        "jest": "24.x",
-        "lint-staged": "8.x",
-        "onchange": "5.x",
+        "babel-jest": "26.0.1",
+        "babel-plugin-module-resolver": "4.0.0",
+        "babel-preset-react-app": "^9.1.2",
+        "cross-env": "7.0.2",
+        "eslint": "7.2.0",
+        "eslint-config-ackee": "0.x",
+        "eslint-config-prettier": "6.11.0",
+        "eslint-import-resolver-webpack": "0.x",
+        "eslint-plugin-import": "2.20.2",
+        "eslint-plugin-jest": "23.13.2",
+        "husky": "4.2.5",
+        "jest": "26.0.1",
+        "lint-staged": "10.2.9",
+        "onchange": "7.0.2",
         "package-size": "2.x",
-        "prettier": "1.x",
+        "prettier": "2.0.5",
         "prettier-config-ackee": "0.x",
         "reselect": "4.x",
         "ts-jest": "25.x",
@@ -92,5 +95,8 @@
     },
     "publishConfig": {
         "access": "public"
-    }
+    },
+    "browserslist": [
+        "extends @ackee/browserslist-config"
+    ]
 }

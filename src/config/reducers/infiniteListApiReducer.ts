@@ -17,10 +17,14 @@ export default function configureInfiniteListApiReducer(
 
         // number of items to be fetched in a single request
         payloadSize: 10,
+
+        // total number of items available (usually the `x-total-count` header)`
+        totalCount: 0,
     });
 
     const selectors = Object.freeze({
         currentCount: (action: Action) => action.payload.ids.length,
+        totalCount: (action: Action) => action.meta.totalCount,
     });
 
     return mergeConfigs(

@@ -11,40 +11,42 @@ Purpose of this reducer is to **reflect current API request state of infinite li
 
 ### Parameters
 
-`config: Object`:
+`config: object`:
 
--   `actionTypes: Object`
+-   `actionTypes: object`
 
-    -   `REQUEST: String|Symbol (or any primitive type)` - recommended for basic usage
-    -   `CANCEL: String|Symbol`
-    -   `SUCCESS: String|Symbol` - recommended for basic usage
-    -   `FAILURE: String|Symbol` - recommended for basic usage
-    -   `RESET: String|Symbol`
-    -   `UPDATE: String|Symbol`
+    -   `REQUEST: string|symbol (or any primitive type)` - recommended for basic usage
+    -   `CANCEL: string|symbol`
+    -   `SUCCESS: string|symbol` - recommended for basic usage
+    -   `FAILURE: string|symbol` - recommended for basic usage
+    -   `RESET: string|symbol`
+    -   `UPDATE: string|symbol`
 
--   `initialState: Object`
+-   `initialState: object`
 
-    -   `inProgress: Boolean`
-    -   `error: String`
-    -   `success: Boolean`
-    -   `cancelled: Boolean`
-    -   `lastSuccessAt: null|Number`
+    -   `inProgress: boolean`
+    -   `error: string`
+    -   `success: boolean`
+    -   `cancelled: boolean`
+    -   `lastSuccessAt: null|number`
 
-    -   `hasMore: Boolean`
-    -   `payloadSize: Number`
-    -   `totalOffset: Number`
+    -   `hasMore: boolean`
+    -   `payloadSize: number`
+    -   `totalOffset: number`
+    -   `totalCount: number`
 
--   `selectors: Object`
+-   `selectors: object`
 
-    -   `currentCount: Function`
+    -   `currentCount: action => number`
+    -   `totalCount?: action => number`
 
--   `actionFilters: Object`
+-   `actionFilters: object`
 
-    -   `update: Function`
+    -   `update: function`
 
 ### Returns
 
-`reducer: Function`
+`reducer: function`
 
 ### Default config
 
@@ -101,6 +103,7 @@ Purpose of this reducer is to **reflect current API request state of infinite li
     },
     selectors: {
         currentCount: action => action.payload.ids.length,
+        totalCount: action => action.meta.totalCount,
     },
     actionFilters: {
         // action UPDATE is passed here as 1st arg.

@@ -7,7 +7,7 @@ const stringifyKeys = obj => {
     return `[${keys.join(', ')}]`;
 };
 
-export const apiSelector = (state: any, entityKey: string, typeId: string, itemId: string) => {
+export const apiSelector = (state: any, entityKey: string, typeId?: string, itemId?: string) => {
     const entity = state.api[entityKey];
 
     if (entity === undefined) {
@@ -44,4 +44,5 @@ export const paginationApiSelector = createSelector(apiSelector, group => {
         amount,
         offset: (page - 1) * amount,
     };
+    // TODO Set types for return
 });

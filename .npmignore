@@ -16,3 +16,6 @@ webpack.config.js
 configure-jest.js
 .travis.yml
 .eslintrc.*
+
+/src/**/*.test.*
+/src/**/__test__
