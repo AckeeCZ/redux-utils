@@ -46,12 +46,14 @@
 
 ### Fixed
 
+- 💚 travis npm api key changed [[caf3fa2](https://github.com/AckeeCZ/redux-utils/commit/caf3fa205c69c371d4971d4a9938fb9e8eab90c6)]
 - 🐛 Fix babel config [[e73ad42](https://github.com/AckeeCZ/redux-utils/commit/e73ad42d2d8564d8b2ccce89d97fe5547fe69b32)]
 - 🐛 Exclude tests from npm package [[ea606f0](https://github.com/AckeeCZ/redux-utils/commit/ea606f0cadd3c4b08d513d3740e2830f0f26e349)]
 - 🐛 add missing export [[5676aa6](https://github.com/AckeeCZ/redux-utils/commit/5676aa6fe06fb12313e97466b925730f2d4e6f13)]
 
 ### Miscellaneous
 
+-  v3.0.0 [[d565411](https://github.com/AckeeCZ/redux-utils/commit/d5654110cc813e561e7218636247af055fc56801)]
 -  Delete yarn-error.log [[704e1be](https://github.com/AckeeCZ/redux-utils/commit/704e1be8cc5f763083eb9c8a3d6b62f680ee12e7)]
 -  v3.0.3 [[e6c7d0d](https://github.com/AckeeCZ/redux-utils/commit/e6c7d0d6f222e46303d5daeeb3c32389ddb40053)]
 -  v3.0.1 [[02ccc43](https://github.com/AckeeCZ/redux-utils/commit/02ccc43fb21f7dde8a37a8fbbe039027204c4461)]
