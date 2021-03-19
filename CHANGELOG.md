@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="3.0.3"></a>
-## 3.0.3 (2021-03-18)
+<a name="3.0.0"></a>
+## 3.0.0 (2021-03-19)
 
 ### Added
 
@@ -17,6 +17,7 @@
 
 ### Changed
 
+- 🔧 build script updated, travis npm key added [[bb1550b](https://github.com/AckeeCZ/redux-utils/commit/bb1550bb0b23b08058e16f65dd58a87330542084)]
 - ♻️ improvim global exports [[8919822](https://github.com/AckeeCZ/redux-utils/commit/8919822d1287f4e74f16574206297bd93e5ac192)]
 - 🚨 trailing whitespaces jsdoc [[fdef553](https://github.com/AckeeCZ/redux-utils/commit/fdef553865e96e66b19bd4347d635f13d11ddb43)]
 - 🎨 ts optional type fixed [[2048a9c](https://github.com/AckeeCZ/redux-utils/commit/2048a9c9cc4f0d93553b324234c18120b666d48b)]
@@ -51,6 +52,8 @@
 
 ### Miscellaneous
 
+-  Delete yarn-error.log [[704e1be](https://github.com/AckeeCZ/redux-utils/commit/704e1be8cc5f763083eb9c8a3d6b62f680ee12e7)]
+-  v3.0.3 [[e6c7d0d](https://github.com/AckeeCZ/redux-utils/commit/e6c7d0d6f222e46303d5daeeb3c32389ddb40053)]
 -  v3.0.1 [[02ccc43](https://github.com/AckeeCZ/redux-utils/commit/02ccc43fb21f7dde8a37a8fbbe039027204c4461)]
 -  Merge pull request [#42](https://github.com/AckeeCZ/redux-utils/issues/42) from AckeeCZ/3.2.0-alpha [[0a554d0](https://github.com/AckeeCZ/redux-utils/commit/0a554d0a5c6afad260dc0aaed3d50204a864ac86)]
 - 🔀 rebasing master [[8071c03](https://github.com/AckeeCZ/redux-utils/commit/8071c03b40300c053247f42585f625e91511761b)]
