@@ -6,8 +6,7 @@ deploy:
     provider: npm
     email: ackeedevelopment@gmail.com
     skip_cleanup: true
-    api_key:
-        secure: $NPM_API_KEY
+    api_key: $NPM_API_KEY
     on:
         tags: true
         repo: AckeeCZ/redux-utils
