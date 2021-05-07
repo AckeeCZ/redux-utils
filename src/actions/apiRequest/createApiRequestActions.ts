@@ -8,15 +8,17 @@ interface ApiActionTypes {
     RESET?: string;
 }
 
-export const createApiRequestActions = (types: ApiActionTypes) => ({
-    request: createAction(types.REQUEST, (payload: any) => ({
+export const createApiRequestActions = <RP = any, SP = any, SM = any | undefined, E = Error | string | object>(
+    types: ApiActionTypes,
+) => ({
+    request: createAction(types.REQUEST, (payload: RP) => ({
         payload,
     })),
-    success: createAction(types.SUCCESS, (payload: any, meta?: any) => ({
+    success: createAction(types.SUCCESS, (payload: SP, meta?: SM) => ({
         payload,
         meta,
     })),
-    failure: createAction(types.FAILURE, (error: Error | string | object) => ({
+    failure: createAction(types.FAILURE, (error: E) => ({
         error,
         payload: undefined,
     })),
@@ -24,21 +26,29 @@ export const createApiRequestActions = (types: ApiActionTypes) => ({
     reset: types.RESET ? createAction(types.RESET) : undefined,
 });
 
-export const createApiDetailRequestActions = <Id>(types: ApiActionTypes) => ({
-    request: createAction(types.REQUEST, (id: Id, payload: any) => ({
+export const createApiDetailRequestActions = <
+    Id = string | number,
+    RP = any,
+    SP = any,
+    SM = any | undefined,
+    E = Error | string | object
+>(
+    types: ApiActionTypes,
+) => ({
+    request: createAction(types.REQUEST, (id: Id, payload: RP) => ({
         payload,
         meta: {
             id,
         },
     })),
-    success: createAction(types.SUCCESS, (id: Id, payload: any, meta?: any) => ({
+    success: createAction(types.SUCCESS, (id: Id, payload: SP, meta?: SM) => ({
         payload,
         meta: {
             ...meta,
             id,
         },
     })),
-    failure: createAction(types.FAILURE, (id: Id, error: Error | string | object) => ({
+    failure: createAction(types.FAILURE, (id: Id, error: E) => ({
         error,
         payload: undefined,
         meta: {
