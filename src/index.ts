@@ -1,6 +1,6 @@
 export { apiRequestType, createApiRequestType } from './utilities/apiRequestType';
 
-export { default as apiRequestActions } from './actions/apiRequest/apiRequestActions';
+export * from './actions/apiRequest/apiRequestActions';
 
 export { default as configure } from './configure';
 
