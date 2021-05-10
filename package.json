@@ -22,7 +22,7 @@
         "rebuild": "yarn clean && yarn build:es && yalc push",
         "changelog": "gitmoji-changelog",
         "version": "yarn changelog && code --wait CHANGELOG.md && git add CHANGELOG.md",
-        "release": "yarn version",
+        "release": "git fetch origin && yarn version",
         "prettier": "prettier --config ./prettier.config.ts --write './src/**/*.ts'",
         "size": "package-size ./es --no-cache"
     },
