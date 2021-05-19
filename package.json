@@ -99,5 +99,10 @@
     },
     "browserslist": [
         "extends @ackee/browserslist-config"
-    ]
+    ],
+    "resolutions": {
+        "yargs-parser": "^13.1.2",
+        "hosted-git-info": "^3.0.8",
+        "node-notifier": "^8.0.1"
+    }
 }
