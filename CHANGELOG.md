@@ -1,5 +1,20 @@
 # Changelog
 
+<a name="3.1.0"></a>
+## 3.1.0 (2021-05-19)
+
+New action utilities with better Typescript support (uses Redux Toolkit).
+
+### Added
+
+- ✨ Add create API actions typed utilities [[06cb309](https://github.com/AckeeCZ/redux-utils/commit/06cb309a5eca3ca9c75abb60e237df4a5f8b740a)]
+- ➕ Add redux toolkit [[d7cff43](https://github.com/AckeeCZ/redux-utils/commit/d7cff4361acf6da72fa4401fac13770e00b9009c)
+
+### Security
+
+- 🔒 Add security resolutions for problematic packages [[638c230](https://github.com/AckeeCZ/redux-utils/commit/638c2305949af207e51fca92c050d05c2505cf9b)]
+
+
 <a name="3.0.1"></a>
 
 ## 3.0.1 (2021-05-10)
