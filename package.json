@@ -35,6 +35,7 @@
     "dependencies": {
         "@ackee/eslint-config": "^2.5.0",
         "@babel/runtime": "7.10.2",
+        "@reduxjs/toolkit": "^1.5.1",
         "@types/jest": "^26.0.20",
         "@types/node": "^14.14.10"
     },
