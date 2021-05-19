@@ -19,6 +19,7 @@ Common Redux utilities, including:
         -   [`createApiRequestType`](./docs/utils/apiRequestType.md#createApiRequestType)
     -   Action Creator helpers
         -   [`apiRequestActions`](./docs/actions/request.md)
+        -   [`createApiRequestActions`](./docs/actions/createApiRequest.md)
     -   Reducer factories
         -   [`basicApiReducer`](./docs/reducers/basicApiReducer.md)
         -   [`paginationApiReducer`](./docs/reducers/paginationApiReducer.md)
