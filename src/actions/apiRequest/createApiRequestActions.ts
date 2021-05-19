@@ -1,6 +1,6 @@
 import { createAction } from '@reduxjs/toolkit';
 
-interface ApiActionTypes {
+export interface ApiActionTypes {
     REQUEST: string;
     SUCCESS: string;
     FAILURE: string;
