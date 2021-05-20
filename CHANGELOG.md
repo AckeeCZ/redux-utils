@@ -1,5 +1,13 @@
 # Changelog
 
+<a name="3.1.1"></a>
+## 3.1.1 (2021-05-20)
+
+### Fixed
+
+- 🐛 Fix actions import [[5ea73e0](https://github.com/AckeeCZ/redux-utils/commit/5ea73e06ec35a2140154281fd5f95d67fe65d22d)]
+
+
 <a name="3.1.0"></a>
 ## 3.1.0 (2021-05-19)
 
