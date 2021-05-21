@@ -1,5 +1,13 @@
 # Changelog
 
+<a name="3.1.2"></a>
+## 3.1.2 (2021-05-21)
+
+### Changed
+
+- ♻️ Update api actions default values [[47af6bd](https://github.com/AckeeCZ/redux-utils/commit/47af6bdb2acff19c99a23f20814f471076185d75)] (Resolves [#51](https://github.com/AckeeCZ/redux-utils/issues/51))
+
+
 <a name="3.1.1"></a>
 ## 3.1.1 (2021-05-20)
 
