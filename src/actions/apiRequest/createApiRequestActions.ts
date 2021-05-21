@@ -11,10 +11,10 @@ export interface ApiActionTypes {
 export const createApiRequestActions = <RP = any, SP = any, SM = any | undefined, E = Error | string | object>(
     types: ApiActionTypes,
 ) => ({
-    request: createAction(types.REQUEST, (payload: RP) => ({
+    request: createAction(types.REQUEST, (payload?: RP) => ({
         payload,
     })),
-    success: createAction(types.SUCCESS, (payload: SP, meta?: SM) => ({
+    success: createAction(types.SUCCESS, (payload?: SP, meta?: SM) => ({
         payload,
         meta,
     })),
@@ -35,13 +35,13 @@ export const createApiDetailRequestActions = <
 >(
     types: ApiActionTypes,
 ) => ({
-    request: createAction(types.REQUEST, (id: Id, payload: RP) => ({
+    request: createAction(types.REQUEST, (id: Id, payload?: RP) => ({
         payload,
         meta: {
             id,
         },
     })),
-    success: createAction(types.SUCCESS, (id: Id, payload: SP, meta?: SM) => ({
+    success: createAction(types.SUCCESS, (id: Id, payload?: SP, meta?: SM) => ({
         payload,
         meta: {
             ...meta,
