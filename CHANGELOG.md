@@ -1,35 +1,51 @@
 # Changelog
 
+<a name="3.1.3"></a>
+
+## 3.1.3 (2021-06-15)
+
+### Changed
+
+-   ♻️ Remove redundant dep., simplify babel config, upgrade babel dep. [[d7319d8](https://github.com/AckeeCZ/redux-utils/commit/d7319d8523c5ab2a42464539b59ade45b870b2a5)]
+
+### Fixed
+
+-   🐛 Fix setting totalCount in paginationApiReducer and infiniteListApiReducer [[9246e81](https://github.com/AckeeCZ/redux-utils/commit/9246e813ee4ef5dc244999019c762b0d49ac0572)]
+
+### Miscellaneous
+
+-   🏷️ Add types export from config [[8531ba3](https://github.com/AckeeCZ/redux-utils/commit/8531ba3be1c64792a84ab040368f1b912a7f3eb9)]
+
 <a name="3.1.2"></a>
+
 ## 3.1.2 (2021-05-21)
 
 ### Changed
 
-- ♻️ Update api actions default values [[47af6bd](https://github.com/AckeeCZ/redux-utils/commit/47af6bdb2acff19c99a23f20814f471076185d75)] (Resolves [#51](https://github.com/AckeeCZ/redux-utils/issues/51))
-
+-   ♻️ Update api actions default values [[47af6bd](https://github.com/AckeeCZ/redux-utils/commit/47af6bdb2acff19c99a23f20814f471076185d75)] (Resolves [#51](https://github.com/AckeeCZ/redux-utils/issues/51))
 
 <a name="3.1.1"></a>
+
 ## 3.1.1 (2021-05-20)
 
 ### Fixed
 
-- 🐛 Fix actions import [[5ea73e0](https://github.com/AckeeCZ/redux-utils/commit/5ea73e06ec35a2140154281fd5f95d67fe65d22d)]
-
+-   🐛 Fix actions import [[5ea73e0](https://github.com/AckeeCZ/redux-utils/commit/5ea73e06ec35a2140154281fd5f95d67fe65d22d)]
 
 <a name="3.1.0"></a>
+
 ## 3.1.0 (2021-05-19)
 
 New action utilities with better Typescript support (uses Redux Toolkit).
 
 ### Added
 
-- ✨ Add create API actions typed utilities [[06cb309](https://github.com/AckeeCZ/redux-utils/commit/06cb309a5eca3ca9c75abb60e237df4a5f8b740a)]
-- ➕ Add redux toolkit [[d7cff43](https://github.com/AckeeCZ/redux-utils/commit/d7cff4361acf6da72fa4401fac13770e00b9009c)
+-   ✨ Add create API actions typed utilities [[06cb309](https://github.com/AckeeCZ/redux-utils/commit/06cb309a5eca3ca9c75abb60e237df4a5f8b740a)]
+-   ➕ Add redux toolkit [[d7cff43](https://github.com/AckeeCZ/redux-utils/commit/d7cff4361acf6da72fa4401fac13770e00b9009c)
 
 ### Security
 
-- 🔒 Add security resolutions for problematic packages [[638c230](https://github.com/AckeeCZ/redux-utils/commit/638c2305949af207e51fca92c050d05c2505cf9b)]
-
+-   🔒 Add security resolutions for problematic packages [[638c230](https://github.com/AckeeCZ/redux-utils/commit/638c2305949af207e51fca92c050d05c2505cf9b)]
 
 <a name="3.0.1"></a>
 
