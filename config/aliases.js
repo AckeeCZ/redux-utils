@@ -1,8 +1,3 @@
-const path = require('path');
-const paths = require('./paths');
-
-const appPathResolver = dir => path.resolve(paths.appSrc, dir);
-
 const aliases = {
     Src: '',
     Config: 'config',
@@ -22,16 +17,6 @@ const createAliasesForJest = () => {
     return resolvedAliases;
 };
 
-const createAliasesForWebpack = () => {
-    const resolvedAliases = {};
-
-    for (const [alias, aliasPath] of Object.entries(aliases)) {
-        resolvedAliases[alias] = appPathResolver(aliasPath);
-    }
-
-    return resolvedAliases;
-};
-
 const createAliasesForBabel = () => {
     const babelAliases = {};
 
@@ -43,7 +28,6 @@ const createAliasesForBabel = () => {
 };
 
 module.exports = {
-    webpackAliases: createAliasesForWebpack(),
     jestAliases: createAliasesForJest(),
     babelAliases: createAliasesForBabel(),
 };

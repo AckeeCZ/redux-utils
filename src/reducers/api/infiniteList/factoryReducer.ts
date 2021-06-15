@@ -92,8 +92,8 @@ export default function makeInfiniteListApiReducer(customParams: CustomParams) {
 
                 return {
                     ...state,
-                    totalCount,
                     ...basicApiReducer(state, action),
+                    totalCount,
                     totalOffset: state.totalOffset + currentCount,
                     hasMore: currentCount >= state.payloadSize,
                 };
