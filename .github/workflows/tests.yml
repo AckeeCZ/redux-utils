@@ -1,6 +1,8 @@
-name: Node.js Package
+name: Test Node.js Package
 
-on: [pull_request]
+on:
+    pull_request:
+        types: [opened, synchronize, reopened]
 
 jobs:
     tests:
