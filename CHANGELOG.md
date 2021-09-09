@@ -1,5 +1,20 @@
 # Changelog
 
+<a name="3.1.4"></a>
+
+## 3.1.4 (2021-09-09)
+
+### Added
+
+-   👷‍♂️ Add release config for Github Actions [[cfe69bd](https://github.com/AckeeCZ/redux-utils/commit/cfe69bd683ae937b0c1f4203c4c13b5f5b0dea6c)]
+
+### Changed
+
+-   ⬆️ Bump path-parse from 1.0.6 to 1.0.7 [[3a5dbe3](https://github.com/AckeeCZ/redux-utils/commit/3a5dbe3d6452dfab83a6d6564194304a9f093940)]
+-   ⬆️ Bump tar from 4.4.13 to 4.4.15 [[523f221](https://github.com/AckeeCZ/redux-utils/commit/523f2218ebd9496c26305985e29e31e7c1ea7e9b)]
+-   ⬆️ Bump browserslist from 4.12.0 to 4.16.6 [[db5e724](https://github.com/AckeeCZ/redux-utils/commit/db5e72480e44e273d7b487daf2140aeebdefb215)]
+-   ⬆️ Bump ws from 6.2.1 to 6.2.2 [[ab73de5](https://github.com/AckeeCZ/redux-utils/commit/ab73de5fd1c66d33eb565ee9d3425acb1ca96d63)]
+
 <a name="3.1.3"></a>
 
 ## 3.1.3 (2021-06-15)
