@@ -1,0 +1,33 @@
+# https://docs.github.com/en/actions/guides/publishing-nodejs-packages
+
+name: Node.js Package
+
+on:
+    release:
+        types: [published]
+
+    push:
+        tags:
+            - '*'
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+
+            - uses: actions/setup-node@v2
+              with:
+                  node-version: '14.x'
+                  registry-url: 'https://registry.npmjs.org'
+
+            - name: Install dependencies & build packages
+              run: yarn install --frozen-lockfile
+
+            - name: Run tests
+              run: yarn test:ci
+
+            - run: npm publish
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
