@@ -1,15 +1,9 @@
 name: Node.js Package
 
-on:
-    release:
-        types: [published]
-
-    push:
-        tags:
-            - '*'
+on: [pull_request]
 
 jobs:
-    release:
+    tests:
         runs-on: ubuntu-latest
 
         steps:
@@ -25,7 +19,3 @@ jobs:
 
             - name: Run tests
               run: yarn test:ci
-
-            - run: npm publish
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
