@@ -1,5 +1,13 @@
 # Changelog
 
+<a name="3.1.7"></a>
+## 3.1.7 (2022-01-14)
+
+### Added
+
+- ➕ Add core-js among dev deps [[1f19f37](https://github.com/AckeeCZ/redux-utils/commit/1f19f378924fb163c9b2882fa01950dc13399e8e)]
+
+
 <a name="3.1.6"></a>
 
 ## 3.1.6 (2022-01-14)
