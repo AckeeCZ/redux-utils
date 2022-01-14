@@ -34,15 +34,15 @@
         "url": "https://github.com/AckeeCZ/redux-utils"
     },
     "dependencies": {
-        "@reduxjs/toolkit": "^1.5.1",
-        "@types/jest": "^26.0.20",
-        "@types/node": "^14.14.10"
+        "@reduxjs/toolkit": "^1.5.1"
     },
     "peerDependencies": {
         "core-js": "3.x",
         "reselect": "4.x"
     },
     "devDependencies": {
+        "@types/jest": "^26.0.20",
+        "@types/node": "^14.14.10",
         "@ackee/browserslist-config": "^1.0.1",
         "@babel/cli": "7.14.5",
         "@babel/core": "7.14.2",
