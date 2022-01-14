@@ -1,12 +1,32 @@
 # Changelog
 
+<a name="3.1.6"></a>
+
+## 3.1.6 (2022-01-14)
+
+### Added
+
+-   ✨ Add files prop to package.json [[e5679e0](https://github.com/AckeeCZ/redux-utils/commit/e5679e0719edf8563556afa659e817eccb79ad0f)]
+-   👷‍♂️ Add github actions workflow for running tests when PR created [[b2bd225](https://github.com/AckeeCZ/redux-utils/commit/b2bd225ae79c27d6980524b51ef7022e659fbfa6)]
+
+### Changed
+
+-   🚚 Move @types/ from dependencies to devDependencies [[1d1d533](https://github.com/AckeeCZ/redux-utils/commit/1d1d533cdf5a6c73ad41ae3e18128fc79593420b)]
+-   🔧 Remove invalid option from tests github workflow [[6aaae91](https://github.com/AckeeCZ/redux-utils/commit/6aaae91d10b359383ee016bad45fffcfa8687361)]
+-   🔧 Update workflow names [[f3936c1](https://github.com/AckeeCZ/redux-utils/commit/f3936c18e8bbac19745798f2acb6ed951b088910)]
+-   ⬆️ Bump tar from 4.4.15 to 4.4.19 [[bc93284](https://github.com/AckeeCZ/redux-utils/commit/bc9328490baf590b02b395fefd6d73f54c17667e)]
+
+### Removed
+
+-   ➖ Remove unused @ackee/eslint-config from dependencies [[6fe80bb](https://github.com/AckeeCZ/redux-utils/commit/6fe80bbf91b8bab202b9dc9b9f395cbaab7a693a)]
+
 <a name="3.1.5"></a>
+
 ## 3.1.5 (2021-09-09)
 
 ### Added
 
-- ✨ Add test:ci npm script [[32c13d2](https://github.com/AckeeCZ/redux-utils/commit/32c13d20db81d79e2c6b9f338f2ede90fb67a9ca)]
-
+-   ✨ Add test:ci npm script [[32c13d2](https://github.com/AckeeCZ/redux-utils/commit/32c13d20db81d79e2c6b9f338f2ede90fb67a9ca)]
 
 <a name="3.1.4"></a>
 
