@@ -34,7 +34,6 @@
         "url": "https://github.com/AckeeCZ/redux-utils"
     },
     "dependencies": {
-        "@ackee/eslint-config": "^2.5.0",
         "@reduxjs/toolkit": "^1.5.1",
         "@types/jest": "^26.0.20",
         "@types/node": "^14.14.10"
