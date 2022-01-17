@@ -1,5 +1,17 @@
 # Changelog
 
+<a name="3.1.8"></a>
+## 3.1.8 (2022-01-17)
+
+### Removed
+
+- 🔥 Remove obsolete travis config file [[9f4d65e](https://github.com/AckeeCZ/redux-utils/commit/9f4d65e1ec255f213cb4e9831a2aa36bb8d25297)]
+
+### Fixed
+
+- 🐛 Handle undefined process object in strictObjectAccess [[5db4627](https://github.com/AckeeCZ/redux-utils/commit/5db462706ff5c99d7014df3ea18e60f0aee33bf3)]
+
+
 <a name="3.1.7"></a>
 ## 3.1.7 (2022-01-14)
 
