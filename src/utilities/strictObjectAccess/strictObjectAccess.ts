@@ -34,7 +34,7 @@ const handler = {
 */
 export default function strictObjectAccess(
     target: any = {},
-    enabled: boolean = process ? process.env.NODE_ENV === 'development' : true,
+    enabled: boolean = typeof process === 'object' ? process.env.NODE_ENV === 'development' : true,
 ) {
     // omit the functionality outside of development env.
     return enabled ? new Proxy(target, handler) : target;
