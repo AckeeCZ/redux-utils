@@ -38,6 +38,8 @@
     },
     "peerDependencies": {
         "core-js": "3.x",
+        "connected-react-router": "^6.0.0",
+        "history": "^4.10.0",
         "reselect": "4.x"
     },
     "devDependencies": {
@@ -53,6 +55,7 @@
         "babel-plugin-custom-import-path-transform": "1.0.3",
         "babel-plugin-module-resolver": "4.1.0",
         "babel-preset-react-app": "^9.1.2",
+        "connected-react-router": "^6.0.0",
         "core-js": "^3.20.2",
         "cross-env": "7.0.2",
         "eslint": "7.2.0",
@@ -61,6 +64,7 @@
         "eslint-plugin-import": "2.20.2",
         "eslint-plugin-jest": "23.13.2",
         "gitmoji-changelog": "2.x",
+        "history": "^4.10.0",
         "husky": "4.2.5",
         "jest": "26.0.1",
         "lint-staged": "10.2.9",
