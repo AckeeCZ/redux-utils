@@ -1,6 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { LOCATION_CHANGE } from 'connected-react-router';
-import type { LocationChangeAction } from 'connected-react-router';
+import { LOCATION_CHANGE, LocationChangeAction } from 'connected-react-router';
 
 import type { RoutingHistoryState } from '../types';
 

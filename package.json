@@ -37,8 +37,8 @@
         "@reduxjs/toolkit": "^1.5.1"
     },
     "peerDependencies": {
-        "core-js": "3.x",
         "connected-react-router": "^6.0.0",
+        "core-js": "3.x",
         "history": "^4.10.0",
         "reselect": "4.x"
     },
@@ -58,11 +58,6 @@
         "connected-react-router": "^6.0.0",
         "core-js": "^3.20.2",
         "cross-env": "7.0.2",
-        "eslint": "7.2.0",
-        "eslint-config-ackee": "0.x",
-        "eslint-config-prettier": "6.11.0",
-        "eslint-plugin-import": "2.20.2",
-        "eslint-plugin-jest": "23.13.2",
         "gitmoji-changelog": "2.x",
         "history": "^4.10.0",
         "husky": "4.2.5",
@@ -74,6 +69,8 @@
         "prettier-config-ackee": "0.x",
         "reselect": "4.x",
         "ts-jest": "25.x",
+        "tslint-config-ackee": "^0.3.0",
+        "tslint-config-prettier": "^1.18.0",
         "typescript": "3.x"
     },
     "husky": {
