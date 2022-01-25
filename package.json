@@ -101,6 +101,7 @@
     "files": [
         "es",
         "lib",
-        "docs"
+        "docs",
+        "routing-history"
     ]
 }
