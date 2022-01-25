@@ -45,7 +45,9 @@ For example of using factories we're going to use `routingHistory` for a reducer
     ```typescript
     import { previousLocationSelectorFactory } from '@ackee/redux-utils/routing-history';
 
-    const previousLocationSelector = previousLocationSelectorFactory('routingHistory');
+    const reducerKey = 'routingHistory';
+
+    const previousLocationSelector = previousLocationSelectorFactory<AppState, typeof reducerKey>(reducerKey);
 
     const previousLocation = useSelector(previousLocationSelector);
     ```
@@ -55,10 +57,12 @@ For example of using factories we're going to use `routingHistory` for a reducer
 
     Selector returns current app route or `{ pathname: '' }` if current route not set yet.
 
-    ```js
+    ```typescript
     import { activeLocationSelectorFactory } from '@ackee/redux-utils/routing-history';
 
-    const activeLocationSelector = activeLocationSelectorFactory('routingHistory');
+    const reducerKey = 'routingHistory';
+
+    const activeLocationSelector = activeLocationSelectorFactory<AppState, typeof reducerKey>(reducerKey);
 
     const activeLocation = useSelector(activeLocationSelector);
     ```

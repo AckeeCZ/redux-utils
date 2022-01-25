@@ -1,11 +1,20 @@
-import type { ReducerName, State } from '../types';
+import { CombinedState } from 'redux';
+import type { RoutingHistoryState } from '../types';
 
 const defaultHistoryObject = {
     pathname: '',
 };
 
-export const previousLocationSelectorFactory = (reducerName: ReducerName) => (state: State) =>
-    state[reducerName].previousLocation || defaultHistoryObject;
+export const previousLocationSelectorFactory = <
+    State extends CombinedState<{ [key in K]: RoutingHistoryState }>,
+    K extends keyof State
+>(
+    reducerName: K,
+) => (state: State) => state[reducerName].previousLocation || defaultHistoryObject;
 
-export const activeLocationSelectorFactory = (reducerName: ReducerName) => (state: State) =>
-    state[reducerName].activeLocation || defaultHistoryObject;
+export const activeLocationSelectorFactory = <
+    State extends CombinedState<{ [key in K]: RoutingHistoryState }>,
+    K extends keyof State
+>(
+    reducerName: K,
+) => (state: State) => state[reducerName].activeLocation || defaultHistoryObject;
