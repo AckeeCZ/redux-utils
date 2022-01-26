@@ -1,5 +1,25 @@
 # Changelog
 
+<a name="3.2.0"></a>
+## 3.2.0 (2022-01-26)
+
+### Added
+
+- ✨ Added routing history module [[5b6dd79](https://github.com/AckeeCZ/redux-utils/commit/5b6dd79ecbaa8a5465bb5aba0417bf4b5b1009a1)]
+
+### Changed
+
+- ⬆️ Upgrade gitmoji-changelog to v 2.3.0 [[c36a86e](https://github.com/AckeeCZ/redux-utils/commit/c36a86e7c914595f2c358fee193648ca99e875e6)]
+- 🔧 Add routing-history folder to files whitelist [[1ace4b2](https://github.com/AckeeCZ/redux-utils/commit/1ace4b25b46f2436fb113706536d43bd5cc1ceec)]
+- 🔧 Fix linting with tslint [[af4e755](https://github.com/AckeeCZ/redux-utils/commit/af4e755c8046ccb718a71799bbec441fbcc58795)]
+- 🔧 Use test:ci in husky pre-push hook [[cc7a431](https://github.com/AckeeCZ/redux-utils/commit/cc7a43137a0d629b65aa576ecd85eeab7a10682e)]
+
+### Miscellaneous
+
+-  Merge pull request [#64](https://github.com/AckeeCZ/redux-utils/issues/64) from AckeeCZ/feat/add-routing-history-module [[4531ae0](https://github.com/AckeeCZ/redux-utils/commit/4531ae040a13e33eab465530b2a2144331889a96)]
+- 🏷️ Better type routing-history selectors [[dc7043e](https://github.com/AckeeCZ/redux-utils/commit/dc7043e1efac5cecdde84097c0b3a2a63d8801ce)]
+
+
 <a name="3.1.8"></a>
 ## 3.1.8 (2022-01-17)
 
