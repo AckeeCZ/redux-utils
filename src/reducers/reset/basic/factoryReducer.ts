@@ -1,6 +1,5 @@
 import { parseResetActionType } from '../utilities';
-import { AnyAction } from '@reduxjs/toolkit';
-type Reducer = (state: any, action: AnyAction) => any;
+import type { Reducer } from '@reduxjs/toolkit';
 
 /**
  * Reset reducer to initial state when 'actionType' is dispatched.
