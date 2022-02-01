@@ -1,6 +1,6 @@
 {
     "name": "@ackee/redux-utils",
-    "version": "3.2.0",
+    "version": "3.2.1",
     "description": "Common Redux utilities - reducer factories, utility for generating action types.",
     "main": "lib/index.js",
     "module": "es/index.js",
