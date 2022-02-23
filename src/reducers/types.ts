@@ -1,8 +1,8 @@
-import { ApiReducerState } from '../config';
+import { ApiState } from '../config';
 
 export interface CustomParams {
     actionTypes?: any;
-    initialState?: ApiReducerState;
+    initialState?: ApiState;
     actionFilters?: any;
     options?: any;
     selectors?: any;

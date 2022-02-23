@@ -1,1 +1,1 @@
-export const UNUSED_ACTION_TYPE = Symbol('UNUSED_ACTION_TYPE');
+export const UNUSED_ACTION_TYPE = 'UNUSED_ACTION_TYPE';

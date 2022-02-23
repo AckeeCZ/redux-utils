@@ -1,8 +1,10 @@
+import type { AnyAction } from '@reduxjs/toolkit';
+
 import { mergeConfigs } from './utils';
-import { Action, ApiReducerState } from './types';
+import { ApiState } from './types';
 
 export default function configureContainerReducer(customConfigure?: any) {
-    const initialState: ApiReducerState = Object.freeze({});
+    const initialState: ApiState = Object.freeze({});
 
     const options: object = Object.freeze({
         ignoreWarnings: process.env.NODE_ENV !== 'development',
@@ -10,7 +12,7 @@ export default function configureContainerReducer(customConfigure?: any) {
     });
 
     const selectors: object = Object.freeze({
-        itemId: (action: Action) => action.meta.itemId,
+        itemId: (action: AnyAction) => action.meta.itemId,
     });
 
     return mergeConfigs(

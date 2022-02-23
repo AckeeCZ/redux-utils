@@ -1,1 +1,6 @@
-export const mergeConfigs = (defaults, customConfigure = config => config) => customConfigure(defaults);
+const defaultCustomConfigure = config => config;
+
+export const mergeConfigs = <Config>(
+    defaults: Config,
+    customConfigure: (c: Config) => Config = defaultCustomConfigure,
+) => customConfigure(defaults);

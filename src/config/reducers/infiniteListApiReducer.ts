@@ -1,10 +1,12 @@
+import type { AnyAction } from '@reduxjs/toolkit';
+
 import { mergeConfigs } from './utils';
 import * as BasicApiReducer from './basicApiReducer';
-import { Action, ApiReducerState, InfiniteReducerState } from './types';
+import { ApiState, InfiniteReducerState } from './types';
 
 export default function configureInfiniteListApiReducer(
     customConfigure?: any,
-    basicApiReducerInitialState: ApiReducerState = BasicApiReducer.initialState,
+    basicApiReducerInitialState: ApiState = BasicApiReducer.initialState,
 ) {
     const initialState: InfiniteReducerState = Object.freeze({
         ...basicApiReducerInitialState,
@@ -23,8 +25,8 @@ export default function configureInfiniteListApiReducer(
     });
 
     const selectors = Object.freeze({
-        currentCount: (action: Action) => action.payload.ids.length,
-        totalCount: (action: Action) => action.meta.totalCount,
+        currentCount: (action: AnyAction) => action.payload.ids.length,
+        totalCount: (action: AnyAction) => action.meta.totalCount,
     });
 
     return mergeConfigs(

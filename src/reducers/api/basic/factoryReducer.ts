@@ -1,22 +1,25 @@
-import { config, ApiReducerState, Action, undefinedActionTypesWarning } from '../../../config';
-import { CustomParams } from '../../types';
+import { createReducer } from '@reduxjs/toolkit';
+import type { AnyAction } from '@reduxjs/toolkit';
+
+import { config, undefinedActionTypesWarning } from '../../../config';
+import type { ApiCustomParams } from '../../../config';
 import * as Config from './config';
 
-const getParams = (customParams: CustomParams = {}) => {
+const getParams = (customParams: ApiCustomParams = {} as ApiCustomParams): ApiCustomParams => {
     if (!customParams.actionTypes) {
         config.logger.warn(undefinedActionTypesWarning('basicApiReducer', customParams));
     }
 
     return {
-        initialState: Object.freeze({
+        initialState: Object.freeze<ApiCustomParams['initialState']>({
             ...config.basicApiReducer.initialState,
             ...customParams.initialState,
         }),
-        actionTypes: Object.freeze({
+        actionTypes: Object.freeze<Required<ApiCustomParams['actionTypes']>>({
             ...Config.actionTypes,
             ...customParams.actionTypes,
         }),
-        actionFilters: Object.freeze({
+        actionFilters: Object.freeze<Required<ApiCustomParams['actionFilters']>>({
             ...Config.actionFilters,
             ...customParams.actionFilters,
         }),
@@ -25,91 +28,45 @@ const getParams = (customParams: CustomParams = {}) => {
 
 /**
  * Docs: https://github.com/AckeeCZ/redux-utils/blob/master/docs/reducers/basicApiReducer.md
- *
- * @param {object} params
+ */
+export default function makeBasicApiReducer(customParams: ApiCustomParams) {
+    const { actionTypes: types, initialState, actionFilters } = getParams(customParams);
 
-    * @param {object} params.actionTypes
-        * @param {(string | undefined)} params.actionTypes.REQUEST
-        * @param {(string | undefined)} params.actionTypes.CANCEL
-        * @param {(string | undefined)} params.actionTypes.SUCCESS
-        * @param {(string | undefined)} params.actionTypes.FAILURE
-        * @param {(string | undefined)} params.actionTypes.RESET
-        * @param {(string | undefined)} params.actionTypes.UPDATE
-
-    * @param {object} [params.initialState]
-        * @param {boolean} params.initialState.inProgress
-        * @param {any} params.initialState.error
-        * @param {boolean} params.initialState.success
-        * @param {boolean} params.initialState.cancelled
-        * @param {number | null} params.initialState.lastSuccessAt
-
-    * @param {object} [params.actionFilters]
-        * @param {(action: object) => boolean} [params.actionFilters.update]
-
- * @returns {(state: object, action: object) => object}
-*/
-export default function makeBasicApiReducer(customParams: CustomParams) {
-    const { actionTypes: types, initialState, actionFilters }: CustomParams = getParams(customParams);
-
-    function basicApiReducer(state: ApiReducerState = initialState, action: Action) {
-        switch (action.type) {
-            case types.REQUEST:
-                return {
-                    ...state,
-                    error: initialState.error,
-                    inProgress: true,
-                    cancelled: false,
-                    success: false,
-                };
-
-            case types.CANCEL:
-                return {
-                    ...state,
-                    inProgress: false,
-                    cancelled: true,
-                };
-
-            case types.SUCCESS: {
+    const basicApiReducer = createReducer(initialState, builder => {
+        builder
+            .addCase(types.REQUEST, state => {
+                state.error = initialState.error;
+                state.inProgress = true;
+                state.cancelled = false;
+                state.success = false;
+            })
+            .addCase(types.CANCEL, state => {
+                state.inProgress = false;
+                state.cancelled = true;
+            })
+            .addCase(types.SUCCESS, (state, action: AnyAction) => {
                 const { lastSuccessAt = initialState.lastSuccessAt } = action.meta || {};
 
-                return {
-                    ...state,
-                    lastSuccessAt,
-                    inProgress: false,
-                    success: true,
-                };
-            }
-
-            case types.FAILURE: {
+                state.lastSuccessAt = lastSuccessAt;
+                state.inProgress = false;
+                state.success = true;
+            })
+            .addCase(types.FAILURE, (state, action: AnyAction) => {
                 const { error = initialState.error } = action;
 
-                return {
-                    ...state,
-                    error,
-                    inProgress: false,
-                };
-            }
-
-            case types.RESET:
-                return initialState;
-
-            case types.UPDATE: {
+                state.error = error;
+                state.inProgress = false;
+            })
+            .addCase(types.RESET, () => initialState)
+            .addCase(types.UPDATE, (state, action: AnyAction) => {
                 if (actionFilters.update(action)) {
                     return {
                         ...state,
                         ...action.payload,
                     };
                 }
-
-                return state;
-            }
-
-            default:
-                return state;
-        }
-    }
-
-    basicApiReducer.INITIAL_STATE = initialState;
+            });
+    });
 
     return basicApiReducer;
 }
