@@ -8,13 +8,14 @@ export interface ApiState {
     lastSuccessAt?: string | null;
 }
 
-export interface InfiniteReducerState extends ApiState {
+export interface InfiniteListApiState extends ApiState {
     hasMore?: boolean;
     totalOffset?: number;
     payloadSize?: number;
+    totalCount?: number;
 }
 
-export interface PaginationReducerState extends ApiState {
+export interface PaginationApiState extends ApiState {
     hasMore?: boolean;
     page?: number;
     amount?: number;
@@ -22,29 +23,30 @@ export interface PaginationReducerState extends ApiState {
     limit?: number;
 }
 
-/* export interface Action {
-    type?: string;
-    meta?: any;
-    payload?: any;
-    error?: any;
-} */
-
-
-export interface ApiCustomParams<State = ApiState> {
-    actionTypes?: {
-        REQUEST?: string;
-        CANCEL?: string;
-        SUCCESS?: string;
-        FAILURE?: string;
-        RESET?: string;
-        UPDATE?: string;
-    };
-    initialState?: State;
-    actionFilters?: {
-        update?: (action: AnyAction) => boolean;
-    };
+export interface ActionTypes {
+    REQUEST?: string;
+    CANCEL?: string;
+    SUCCESS?: string;
+    FAILURE?: string;
+    RESET?: string;
+    UPDATE?: string;
 }
 
-export interface InfiniteListCustomParams extends ApiCustomParams {
-    
+type ActionFilter = (action: AnyAction) => boolean;
+
+export interface ActionFilters {
+    update?: ActionFilter;
+}
+
+export interface ApiCustomParams<State = ApiState, AT = ActionTypes> {
+    actionTypes: AT;
+    initialState?: State;
+    actionFilters?: ActionFilters;
+}
+
+export interface InfiniteListCustomParams<State = InfiniteListState> extends ApiCustomParams<State> {
+    selectors?: {
+        currentCount: (action: AnyAction) => number;
+        totalCount: (action: AnyAction) => number;
+    };
 }

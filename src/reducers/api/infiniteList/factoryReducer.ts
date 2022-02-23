@@ -1,5 +1,7 @@
-import { config, InfiniteReducerState, Action, undefinedActionTypesWarning } from '../../../config';
-import { CustomParams } from '../../types';
+import { AnyAction, createReducer } from '@reduxjs/toolkit';
+
+import { config, undefinedActionTypesWarning } from '../../../config';
+import type { InfiniteListApiCustomParams } from '../../../config';
 
 import makeBasicApiReducer from '../basic/factoryReducer';
 import {
@@ -7,7 +9,9 @@ import {
     actionTypes as basicApiReducerActionTypes,
 } from '../basic/config';
 
-const getParams = (customParams: CustomParams = {}) => {
+const getParams = (
+    customParams: InfiniteListApiCustomParams = {} as InfiniteListApiCustomParams,
+): Required<InfiniteListApiCustomParams> => {
     if (!customParams.actionTypes) {
         config.logger.warn(undefinedActionTypesWarning('infiniteListApiReducer', customParams));
     }
@@ -34,77 +38,33 @@ const getParams = (customParams: CustomParams = {}) => {
 
 /**
  * Docs: https://github.com/AckeeCZ/redux-utils/blob/master/docs/reducers/infiniteListApiReducer.md
- *
- * @param {object} params
-    * @param {object} params.actionTypes
-        * @param {(string | undefined)} params.actionTypes.REQUEST
-        * @param {(string | undefined)} params.actionTypes.CANCEL
-        * @param {(string | undefined)} params.actionTypes.SUCCESS
-        * @param {(string | undefined)} params.actionTypes.FAILURE
-        * @param {(string | undefined)} params.actionTypes.RESET
-        * @param {(string | undefined)} params.actionTypes.UPDATE
-
-    * @param {object} [params.initialState]
-        * @param {boolean} params.initialState.inProgress
-        * @param {any} params.initialState.error
-        * @param {boolean} params.initialState.success
-        * @param {boolean} params.initialState.cancelled
-        * @param {(number | null)} params.initialState.lastSuccessAt
-        * @param {boolean} params.initialState.hasMore
-        * @param {number} params.initialState.payloadSize
-        * @param {number} params.initialState.totalOffset
-
-     * @param {object} [params.selectors]
-        * @param {(action: object) => number} [params.selectors.currentCount]
-
-    * @param {object} [params.actionFilters]
-        * @param {(action: object) => boolean} [params.actionFilters.update]
-
- * @returns {(state: object, action: object) => object}
  */
-export default function makeInfiniteListApiReducer(customParams: CustomParams) {
-    const { actionTypes: types, initialState, selectors, options, actionFilters }: CustomParams = getParams(
-        customParams,
-    );
+export default function makeInfiniteListApiReducer(customParams: InfiniteListApiCustomParams) {
+    const { actionTypes: types, initialState, selectors, actionFilters } = getParams(customParams);
 
     const basicApiReducer = makeBasicApiReducer({
         initialState,
-        options,
         actionFilters,
         actionTypes: types,
     });
 
-    function infiniteListApiReducer(state: InfiniteReducerState = initialState, action: Action) {
-        switch (action.type) {
-            case types.REQUEST:
-            case types.CANCEL:
-            case types.FAILURE:
-            case types.RESET:
-            case types.UPDATE:
-                return {
-                    ...state,
-                    ...basicApiReducer(state, action),
-                };
-
-            case types.SUCCESS: {
+    const infiniteListApiReducer = createReducer(initialState, builder => {
+        builder
+            .addCase(types.SUCCESS, (state, action: AnyAction) => {
                 const currentCount = selectors.currentCount(action);
                 const totalCount = selectors.totalCount(action);
 
-                return {
-                    ...state,
-                    ...basicApiReducer(state, action),
-                    totalCount,
-                    totalOffset: state.totalOffset + currentCount,
-                    hasMore: currentCount >= state.payloadSize,
-                };
-            }
+                basicApiReducer(state, action);
 
-            default:
-                return state;
-        }
-    }
-
-    infiniteListApiReducer.INITIAL_STATE = initialState;
+                state.totalCount = totalCount;
+                state.totalOffset = state.totalOffset + currentCount;
+                state.hasMore = currentCount >= state.payloadSize;
+            })
+            .addMatcher(
+                action => [types.REQUEST, types.CANCEL, types.FAILURE, types.RESET, types.UPDATE].includes(action.type),
+                (state, action) => basicApiReducer(state, action),
+            );
+    });
 
     return infiniteListApiReducer;
 }
