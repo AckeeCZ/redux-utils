@@ -1,5 +1,4 @@
-import type { AnyAction } from '@reduxjs/toolkit';
-import type { Reducer } from '@reduxjs/toolkit';
+import type { AnyAction, EntityId, Reducer } from '@reduxjs/toolkit';
 
 export interface ApiState {
     error?: string | object;
@@ -85,7 +84,7 @@ export interface ContainerCustomParams<State = ApiState> {
         placeholder: boolean;
     };
     selectors?: {
-        itemId?: (action: AnyAction) => string | undefined;
+        itemId?: (action: AnyAction) => EntityId | undefined;
     };
     initialState?: ContainerState<State>;
 }
