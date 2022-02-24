@@ -59,12 +59,12 @@ export default function makeBasicApiReducer(customParams: ApiCustomParams) {
             })
             .addCase(types.RESET, () => initialState)
             .addCase(types.UPDATE, (state, action: AnyAction) => {
-                if (actionFilters.update(action)) {
-                    return {
-                        ...state,
-                        ...action.payload,
-                    };
-                }
+                return actionFilters.update(action)
+                    ? {
+                          ...state,
+                          ...action.payload,
+                      }
+                    : state;
             });
     });
 
