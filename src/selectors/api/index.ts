@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+
 import { ApiState, PaginationApiState, ReduxUtilsError } from '../../config';
 
 const stringifyKeys = (obj: object): string => {
@@ -7,12 +8,11 @@ const stringifyKeys = (obj: object): string => {
     return `[${keys.join(', ')}]`;
 };
 
-export const apiSelector = <
-    ApiStates extends { [entity: string]: AS | { [type: string]: AS | { [item: string]: AS } } },
-    AS extends ApiState = ApiState
->(
-    state: { api: ApiStates },
-    entityKey: keyof ApiStates,
+export const apiSelector = <AS extends ApiState>(
+    state: {
+        api: any;
+    },
+    entityKey: string,
     typeId?: string,
     itemId?: string,
 ): AS => {
@@ -40,7 +40,7 @@ export const apiSelector = <
         return entityTypes as AS;
     }
 
-    return entityTypes[itemId] || entityTypes.placeholder;
+    return (entityTypes[itemId] || entityTypes.placeholder) as AS;
 };
 
 export const paginationApiSelector = createSelector(apiSelector, (group: PaginationApiState) => {
