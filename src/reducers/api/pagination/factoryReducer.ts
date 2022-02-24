@@ -1,11 +1,15 @@
-import { config, PaginationReducerState, Action, undefinedActionTypesWarning } from '../../../config';
-import { CustomParams } from '../../types';
+import { AnyAction, createReducer } from '@reduxjs/toolkit';
+
+import { config, undefinedActionTypesWarning } from '../../../config';
+import type { PaginationApiCustomParams } from '../../../config';
 
 import makeBasicApiReducer from '../basic/factoryReducer';
 
 import * as Config from './config';
 
-const getParams = (customParams: CustomParams = {}) => {
+const getParams = (
+    customParams: PaginationApiCustomParams = {} as PaginationApiCustomParams,
+): PaginationApiCustomParams => {
     if (!customParams.actionTypes) {
         config.logger.warn(undefinedActionTypesWarning('paginationApiReducer', customParams));
     }
@@ -32,96 +36,40 @@ const getParams = (customParams: CustomParams = {}) => {
 
 /**
  * Docs: https://github.com/AckeeCZ/redux-utils/blob/master/docs/reducers/paginationApiReducer.md
- *
- * @param {object} params
-    * @param {object} params.actionTypes
-        * @param {(string | undefined)} params.actionTypes.REQUEST
-        * @param {(string | undefined)} params.actionTypes.CANCEL
-        * @param {(string | undefined)} params.actionTypes.SUCCESS
-        * @param {(string | undefined)} params.actionTypes.FAILURE
-        * @param {(string | undefined)} params.actionTypes.RESET
-        * @param {(string | undefined)} params.actionTypes.UPDATE
-        * @param {(string | undefined)} params.actionTypes.SET_PAGE
-
-    * @param {object} [params.initialState]
-        * @param {boolean} params.initialState.inProgress
-        * @param {any} params.initialState.error
-        * @param {boolean} params.initialState.success
-        * @param {boolean} params.initialState.cancelled
-        * @param {(number | null)} params.initialState.lastSuccessAt
-        * @param {boolean} params.initialState.hasMore
-        * @param {number} params.initialState.page
-        * @param {number} params.initialState.amount
-        * @param {number} params.initialState.totalCount
-        * @param {number} params.initialState.limit
-
-     * @param {object} [params.selectors]
-        * @param {(action: object) => number} [params.selectors.totalCount]
-        * @param {(action: object) => number} [params.selectors.currentCount]
-        * @param {(action: object) => boolean} [params.selectors.hasMore]
-
-    * @param {object} [params.actionFilters]
-        * @param {(action: object) => boolean} [params.actionFilters.update]
-        * @param {(action: object) => boolean} [params.actionFilters.update]
-
- * @returns {(state: object, action: object) => object}
  */
-export default function makePaginationApiReducer(customParams: CustomParams) {
-    const { actionTypes: types, initialState, selectors, options, actionFilters }: CustomParams = getParams(
+export default function makePaginationApiReducer(customParams: PaginationApiCustomParams) {
+    const { actionTypes: types, initialState, selectors, actionFilters }: PaginationApiCustomParams = getParams(
         customParams,
     );
 
     const basicApiReducer = makeBasicApiReducer({
         initialState,
-        options,
         actionFilters,
         actionTypes: types,
     });
 
-    function paginationApiReducer(state: PaginationReducerState = initialState, action: Action) {
-        switch (action.type) {
-            case types.REQUEST:
-            case types.CANCEL:
-            case types.FAILURE:
-            case types.RESET:
-            case types.UPDATE:
-                return {
-                    ...state,
-                    ...basicApiReducer(state, action),
-                };
-
-            case types.SUCCESS: {
-                const totalCount = selectors.totalCount(action);
+    const paginationApiReducer = createReducer(initialState, builder => {
+        builder
+            .addCase(types.SUCCESS, (state, action: AnyAction) => {
                 const currentCount = selectors.currentCount(action);
+                const totalCount = selectors.totalCount(action);
                 const hasMore = selectors.hasMore(action);
 
-                return {
-                    ...state,
-                    ...basicApiReducer(state, action),
-                    totalCount,
-                    hasMore: hasMore === undefined ? currentCount >= state.limit : hasMore,
-                };
-            }
+                basicApiReducer(state, action);
 
-            case types.SET_PAGE: {
+                state.totalCount = totalCount;
+                state.hasMore = hasMore === undefined ? currentCount >= state.limit : hasMore;
+            })
+            .addCase(types.SET_PAGE, (state, action: AnyAction) => {
                 if (actionFilters.setPage(action)) {
-                    const { page } = action.payload;
-
-                    return {
-                        ...state,
-                        page,
-                    };
+                    state.page = action.payload.page;
                 }
-
-                return state;
-            }
-
-            default:
-                return state;
-        }
-    }
-
-    paginationApiReducer.INITIAL_STATE = initialState;
+            })
+            .addMatcher(
+                action => [types.REQUEST, types.CANCEL, types.FAILURE, types.RESET, types.UPDATE].includes(action.type),
+                (state, action) => basicApiReducer(state, action),
+            );
+    });
 
     return paginationApiReducer;
 }

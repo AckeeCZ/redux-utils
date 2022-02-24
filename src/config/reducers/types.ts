@@ -44,9 +44,29 @@ export interface ApiCustomParams<State = ApiState, AT = ActionTypes> {
     actionFilters?: ActionFilters;
 }
 
-export interface InfiniteListCustomParams<State = InfiniteListState> extends ApiCustomParams<State> {
-    selectors?: {
-        currentCount: (action: AnyAction) => number;
-        totalCount: (action: AnyAction) => number;
-    };
+export interface InfiniteListSelectors {
+    currentCount: (action: AnyAction) => number;
+    totalCount: (action: AnyAction) => number;
+}
+
+export interface InfiniteListApiCustomParams<State = InfiniteListApiState> extends ApiCustomParams<State> {
+    selectors?: InfiniteListSelectors;
+}
+
+export interface PaginationActionTypes extends ActionTypes {
+    SET_PAGE?: string;
+}
+
+export interface PaginationSelectors extends InfiniteListSelectors {
+    hasMore: (action: AnyAction) => boolean;
+}
+
+export interface PaginationActionFilters extends ActionFilters {
+    setPage?: ActionFilter;
+}
+
+export interface PaginationApiCustomParams<State = PaginationApiState>
+    extends ApiCustomParams<State, PaginationActionTypes> {
+    selectors?: PaginationSelectors;
+    actionFilters?: PaginationActionFilters;
 }
