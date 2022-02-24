@@ -1,4 +1,5 @@
 import type { AnyAction } from '@reduxjs/toolkit';
+import type { Reducer } from '@reduxjs/toolkit';
 
 export interface ApiState {
     error?: string | object;
@@ -45,8 +46,8 @@ export interface ApiCustomParams<State = ApiState, AT = ActionTypes> {
 }
 
 export interface InfiniteListSelectors {
-    currentCount: (action: AnyAction) => number;
-    totalCount: (action: AnyAction) => number;
+    currentCount?: (action: AnyAction) => number;
+    totalCount?: (action: AnyAction) => number;
 }
 
 export interface InfiniteListApiCustomParams<State = InfiniteListApiState> extends ApiCustomParams<State> {
@@ -58,7 +59,7 @@ export interface PaginationActionTypes extends ActionTypes {
 }
 
 export interface PaginationSelectors extends InfiniteListSelectors {
-    hasMore: (action: AnyAction) => boolean;
+    hasMore?: (action: AnyAction) => boolean;
 }
 
 export interface PaginationActionFilters extends ActionFilters {
@@ -69,4 +70,22 @@ export interface PaginationApiCustomParams<State = PaginationApiState>
     extends ApiCustomParams<State, PaginationActionTypes> {
     selectors?: PaginationSelectors;
     actionFilters?: PaginationActionFilters;
+}
+
+export type ContainerState<ChildState> = {
+    placeholder?: ChildState;
+    [key: string]: ChildState;
+};
+
+export interface ContainerCustomParams<State = ApiState> {
+    childReducer: Reducer<State>;
+    actionTypes: string[];
+    options?: {
+        ignoreWarnings?: boolean;
+        placeholder: boolean;
+    };
+    selectors?: {
+        itemId?: (action: AnyAction) => string | undefined;
+    };
+    initialState?: ContainerState<State>;
 }

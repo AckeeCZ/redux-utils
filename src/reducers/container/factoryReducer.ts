@@ -1,15 +1,15 @@
-import {
-    config,
-    ApiReducerState,
-    Action,
-    emptyActionTypesError,
-    ReduxUtilsError,
-    undefinedItemIdWarning,
-} from '../../config';
-import { CustomParams } from '../types';
+import type { AnyAction } from '@reduxjs/toolkit';
 
-function getInitialState({ childReducer, initialState: customInitialState, options }: CustomParams) {
-    const placeholder = childReducer(undefined, {});
+import { config, emptyActionTypesError, ReduxUtilsError, undefinedItemIdWarning } from '../../config';
+import type { ApiState, ContainerCustomParams, ContainerState } from '../../config';
+import { UNUSED_ACTION_TYPE } from '../../constants';
+
+function getInitialState<S>({
+    childReducer,
+    initialState: customInitialState,
+    options,
+}: Pick<ContainerCustomParams<S>, 'childReducer' | 'initialState' | 'options'>): ContainerState<S> {
+    const placeholder = childReducer(undefined, { type: UNUSED_ACTION_TYPE });
     const initialState = { ...customInitialState };
 
     if (placeholder && options.placeholder) {
@@ -19,7 +19,9 @@ function getInitialState({ childReducer, initialState: customInitialState, optio
     return initialState;
 }
 
-const getParams = (customParams: CustomParams = {}) => {
+const getParams = <S>(
+    customParams: ContainerCustomParams<S> = {} as ContainerCustomParams<S>,
+): ContainerCustomParams<S> => {
     if (customParams.actionTypes.length === 0) {
         throw new ReduxUtilsError(emptyActionTypesError(customParams));
     }
@@ -29,7 +31,7 @@ const getParams = (customParams: CustomParams = {}) => {
         ...customParams.options,
     };
 
-    const initialState = getInitialState({
+    const initialState = getInitialState<S>({
         options,
         childReducer: customParams.childReducer,
         initialState: customParams.initialState,
@@ -43,33 +45,21 @@ const getParams = (customParams: CustomParams = {}) => {
             ...customParams.selectors,
         },
         initialState: {
-            ...config.containerReducer.initialState,
+            ...config.containerReducer.initialState as ContainerState<S>,
             ...initialState,
         },
     };
 };
 
 /**
- * @param {object} params
-    * @param {(state: object, action: object) => object} params.childReducer
-    * @param {string[]} params.actionTypes
-    * @param {object} [params.initialState]
-
-    * @param {object} params.selectors
-        * @param {(action: object) => string} params.selectors.itemId
-
-    * @param {object} [params.options]
-        * @param {boolean} params.options.ignoreWarnings
-        * @param {boolean} params.options.placeholder
-
- * @returns {(state: object, action: object) => object}
+ * Docs: https://github.com/AckeeCZ/redux-utils/blob/master/docs/reducers/containerReducer.md
  */
-export default function makeContainerReducer(customParams: CustomParams) {
-    const { options, actionTypes, initialState, selectors, childReducer }: CustomParams = getParams(customParams);
+export default function makeContainerReducer<State = ApiState>(customParams: ContainerCustomParams<State>) {
+    const { options, actionTypes, initialState, selectors, childReducer } = getParams<State>(customParams);
 
     const types = new Set(actionTypes);
 
-    const containerReducer = (state: ApiReducerState = initialState, action: Action) => {
+    const containerReducer = (state = initialState, action: AnyAction) => {
         if (!types.has(action.type)) {
             return state;
         }
@@ -84,11 +74,9 @@ export default function makeContainerReducer(customParams: CustomParams) {
             return state;
         }
 
-        const itemInitialState = initialState[itemId] || initialState.placeholder;
-
         return {
             ...state,
-            [itemId]: childReducer(state[itemId], action, itemInitialState),
+            [itemId]: childReducer(state[itemId], action),
         };
     };
     return containerReducer;

@@ -1,17 +1,19 @@
 import type { AnyAction } from '@reduxjs/toolkit';
 
 import { mergeConfigs } from './utils';
-import { ApiState } from './types';
+import { ApiState, ContainerCustomParams, ContainerState } from './types';
 
-export default function configureContainerReducer(customConfigure?: any) {
-    const initialState: ApiState = Object.freeze({});
+interface MergeConfigArgs extends Pick<ContainerCustomParams, 'initialState' | 'options' | 'selectors'> {}
 
-    const options: object = Object.freeze({
+export default function configureContainerReducer(customConfigure?: (args: MergeConfigArgs) => MergeConfigArgs) {
+    const initialState: ContainerState<ApiState> = Object.freeze({});
+
+    const options = Object.freeze<ContainerCustomParams['options']>({
         ignoreWarnings: process.env.NODE_ENV !== 'development',
         placeholder: true,
     });
 
-    const selectors: object = Object.freeze({
+    const selectors = Object.freeze<ContainerCustomParams['selectors']>({
         itemId: (action: AnyAction) => action.meta.itemId,
     });
 
