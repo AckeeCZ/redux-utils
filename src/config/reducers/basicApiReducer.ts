@@ -1,5 +1,5 @@
 import { mergeConfigs } from './utils';
-import { ApiState } from './types';
+import type { ApiState } from './types';
 
 interface MergeConfigArgs {
     initialState: ApiState;

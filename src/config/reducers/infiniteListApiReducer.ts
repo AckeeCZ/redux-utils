@@ -2,15 +2,15 @@ import type { AnyAction } from '@reduxjs/toolkit';
 
 import { mergeConfigs } from './utils';
 import * as BasicApiReducer from './basicApiReducer';
-import { ApiState, InfiniteListApiCustomParams, InfiniteListApiState } from './types';
+import type { ApiState, InfiniteListApiCustomParams, InfiniteListApiState } from './types';
 
-interface MergeConfigArgs {
+export interface InfiniteListMergeConfigArgs {
     initialState: InfiniteListApiState;
     selectors: InfiniteListApiCustomParams['selectors'];
 }
 
 export default function configureInfiniteListApiReducer(
-    customConfigure?: (args: MergeConfigArgs) => MergeConfigArgs,
+    customConfigure?: (args: InfiniteListMergeConfigArgs) => InfiniteListMergeConfigArgs,
     basicApiReducerInitialState: ApiState = BasicApiReducer.initialState,
 ) {
     const initialState: InfiniteListApiState = Object.freeze({
