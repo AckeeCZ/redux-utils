@@ -65,7 +65,7 @@
         "lint-staged": "10.2.9",
         "onchange": "7.0.2",
         "package-size": "2.x",
-        "prettier": "2.0.5",
+        "prettier": "^2.0.5",
         "prettier-config-ackee": "0.x",
         "reselect": "4.x",
         "ts-jest": "25.x",

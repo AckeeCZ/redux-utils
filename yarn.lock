@@ -8043,10 +8043,10 @@ prettier-config-ackee@0.x:
   resolved "https://registry.yarnpkg.com/prettier-config-ackee/-/prettier-config-ackee-0.0.13.tgz#03914a850bbe4d5111cfd54bdcdd818ae182d51e"
   integrity sha512-f64qT8Y9l/kex6iAqoAg9rqLl5HzQVed8io2y2X9IW1qBzJh+L00kERO75pc+olx/FyJGHvAQx/kqWGmIOTa9A==
 
-prettier@2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.0.5.tgz#d6d56282455243f2f92cc1716692c08aa31522d4"
-  integrity sha512-7PtVymN48hGcO4fGjybyBSIWDsLU4H4XlvOHfq91pz9kkGlonzwTfYkaIEwiRg/dAJF9YlbsduBAgtYLi+8cFg==
+prettier@^2.0.5:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.5.1.tgz#fff75fa9d519c54cf0fce328c1017d94546bc56a"
+  integrity sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==
 
 pretty-format@^26.0.0, pretty-format@^26.6.2:
   version "26.6.2"
