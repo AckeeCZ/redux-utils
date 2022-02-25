@@ -38,9 +38,12 @@ const getParams = (
  * Docs: https://github.com/AckeeCZ/redux-utils/blob/master/docs/reducers/paginationApiReducer.md
  */
 export default function makePaginationApiReducer(customParams: PaginationApiCustomParams) {
-    const { actionTypes: types, initialState, selectors, actionFilters }: PaginationApiCustomParams = getParams(
-        customParams,
-    );
+    const {
+        actionTypes: types,
+        initialState,
+        selectors,
+        actionFilters,
+    }: PaginationApiCustomParams = getParams(customParams);
 
     const basicApiReducer = makeBasicApiReducer({
         initialState,

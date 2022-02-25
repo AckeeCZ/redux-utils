@@ -45,7 +45,7 @@ const getParams = <S>(
             ...customParams.selectors,
         },
         initialState: {
-            ...config.containerReducer.initialState as ContainerState<S>,
+            ...(config.containerReducer.initialState as ContainerState<S>),
             ...initialState,
         },
     };

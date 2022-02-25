@@ -21,7 +21,11 @@ interface RequestTypeParams<TP, MP, T extends readonly string[]> {
 
 const DEFAULT_TYPES = ['REQUEST', 'SUCCESS', 'FAILURE', 'CANCEL', 'RESET'] as const;
 
-export function apiRequestType<TP extends string = '', MP extends string = '', T extends readonly string[] = typeof DEFAULT_TYPES>(params: RequestTypeParams<TP, MP, T> = {})/* : Record<string, string> */ {
+export function apiRequestType<
+    TP extends string = '',
+    MP extends string = '',
+    T extends readonly string[] = typeof DEFAULT_TYPES,
+>(params: RequestTypeParams<TP, MP, T> = {}) {
     const { types, typePrefix, modulePrefix } = {
         typePrefix: '' as const,
         modulePrefix: '' as const,
@@ -29,11 +33,12 @@ export function apiRequestType<TP extends string = '', MP extends string = '', T
         types: params.types ?? DEFAULT_TYPES,
     };
 
-    type ActionTypes = { [K in T[number] as `${TP}${K}`]: MP extends '' ? K : `${MP}/${K}`}
+    type Item = T[number];
+    type ActionTypes = { [K in Item as `${TP}${K}`]: MP extends '' ? K : `${MP}/${K}` };
 
-    const actionTypes  = {} as ActionTypes;
+    const actionTypes = {} as ActionTypes;
 
-    types.forEach((type) => {
+    types.forEach(type => {
         const prefixedType = `${typePrefix}${type}`;
 
         actionTypes[prefixedType] = modulePrefix ? `${modulePrefix}/${prefixedType}` : prefixedType;
@@ -45,12 +50,14 @@ export function apiRequestType<TP extends string = '', MP extends string = '', T
 export function createApiRequestType<MP extends string, DT extends readonly string[] = typeof DEFAULT_TYPES>({
     modulePrefix,
     defaultTypes,
-}: { modulePrefix?: MP, defaultTypes?: DT } = {}) {
-    return function apiRequestTypeFactory<TP extends string, T extends readonly string[] = DT>(params: Omit<RequestTypeParams<TP, MP, T>, 'modulePrefix'>) {
+}: { modulePrefix?: MP; defaultTypes?: DT } = {}) {
+    return function apiRequestTypeFactory<TP extends string, T extends readonly string[] = DT>(
+        params: Omit<RequestTypeParams<TP, MP, T>, 'modulePrefix'>,
+    ) {
         return apiRequestType({
             types: defaultTypes,
             ...params,
             modulePrefix,
         });
-    }
+    };
 }

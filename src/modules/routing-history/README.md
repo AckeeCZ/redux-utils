@@ -9,8 +9,8 @@ As you can see, the module is intended to be used with **React**, **Redux** and 
 
 ## Table of contents
 
-* [Reducer](#reducer)
-* [Selectors](#selectors)
+-   [Reducer](#reducer)
+-   [Selectors](#selectors)
 
 ## Usage
 
@@ -21,7 +21,7 @@ To make the module working, you have to inject its reducer into your application
 ```typescript
 import { reducer as routingHistory } from '@ackee/redux-utils/routing-history';
 ...
-    
+
 const reducer = combineReducers({
     app,
     routingHistory, // do not forget the name of the reducer, you will need it
@@ -31,14 +31,15 @@ const reducer = combineReducers({
 export default reducer;
 ```
 
-By now, the module is working. It listens on `LOCATION_CHANGE` action from **connected-react-router** and stores the info into the history reducer. 
+By now, the module is working. It listens on `LOCATION_CHANGE` action from **connected-react-router** and stores the info into the history reducer.
 
 ### Selectors
-If you want to access the info in the history reducer, we expose you two selectors factories to make the selectors. 
+
+If you want to access the info in the history reducer, we expose you two selectors factories to make the selectors.
 
 For example of using factories we're going to use `routingHistory` for a reducer name as in reducer usage example.
 
-* #### `previousLocationSelectorFactory(reducerName: string): Function`
+-   #### `previousLocationSelectorFactory(reducerName: string): Function`
 
     Selector returns previous route at app or `{ pathname: '' }` if it's a first route.
 
@@ -52,8 +53,7 @@ For example of using factories we're going to use `routingHistory` for a reducer
     const previousLocation = useSelector(previousLocationSelector);
     ```
 
-
-* #### `activeLocationSelectorFactory(reducerName: string): Function`
+-   #### `activeLocationSelectorFactory(reducerName: string): Function`
 
     Selector returns current app route or `{ pathname: '' }` if current route not set yet.
 
@@ -66,4 +66,3 @@ For example of using factories we're going to use `routingHistory` for a reducer
 
     const activeLocation = useSelector(activeLocationSelector);
     ```
-
