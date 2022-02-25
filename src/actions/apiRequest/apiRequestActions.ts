@@ -9,9 +9,27 @@ const defaultOptions: Options = {
     isDetailRequest: false,
 };
 
-const apiRequestActions = <T extends { [KT: string]: string }>(types: T, options: Options = defaultOptions) => {
+type ListTemplates = typeof list;
+type DetailTemplates = typeof detail;
+
+type ExtractSuffix<S> = S extends string ? (S extends `${any}_${infer T}` ? ExtractSuffix<T> : S) : never;
+
+type ActionTemplate<Suff extends string, IsDetail extends true | false> = IsDetail extends true
+    ? Suff extends keyof DetailTemplates
+        ? ReturnType<DetailTemplates[Suff]>
+        : never
+    : Suff extends keyof ListTemplates
+    ? ReturnType<ListTemplates[Suff]>
+    : never;
+
+const apiRequestActions = <T extends { [KT: string]: string }, O extends Options>(
+    types: T,
+    options: O = defaultOptions as O,
+) => {
     type ActionCreators = {
-        [K in keyof T as TypeToActionName<K>]: Function;
+        [K in keyof T as TypeToActionName<K>]: typeof options['isDetailRequest'] extends true
+            ? ActionTemplate<ExtractSuffix<K>, true>
+            : ActionTemplate<ExtractSuffix<K>, false>;
     };
 
     const actionCreators = Object.values(types).reduce((actions, type) => {
