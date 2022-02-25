@@ -51,13 +51,12 @@ export function createApiRequestType<MP extends string, DT extends readonly stri
     modulePrefix,
     defaultTypes,
 }: { modulePrefix?: MP; defaultTypes?: DT } = {}) {
-    return function apiRequestTypeFactory<TP extends string, T extends readonly string[] = DT>(
+    return <TP extends string, T extends readonly string[] = DT>(
         params: Omit<RequestTypeParams<TP, MP, T>, 'modulePrefix'>,
-    ) {
-        return apiRequestType({
+    ) =>
+        apiRequestType({
             types: defaultTypes,
             ...params,
             modulePrefix,
         });
-    };
 }

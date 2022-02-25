@@ -1,4 +1,4 @@
-import { CombinedState } from 'redux';
+import type { CombinedState } from 'redux';
 import type { RoutingHistoryState } from '../types';
 
 const defaultHistoryObject = {

@@ -1,4 +1,4 @@
-import { Location } from 'history';
+import type { Location } from 'history';
 
 export interface RoutingHistoryState {
     previousLocation: Location | null;

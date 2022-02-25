@@ -1,4 +1,5 @@
-import { AnyAction, createReducer } from '@reduxjs/toolkit';
+import { createReducer } from '@reduxjs/toolkit';
+import type { AnyAction } from '@reduxjs/toolkit';
 
 import { config, undefinedActionTypesWarning } from '../../../config';
 import type { InfiniteListApiCustomParams } from '../../../config';
