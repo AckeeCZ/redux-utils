@@ -1,7 +1,7 @@
-interface RequestTypeParams {
-    types?: string[];
-    typePrefix?: string;
-    modulePrefix?: string;
+interface RequestTypeParams<TP, MP, T extends readonly string[]> {
+    types?: T;
+    typePrefix?: TP;
+    modulePrefix?: MP;
 }
 
 /*
@@ -19,34 +19,38 @@ interface RequestTypeParams {
     });
  */
 
-const DEFAULT_TYPES = ['REQUEST', 'SUCCESS', 'FAILURE', 'CANCEL', 'RESET'];
+const DEFAULT_TYPES = ['REQUEST', 'SUCCESS', 'FAILURE', 'CANCEL', 'RESET'] as const;
 
-export function apiRequestType(params: RequestTypeParams = {}): Record<string, string> {
+export function apiRequestType<TP extends string = '', MP extends string = '', T extends readonly string[] = typeof DEFAULT_TYPES>(params: RequestTypeParams<TP, MP, T> = {})/* : Record<string, string> */ {
     const { types, typePrefix, modulePrefix } = {
-        typePrefix: '',
-        modulePrefix: '',
+        typePrefix: '' as const,
+        modulePrefix: '' as const,
         ...params,
         types: params.types ?? DEFAULT_TYPES,
     };
-    const actionTypes = {};
 
-    types.forEach(type => {
+    type ActionTypes = { [K in T[number] as `${TP}${K}`]: MP extends '' ? K : `${MP}/${K}`}
+
+    const actionTypes  = {} as ActionTypes;
+
+    types.forEach((type) => {
         const prefixedType = `${typePrefix}${type}`;
 
         actionTypes[prefixedType] = modulePrefix ? `${modulePrefix}/${prefixedType}` : prefixedType;
     });
 
-    return Object.freeze(actionTypes);
+    return Object.freeze<ActionTypes>(actionTypes);
 }
 
-export function createApiRequestType({
+export function createApiRequestType<MP extends string, DT extends readonly string[] = typeof DEFAULT_TYPES>({
     modulePrefix,
     defaultTypes,
-}: Pick<RequestTypeParams, 'modulePrefix'> & { defaultTypes?: string[] } = {}) {
-    return (params: RequestTypeParams) =>
-        apiRequestType({
+}: { modulePrefix?: MP, defaultTypes?: DT } = {}) {
+    return function apiRequestTypeFactory<TP extends string, T extends readonly string[] = DT>(params: Omit<RequestTypeParams<TP, MP, T>, 'modulePrefix'>) {
+        return apiRequestType({
             types: defaultTypes,
             ...params,
             modulePrefix,
         });
+    }
 }
