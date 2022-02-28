@@ -1,5 +1,41 @@
 # Changelog
 
+<a name="4.0.0"></a>
+
+## 4.0.0 (2022-02-28)
+
+### Changed
+
+-   ⬆️ Bump ajv from 6.12.2 to 6.12.6 [[9772e8f](https://github.com/AckeeCZ/redux-utils/commit/9772e8f60e83123a9a2458e62ff39094f0f783ee)]
+-   🔧 Turn off strict null checks [[20d63ac](https://github.com/AckeeCZ/redux-utils/commit/20d63aca44d15772df061e035f24357014ba569a)]
+-   ♻️ Deprecate tslint in favor of eslint [[35ba29f](https://github.com/AckeeCZ/redux-utils/commit/35ba29f1447e835262725891e9cfe0828ad1dda6)]
+-   🎨 Format code instantly after prettier upgrade [[4354da8](https://github.com/AckeeCZ/redux-utils/commit/4354da84de665ada2529a4e829f472db18786ca6)]
+-   ⬆️ Upgrade prettier [[a449e06](https://github.com/AckeeCZ/redux-utils/commit/a449e0634816c7be4c25b4987807f7aa77d09fd4)]
+-   ⬆️ Upgrade typescript to v4 [[c8e2d43](https://github.com/AckeeCZ/redux-utils/commit/c8e2d43e69597c5426bc5a5251c5c96f0b7cfbd4)]
+-   🚨 Fix lint warnings [[b1e7fc4](https://github.com/AckeeCZ/redux-utils/commit/b1e7fc4b513d825c5bc5575f38d952419827fb1a)]
+-   🔧 Disable no duplicate imports lint rule [[a2252e6](https://github.com/AckeeCZ/redux-utils/commit/a2252e6edc6b2849816d4dac4de8eb0e46b3323e)]
+
+### Removed
+
+-   🔥 Remove obsolete container reset reducer [[f830255](https://github.com/AckeeCZ/redux-utils/commit/f830255716ad9b85e699707d9d55f19b25eaf293)]
+-   🔥 Remove too generic CustomParams [[77b25aa](https://github.com/AckeeCZ/redux-utils/commit/77b25aaae67c1e5b6287f8426eaea19e543945ee)]
+
+### Miscellaneous
+
+-   🏷️ Second tier, add type of action from correct template [[a930d4a](https://github.com/AckeeCZ/redux-utils/commit/a930d4aee9621d7c7300d1c31942a3e803ef6c15)]
+-   🏷️ First tier, map action names in apiRequestActions [[34cae8a](https://github.com/AckeeCZ/redux-utils/commit/34cae8a72bff51bc8206ef8180fd10df3379fd0a)]
+-   🏷️ Add missing types of react, react-router &amp; react-redux [[f0694db](https://github.com/AckeeCZ/redux-utils/commit/f0694db8bf687583dd3c44c5ff189333da150678)]
+-   🏷️ Better type apiRequestType helper [[2e611b5](https://github.com/AckeeCZ/redux-utils/commit/2e611b5eba316d26743b20bfa0e729e9e4fe7b22)]
+-   🏷️ Fix typing of strictObjectAccess [[5c03f21](https://github.com/AckeeCZ/redux-utils/commit/5c03f21f17dbeea82a75983bab4bd34a809a65a6)]
+-   🏷️ Fix entityId type in itemId selector [[3b7de1a](https://github.com/AckeeCZ/redux-utils/commit/3b7de1a530fc7c55652e27dfd15508a9876b8ee0)]
+-   🏷️ Improve selector types [[c9deeb0](https://github.com/AckeeCZ/redux-utils/commit/c9deeb05320b9037eb0e9a63f26bc546f79a161e)]
+-   🏷️ Type selectors [[54acff8](https://github.com/AckeeCZ/redux-utils/commit/54acff80d4857736bc807957b70b34e32a30e645)]
+-   🏷️ Rename and export mergeConfig args [[70f375d](https://github.com/AckeeCZ/redux-utils/commit/70f375d8e9d1888662b6ab3c9021985a9af88a70)]
+-   🏷️ Improve types of container reducer [[3423051](https://github.com/AckeeCZ/redux-utils/commit/34230515acd021d53328f4f42236f4645e162c69)]
+-   🏷️ Improve types of pagination list api reducer [[f43370f](https://github.com/AckeeCZ/redux-utils/commit/f43370f90778f1dca4d90d33e0749fb81fd55772)]
+-   🏷️ Improve types of infinite list api reducer [[77584b6](https://github.com/AckeeCZ/redux-utils/commit/77584b6865c569c62dd2e003b8d90758e6f91874)]
+-   🏷️ Improve types of basic api reducer [[b587d7c](https://github.com/AckeeCZ/redux-utils/commit/b587d7c793534f28d9738aa7e1b5be26699db5e6)]
+
 <a name="3.2.1"></a>
 
 ## 3.2.1 (2022-02-01)
