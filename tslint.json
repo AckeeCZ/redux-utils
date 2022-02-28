@@ -46,6 +46,7 @@
     "triple-equals": [true, "allow-null-check"],
     "type-literal-delimiter": true,
     "typedef": [true,"parameter", "property-declaration"],
-    "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case", "allow-leading-underscore"]
+    "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case", "allow-leading-underscore"],
+    "no-duplicate-imports": false
   }
 }

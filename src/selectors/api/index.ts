@@ -1,13 +1,21 @@
 import { createSelector } from 'reselect';
-import { ReduxUtilsError } from '../../config';
 
-const stringifyKeys = obj => {
+import { ApiState, PaginationApiState, ReduxUtilsError } from '../../config';
+
+const stringifyKeys = (obj: object): string => {
     const keys = Object.keys(obj).map(x => `'${x}'`);
 
     return `[${keys.join(', ')}]`;
 };
 
-export const apiSelector = (state: any, entityKey: string, typeId?: string, itemId?: string) => {
+export const apiSelector = <AS extends ApiState>(
+    state: {
+        api: any;
+    },
+    entityKey: string,
+    typeId?: string,
+    itemId?: string,
+): AS => {
     const entity = state.api[entityKey];
 
     if (entity === undefined) {
@@ -16,7 +24,7 @@ export const apiSelector = (state: any, entityKey: string, typeId?: string, item
     }
 
     if (typeId === undefined) {
-        return entity;
+        return entity as AS;
     }
 
     const entityTypes = entity[typeId];
@@ -29,13 +37,13 @@ export const apiSelector = (state: any, entityKey: string, typeId?: string, item
     }
 
     if (itemId === undefined) {
-        return entityTypes;
+        return entityTypes as AS;
     }
 
-    return entityTypes[itemId] || entityTypes.placeholder;
+    return (entityTypes[itemId] || entityTypes.placeholder) as AS;
 };
 
-export const paginationApiSelector = createSelector(apiSelector, group => {
+export const paginationApiSelector = createSelector(apiSelector, (group: PaginationApiState) => {
     const { page, amount, ...rest } = group;
 
     return {
@@ -44,5 +52,4 @@ export const paginationApiSelector = createSelector(apiSelector, group => {
         amount,
         offset: (page - 1) * amount,
     };
-    // TODO Set types for return
 });

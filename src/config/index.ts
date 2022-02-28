@@ -2,18 +2,19 @@ import configBasicApiReducer from './reducers/basicApiReducer';
 import configPaginationApiReducer from './reducers/paginationApiReducer';
 import configInfiniteListApiReducer from './reducers/infiniteListApiReducer';
 import configContainerReducer from './reducers/containerReducer';
-import { CustomConfig } from './types';
 
 export * from './reducers/types';
 export * from './types';
 
-export const config: CustomConfig = {
+export const config = {
     logger: console,
 
     basicApiReducer: configBasicApiReducer(),
     paginationApiReducer: configPaginationApiReducer(),
     infiniteListApiReducer: configInfiniteListApiReducer(),
     containerReducer: configContainerReducer(),
+
+    init: undefined,
 };
 export class ReduxUtilsError extends Error {
     constructor(message: string | object) {

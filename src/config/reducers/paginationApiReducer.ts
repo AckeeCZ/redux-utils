@@ -1,12 +1,19 @@
+import type { AnyAction } from '@reduxjs/toolkit';
+
 import { mergeConfigs } from './utils';
 import * as BasicApiReducer from './basicApiReducer';
-import { Action, ApiReducerState, PaginationReducerState } from './types';
+import type { ApiState, PaginationApiCustomParams, PaginationApiState } from './types';
+
+export interface PaginationMergeConfigArgs {
+    initialState: PaginationApiState;
+    selectors: PaginationApiCustomParams['selectors'];
+}
 
 export default function configurePaginationApiReducer(
-    customConfigure?: any,
-    basicApiReducerInitialState: ApiReducerState = BasicApiReducer.initialState,
+    customConfigure?: (args: PaginationMergeConfigArgs) => PaginationMergeConfigArgs,
+    basicApiReducerInitialState: ApiState = BasicApiReducer.initialState,
 ) {
-    const initialState: PaginationReducerState = Object.freeze({
+    const initialState: PaginationApiState = Object.freeze({
         ...basicApiReducerInitialState,
 
         // current page
@@ -26,9 +33,9 @@ export default function configurePaginationApiReducer(
     });
 
     const selectors = Object.freeze({
-        totalCount: (action: Action) => action.meta.totalCount,
-        currentCount: (action: Action) => action.payload.ids.length,
-        hasMore: (action: Action) => action.meta.hasMore,
+        totalCount: (action: AnyAction) => action.meta.totalCount,
+        currentCount: (action: AnyAction) => action.payload.ids.length,
+        hasMore: (action: AnyAction) => action.meta.hasMore,
     });
 
     return mergeConfigs(
