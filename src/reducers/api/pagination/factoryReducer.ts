@@ -1,4 +1,5 @@
-import { AnyAction, createReducer } from '@reduxjs/toolkit';
+import { createReducer } from '@reduxjs/toolkit';
+import type { AnyAction } from '@reduxjs/toolkit';
 
 import { config, undefinedActionTypesWarning } from '../../../config';
 import type { PaginationApiCustomParams } from '../../../config';
@@ -38,9 +39,12 @@ const getParams = (
  * Docs: https://github.com/AckeeCZ/redux-utils/blob/master/docs/reducers/paginationApiReducer.md
  */
 export default function makePaginationApiReducer(customParams: PaginationApiCustomParams) {
-    const { actionTypes: types, initialState, selectors, actionFilters }: PaginationApiCustomParams = getParams(
-        customParams,
-    );
+    const {
+        actionTypes: types,
+        initialState,
+        selectors,
+        actionFilters,
+    }: PaginationApiCustomParams = getParams(customParams);
 
     const basicApiReducer = makeBasicApiReducer({
         initialState,

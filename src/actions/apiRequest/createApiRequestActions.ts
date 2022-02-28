@@ -31,7 +31,7 @@ export const createApiDetailRequestActions = <
     RP = any,
     SP = any,
     SM = any | undefined,
-    E = Error | string | object
+    E = Error | string | object,
 >(
     types: ApiActionTypes,
 ) => ({

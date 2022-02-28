@@ -26,16 +26,12 @@ const handler = {
 };
 
 /**
-    If there is an attempt to read an undefined property,
-    an error is thrown.
-    @param {object} target
-    @param {boolean} enabled
-    @return {object}
-*/
-export default function strictObjectAccess(
-    target: any = {},
+ *   If there is an attempt to read an undefined property, an error is thrown.
+ */
+export default function strictObjectAccess<T extends object>(
+    target: T = {} as T,
     enabled: boolean = typeof process === 'object' ? process.env.NODE_ENV === 'development' : true,
-) {
+): T {
     // omit the functionality outside of development env.
-    return enabled ? new Proxy(target, handler) : target;
+    return enabled ? new Proxy<T>(target, handler) : target;
 }
