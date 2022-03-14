@@ -1,4 +1,5 @@
 import { ApiCustomParams } from '../../../config';
+import { UNUSED_ACTION_TYPE } from '../../../constants';
 import makeBasicApiReducer from '../basic/factoryReducer';
 
 describe('Basic api reducer', () => {
@@ -7,7 +8,7 @@ describe('Basic api reducer', () => {
         FAILURE: 'fail',
         SUCCESS: 'succ',
         RESET: 'res',
-        CANCEL: 'can',
+        CANCEL: UNUSED_ACTION_TYPE,
         UPDATE: 'upd',
     } as const;
 

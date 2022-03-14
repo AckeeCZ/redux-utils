@@ -7,6 +7,7 @@ import type { PaginationApiCustomParams } from '../../../config';
 import makeBasicApiReducer from '../basic/factoryReducer';
 
 import * as Config from './config';
+import { createMaybeBuilder } from '../utils/createMaybeBuilder';
 
 const getParams = (
     customParams: PaginationApiCustomParams = {} as PaginationApiCustomParams,
@@ -53,7 +54,9 @@ export default function makePaginationApiReducer(customParams: PaginationApiCust
     });
 
     const paginationApiReducer = createReducer(initialState, builder => {
-        builder
+        const maybeBuilder = createMaybeBuilder(builder);
+
+        maybeBuilder
             .addCase(types.SUCCESS, (state, action: AnyAction) => {
                 const currentCount = selectors.currentCount(action);
                 const totalCount = selectors.totalCount(action);
