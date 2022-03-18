@@ -1,4 +1,5 @@
 import { ApiCustomParams } from '../../../config';
+import { UNUSED_ACTION_TYPE } from '../../../constants';
 import makeBasicApiReducer from '../basic/factoryReducer';
 
 describe('Basic api reducer', () => {
@@ -7,8 +8,14 @@ describe('Basic api reducer', () => {
         FAILURE: 'fail',
         SUCCESS: 'succ',
         RESET: 'res',
-        CANCEL: 'can',
+        CANCEL: UNUSED_ACTION_TYPE,
         UPDATE: 'upd',
+    } as const;
+
+    const emptyActionTypes: ApiCustomParams['actionTypes'] = {
+        REQUEST: UNUSED_ACTION_TYPE,
+        FAILURE: UNUSED_ACTION_TYPE,
+        SUCCESS: UNUSED_ACTION_TYPE,
     } as const;
 
     const makeAction = (type: string, params?: {}) => ({
@@ -97,5 +104,9 @@ describe('Basic api reducer', () => {
             success: false,
             lastSuccessAt: null,
         });
+    });
+
+    it('should initialize api reducer containing UNUSED_ACTION_TYPEs without an error', () => {
+        expect(() => makeBasicApiReducer({ actionTypes: emptyActionTypes })).not.toThrowError();
     });
 });

@@ -4,6 +4,7 @@ import type { AnyAction } from '@reduxjs/toolkit';
 import { config, undefinedActionTypesWarning } from '../../../config';
 import type { ApiCustomParams } from '../../../config';
 import * as Config from './config';
+import { createMaybeBuilder } from '../utils/createMaybeBuilder';
 
 const getParams = (customParams: ApiCustomParams = {} as ApiCustomParams): ApiCustomParams => {
     if (!customParams.actionTypes) {
@@ -33,7 +34,9 @@ export default function makeBasicApiReducer(customParams: ApiCustomParams) {
     const { actionTypes: types, initialState, actionFilters } = getParams(customParams);
 
     const basicApiReducer = createReducer(initialState, builder => {
-        builder
+        const maybeBuilder = createMaybeBuilder(builder);
+
+        maybeBuilder
             .addCase(types.REQUEST, state => {
                 state.error = initialState.error;
                 state.inProgress = true;

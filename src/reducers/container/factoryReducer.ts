@@ -2,14 +2,13 @@ import type { AnyAction } from '@reduxjs/toolkit';
 
 import { config, emptyActionTypesError, ReduxUtilsError, undefinedItemIdWarning } from '../../config';
 import type { ApiState, ContainerCustomParams, ContainerState } from '../../config';
-import { UNUSED_ACTION_TYPE } from '../../constants';
 
 function getInitialState<S>({
     childReducer,
     initialState: customInitialState,
     options,
 }: Pick<ContainerCustomParams<S>, 'childReducer' | 'initialState' | 'options'>): ContainerState<S> {
-    const placeholder = childReducer(undefined, { type: UNUSED_ACTION_TYPE });
+    const placeholder = childReducer(undefined, { type: 'INIT_ACTION_TYPE' });
     const initialState = { ...customInitialState };
 
     if (placeholder && options.placeholder) {

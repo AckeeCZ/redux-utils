@@ -9,6 +9,7 @@ import {
     actionFilters as basicApiReducerActionFilters,
     actionTypes as basicApiReducerActionTypes,
 } from '../basic/config';
+import { createMaybeBuilder } from '../utils/createMaybeBuilder';
 
 const getParams = (
     customParams: InfiniteListApiCustomParams = {} as InfiniteListApiCustomParams,
@@ -50,7 +51,9 @@ export default function makeInfiniteListApiReducer(customParams: InfiniteListApi
     });
 
     const infiniteListApiReducer = createReducer(initialState, builder => {
-        builder
+        const maybeBuilder = createMaybeBuilder(builder);
+
+        maybeBuilder
             .addCase(types.SUCCESS, (state, action: AnyAction) => {
                 const currentCount = selectors.currentCount(action);
                 const totalCount = selectors.totalCount(action);
