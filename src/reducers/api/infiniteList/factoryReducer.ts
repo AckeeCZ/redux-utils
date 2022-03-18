@@ -51,9 +51,9 @@ export default function makeInfiniteListApiReducer(customParams: InfiniteListApi
     });
 
     const infiniteListApiReducer = createReducer(initialState, builder => {
-        builder = createMaybeBuilder(builder);
+        const maybeBuilder = createMaybeBuilder(builder);
 
-        builder
+        maybeBuilder
             .addCase(types.SUCCESS, (state, action: AnyAction) => {
                 const currentCount = selectors.currentCount(action);
                 const totalCount = selectors.totalCount(action);

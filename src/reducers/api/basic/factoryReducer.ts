@@ -34,9 +34,9 @@ export default function makeBasicApiReducer(customParams: ApiCustomParams) {
     const { actionTypes: types, initialState, actionFilters } = getParams(customParams);
 
     const basicApiReducer = createReducer(initialState, builder => {
-        createMaybeBuilder(builder);
+        const maybeBuilder = createMaybeBuilder(builder);
 
-        builder
+        maybeBuilder
             .addCase(types.REQUEST, state => {
                 state.error = initialState.error;
                 state.inProgress = true;
