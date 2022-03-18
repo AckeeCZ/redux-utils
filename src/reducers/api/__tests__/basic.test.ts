@@ -12,6 +12,12 @@ describe('Basic api reducer', () => {
         UPDATE: 'upd',
     } as const;
 
+    const emptyActionTypes: ApiCustomParams['actionTypes'] = {
+        REQUEST: UNUSED_ACTION_TYPE,
+        FAILURE: UNUSED_ACTION_TYPE,
+        SUCCESS: UNUSED_ACTION_TYPE,
+    } as const;
+
     const makeAction = (type: string, params?: {}) => ({
         type,
         ...params,
@@ -98,5 +104,9 @@ describe('Basic api reducer', () => {
             success: false,
             lastSuccessAt: null,
         });
+    });
+
+    it('should initialize api reducer containing UNUSED_ACTION_TYPEs without an error', () => {
+        expect(() => makeBasicApiReducer({ actionTypes: emptyActionTypes })).not.toThrowError();
     });
 });
