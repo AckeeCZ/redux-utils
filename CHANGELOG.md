@@ -1,5 +1,19 @@
 # Changelog
 
+<a name="4.0.1"></a>
+
+## 4.0.1 (2022-03-18)
+
+### Changed
+
+-   ♻️ Prevent variable override in reducers factories [[f91cf04](https://github.com/AckeeCZ/redux-utils/commit/f91cf04f8e38d287324c2ccecd37c1fb07b3cf88)]
+-   ✅ Merge basic and emptyBasic tests [[7f8238e](https://github.com/AckeeCZ/redux-utils/commit/7f8238eff4d996a283effb1c8524c26bb1b64f69)]
+
+### Fixed
+
+-   🐛 Attach addCase only if its action creator isn&#x27;t UNUSED_ACTION_TYPE [[d480f23](https://github.com/AckeeCZ/redux-utils/commit/d480f23defb08e000c2519e70dbd5d7dce608459)]
+-   🐛 containerReducer/getInitialState: use special action type while obtaining initial state of child reducer [[b0d8eb2](https://github.com/AckeeCZ/redux-utils/commit/b0d8eb2514f362f1e401a8823e5d25c5f5aa8ebd)]
+
 <a name="4.0.0"></a>
 
 ## 4.0.0 (2022-02-28)
