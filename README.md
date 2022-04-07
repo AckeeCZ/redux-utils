@@ -37,15 +37,13 @@ Common Redux utilities, including:
 
 ## <a name="installing"></a>Installing
 
-Using yarn:
+
 
 ```bash
+# Using yarn:
 $ yarn add @ackee/redux-utils
-```
 
-Using npm:
-
-```bash
+# Using npm:
 $ npm i -S @ackee/redux-utils
 ```
 
