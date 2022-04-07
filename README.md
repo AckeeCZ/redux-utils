@@ -49,6 +49,8 @@ Using npm:
 $ npm i -S @ackee/redux-utils
 ```
 
+> Don't forget to install [`peerDependencies`](https://github.com/AckeeCZ/redux-utils/blob/master/package.json#L39) too
+
 ## Configuration (optional)
 
 Available options:
