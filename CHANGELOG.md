@@ -1,5 +1,26 @@
 # Changelog
 
+<a name="4.1.0"></a>
+
+## 4.1.0 (2022-04-22)
+
+### Added
+
+-   ✨ Add createApiActions utility [[cab7380](https://github.com/AckeeCZ/redux-utils/commit/cab73802eca1829c815c8162867a575fd1b7557a)]
+
+### Removed
+
+-   🔥 Deprecate createApiRequestActions &amp; createApiDetailRequestActions in favor of createApiActions [[75c9f41](https://github.com/AckeeCZ/redux-utils/commit/75c9f41cdf8fdb7bd6c600d01e04776f52ba87a7)]
+
+### Fixed
+
+-   ✏️ Fix typo in apiActions.md [[d8fe864](https://github.com/AckeeCZ/redux-utils/commit/d8fe8641a7f73c05b6df1708acc5a23aade1fcc3)]
+
+### Miscellaneous
+
+-   Update README.md [[be15a5f](https://github.com/AckeeCZ/redux-utils/commit/be15a5fbbcbc0f9508c17ba7023ed57374362997)]
+-   Update README.md [[fb46d27](https://github.com/AckeeCZ/redux-utils/commit/fb46d2796b6cd1eb61f96a2957ae6366f9d5279f)]
+
 <a name="4.0.1"></a>
 
 ## 4.0.1 (2022-03-18)
