@@ -8,6 +8,9 @@ export interface ApiActionTypes {
     RESET?: string;
 }
 
+/**
+ * @deprecated - `createApiActions` util
+ */
 export const createApiRequestActions = <RP = any, SP = any, SM = any | undefined, E = Error | string | object>(
     types: ApiActionTypes,
 ) => ({
@@ -26,6 +29,9 @@ export const createApiRequestActions = <RP = any, SP = any, SM = any | undefined
     reset: types.RESET ? createAction(types.RESET) : undefined,
 });
 
+/**
+ * @deprecated - `createApiActions` util
+ */
 export const createApiDetailRequestActions = <
     Id = string | number,
     RP = any,
