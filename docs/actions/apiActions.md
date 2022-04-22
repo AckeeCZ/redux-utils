@@ -1,4 +1,4 @@
-# `createApiRequestActions`
+# `createApiActions`
 
 Creates action creators and types to reflect an API request with `createAction` utility from `@reduxjs/toolkit`.
 
@@ -13,7 +13,7 @@ const fetchUsers = createApiActions<'FETCH_USERS', RequestPayload>('FETCH_USERS'
 // a)
 dispatch(fetchUser.request({ page: 1, limit: 10 }));
 
-// b) The `action` will be type of `fetchUsers.request`:
+// b) The `action` will be type of `fetchUser.request`:
 createReducer(fetchUser.request, (state, action) => {
     // ...
 });
