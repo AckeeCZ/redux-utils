@@ -1,4 +1,4 @@
-interface RequestTypeParams<TP, MP, T extends readonly string[]> {
+export interface RequestTypeParams<TP, MP, T extends readonly string[]> {
     types?: T;
     typePrefix?: TP;
     modulePrefix?: MP;
