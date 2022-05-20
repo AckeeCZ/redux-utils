@@ -1,5 +1,13 @@
 # Changelog
 
+<a name="4.1.1"></a>
+## 4.1.1 (2022-05-20)
+
+### Miscellaneous
+
+- 🏷️ Export RequestTypeParams type [[d1b20bb](https://github.com/AckeeCZ/redux-utils/commit/d1b20bbf38d2677fe419980c4ad1cec39d8f1b79)]
+
+
 <a name="4.1.0"></a>
 
 ## 4.1.0 (2022-04-22)
