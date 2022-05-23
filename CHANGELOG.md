@@ -1,5 +1,13 @@
 # Changelog
 
+<a name="4.1.2"></a>
+## 4.1.2 (2022-05-23)
+
+### Changed
+
+- ⬆️ @reduxjs/toolkit@1.8.1 [[d37ae69](https://github.com/AckeeCZ/redux-utils/commit/d37ae69ec7feee068f233f8a86fa98567a88a4f5)]
+
+
 <a name="4.1.1"></a>
 ## 4.1.1 (2022-05-20)
 
