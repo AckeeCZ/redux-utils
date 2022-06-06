@@ -34,7 +34,7 @@ export function apiRequestType<
     };
 
     type Item = T[number];
-    type ActionTypes = { [K in Item as `${TP}${K}`]: MP extends '' ? K : `${MP}/${K}` };
+    type ActionTypes = { [K in Item as `${TP}${K}`]: MP extends '' ? `${TP}${K}` : `${MP}/${TP}${K}` };
 
     const actionTypes = {} as ActionTypes;
 
