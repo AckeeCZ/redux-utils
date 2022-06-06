@@ -1,20 +1,28 @@
 # Changelog
 
+<a name="4.1.3"></a>
+
+## 4.1.3 (2022-06-06)
+
+### Miscellaneous
+
+-   Fix typing of apiRequest type [[79fd313](https://github.com/AckeeCZ/redux-utils/commit/79fd31370382f8e8c80e2be697d40f9588a8ee60)]
+
 <a name="4.1.2"></a>
+
 ## 4.1.2 (2022-05-23)
 
 ### Changed
 
-- ⬆️ @reduxjs/toolkit@1.8.1 [[d37ae69](https://github.com/AckeeCZ/redux-utils/commit/d37ae69ec7feee068f233f8a86fa98567a88a4f5)]
-
+-   ⬆️ @reduxjs/toolkit@1.8.1 [[d37ae69](https://github.com/AckeeCZ/redux-utils/commit/d37ae69ec7feee068f233f8a86fa98567a88a4f5)]
 
 <a name="4.1.1"></a>
+
 ## 4.1.1 (2022-05-20)
 
 ### Miscellaneous
 
-- 🏷️ Export RequestTypeParams type [[d1b20bb](https://github.com/AckeeCZ/redux-utils/commit/d1b20bbf38d2677fe419980c4ad1cec39d8f1b79)]
-
+-   🏷️ Export RequestTypeParams type [[d1b20bb](https://github.com/AckeeCZ/redux-utils/commit/d1b20bbf38d2677fe419980c4ad1cec39d8f1b79)]
 
 <a name="4.1.0"></a>
 
