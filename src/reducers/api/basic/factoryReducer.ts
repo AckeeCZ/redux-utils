@@ -48,14 +48,15 @@ export default function makeBasicApiReducer(customParams: ApiCustomParams) {
                 state.cancelled = true;
             })
             .addCase(types.SUCCESS, (state, action: AnyAction) => {
-                const { lastSuccessAt = initialState.lastSuccessAt } = action.meta || {};
+                const lastSuccessAt =
+                    action.meta?.lastSuccessAt ?? action.payload?.lastSuccessAt ?? initialState.lastSuccessAt;
 
                 state.lastSuccessAt = lastSuccessAt;
                 state.inProgress = false;
                 state.success = true;
             })
             .addCase(types.FAILURE, (state, action: AnyAction) => {
-                const { error = initialState.error } = action;
+                const error = action?.error ?? action.payload?.error ?? initialState.error;
 
                 state.error = error;
                 state.inProgress = false;
