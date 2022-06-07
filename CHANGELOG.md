@@ -1,8 +1,12 @@
 # Changelog
 
-<a name="4.1.3"></a>
+<a name="4.1.4"></a>
 
-## 4.1.3 (2022-06-06)
+## 4.1.4 (2022-06-07)
+
+### Fixed
+
+-   🚑 Fix api reducer - extract props from payload [[57346fc](https://github.com/AckeeCZ/redux-utils/commit/57346fc971f73de0ec4508d34cfa3f8d6d26fa6f)]
 
 ### Miscellaneous
 
